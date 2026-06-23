@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Stade — Serverless, end-to-end encrypted, open-source messaging app. Peer-to-peer communication over LAN, Tor and Bluetooth without any central server." />
+<meta name="description" content="Stade — Serverless, end-to-end encrypted, open-source messaging app. Peer-to-peer communication over LAN and Tor without any central server." />
 <meta name="theme-color" content="#080910" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <title>Stade — Serverless. Untracked. Yours.</title>
@@ -285,7 +285,6 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .cb-lan { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.28); color: #00d4aa; }
 .cb-tor { background: rgba(124,92,255,0.1); border-color: rgba(124,92,255,0.32); color: var(--accent-light); }
-.cb-bt  { background: rgba(61,158,255,0.08);border-color: rgba(61,158,255,0.28); color: var(--accent-2); }
 .channel-proto {
   font-size: 11px; font-family: 'JetBrains Mono', monospace;
   color: var(--text-dim); text-align: center;
@@ -358,7 +357,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
 .feature-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
 
-.transport-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.transport-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 @media (max-width: 680px) { .transport-grid { grid-template-columns: 1fr; } }
 .transport-card {
   border-radius: var(--radius); padding: 38px 30px;
@@ -370,20 +369,16 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .tc-lan:hover { box-shadow: 0 22px 60px -20px rgba(0,212,170,0.22); }
 .tc-tor { background: linear-gradient(145deg, rgba(124,92,255,0.1), rgba(124,92,255,0.03)); border-color: rgba(124,92,255,0.24); }
 .tc-tor:hover { box-shadow: 0 22px 60px -20px rgba(124,92,255,0.22); }
-.tc-bt  { background: linear-gradient(145deg, rgba(61,158,255,0.08), rgba(61,158,255,0.02)); border-color: rgba(61,158,255,0.2); }
-.tc-bt:hover  { box-shadow: 0 22px 60px -20px rgba(61,158,255,0.22); }
 .transport-card::before {
   content: ''; position: absolute; top: -50px; right: -50px;
   width: 140px; height: 140px; border-radius: 50%; opacity: 0.05;
 }
 .tc-lan::before { background: #00d4aa; }
 .tc-tor::before { background: #7c5cff; }
-.tc-bt::before  { background: #3d9eff; }
 .tc-icon { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 22px; }
 .tc-icon svg { width: 26px; height: 26px; }
 .tc-lan .tc-icon { background: rgba(0,212,170,0.12);  border: 1px solid rgba(0,212,170,0.3);  color: #00d4aa; }
 .tc-tor .tc-icon { background: rgba(124,92,255,0.13); border: 1px solid rgba(124,92,255,0.3); color: var(--accent-light); }
-.tc-bt  .tc-icon { background: rgba(61,158,255,0.1);  border: 1px solid rgba(61,158,255,0.3); color: var(--accent-2); }
 .transport-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em; }
 .transport-tag {
   display: inline-block; font-size: 10px; font-family: 'JetBrains Mono', monospace;
@@ -392,7 +387,6 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .tc-lan .transport-tag { background: rgba(0,212,170,0.1);  color: #00d4aa; }
 .tc-tor .transport-tag { background: rgba(124,92,255,0.1); color: var(--accent-light); }
-.tc-bt  .transport-tag { background: rgba(61,158,255,0.1); color: var(--accent-2); }
 .transport-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
 .transport-meta { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
 .t-chip {
@@ -628,7 +622,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
             <div class="channel-labels">
               <span class="channel-badge cb-lan">LAN</span>
               <span class="channel-badge cb-tor">Tor</span>
-              <span class="channel-badge cb-bt">Bluetooth</span>
             </div>
             <div class="channel-proto">ChaCha20-Poly1305 &middot; Double Ratchet</div>
           </div>
@@ -701,7 +694,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <h3>Multi-Transport</h3>
-        <p>LAN, Tor and Bluetooth &mdash; three paths, one app. The best available channel is selected automatically based on network conditions.</p>
+        <p>LAN and Tor &mdash; two paths, one app. The best available channel is selected automatically based on network conditions.</p>
       </div>
       <div class="feature-card reveal" data-n="04">
         <div class="feature-icon fi-indigo">
@@ -735,7 +728,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
     <div class="section-header reveal">
       <span class="section-eyebrow">Transport Layers</span>
       <h2>Connected in any condition,<br/><em>always encrypted</em></h2>
-      <p>Stade manages three distinct connection channels automatically. Even if the internet goes down, your message gets through.</p>
+      <p>Stade manages two distinct connection channels automatically, switching between them as network conditions change.</p>
     </div>
     <div class="transport-grid">
       <div class="transport-card tc-lan reveal">
@@ -758,17 +751,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
         <p>Routing through the Tor network hides your IP address. No geographic location or identity is ever exposed.</p>
         <div class="transport-meta">
           <span class="t-chip">3-hop</span><span class="t-chip">Hidden service</span><span class="t-chip">v3 onion</span>
-        </div>
-      </div>
-      <div class="transport-card tc-bt reveal rd2">
-        <div class="tc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>
-        </div>
-        <h3>Bluetooth</h3>
-        <div class="transport-tag">Offline</div>
-        <p>Encrypted communication with nearby devices without any internet connection. Works even in network-free environments.</p>
-        <div class="transport-meta">
-          <span class="t-chip">BLE</span><span class="t-chip">Mesh</span><span class="t-chip">Internet-free</span>
         </div>
       </div>
     </div>
@@ -902,7 +884,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
         <div class="tech-tags-row">
           <span class="tech-tag">LAN / mDNS</span>
           <span class="tech-tag">Tor v3</span>
-          <span class="tech-tag">Bluetooth LE</span>
           <span class="tech-tag">GPL-3.0</span>
         </div>
       </div>
