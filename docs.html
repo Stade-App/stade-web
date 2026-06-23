@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Stade Documentation — guides, references and resources for the serverless, end-to-end encrypted, post-quantum messaging app." />
+<meta name="theme-color" content="#080910" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<title>Docs — Stade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080910;
+  --bg-elev: #0c0e1a;
+  --bg-card: rgba(16, 19, 38, 0.6);
+  --bg-card-hover: rgba(22, 26, 52, 0.82);
+  --border: rgba(100, 115, 200, 0.1);
+  --border-strong: rgba(130, 145, 220, 0.2);
+  --border-accent: rgba(124, 92, 255, 0.32);
+  --text: #eceef8;
+  --text-muted: #838aa6;
+  --text-dim: #4b526e;
+  --accent: #7c5cff;
+  --accent-light: #9d82ff;
+  --accent-2: #3d9eff;
+  --accent-3: #00d4aa;
+  --accent-glow: rgba(124, 92, 255, 0.38);
+  --gradient: linear-gradient(135deg, #7c5cff 0%, #3d9eff 100%);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --sidebar-w: 280px;
+  --toc-w: 232px;
+  --nav-h: 65px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(124,92,255,0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(61,158,255,0.1), transparent 55%);
+  pointer-events: none; z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+[hidden] { display: none !important; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-h);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(8, 9, 16, 0.82);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 100%; max-width: 1440px; margin: 0 auto; gap: 20px;
+}
+.nav-left { display: flex; align-items: center; gap: 16px; }
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--text); flex-shrink: 0;
+}
+.logo-mark { width: 32px; height: 32px; border-radius: 9px; display: block; object-fit: cover; flex-shrink: 0; }
+.docs-tag {
+  font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-light); padding: 3px 9px; border-radius: 6px;
+  background: rgba(124,92,255,0.1); border: 1px solid var(--border-accent);
+}
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); font-size: 14px; font-weight: 500;
+  padding: 6px 13px; border-radius: 8px; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-strong);
+  color: var(--text); font-size: 14px; font-weight: 500; transition: all 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.sidebar-toggle {
+  display: none; width: 38px; height: 38px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); align-items: center; justify-content: center; padding: 0;
+}
+.sidebar-toggle svg { width: 18px; height: 18px; }
+
+.docs-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--toc-w);
+  max-width: 1440px; margin: 0 auto; position: relative; z-index: 1;
+}
+
+.sidebar {
+  position: sticky; top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  padding: 28px 18px 48px;
+}
+.sidebar-search {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 9px 13px; border-radius: 10px; font-family: inherit; text-align: left;
+  background: rgba(0,0,0,0.32); border: 1px solid var(--border-strong);
+  color: var(--text-dim); font-size: 13px; margin-bottom: 26px; cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+.sidebar-search:hover { border-color: var(--border-accent); color: var(--text-muted); }
+.sidebar-search svg { width: 15px; height: 15px; flex-shrink: 0; }
+.sidebar-search .kbd {
+  margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  padding: 2px 7px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+}
+.nav-group { margin-bottom: 28px; }
+.nav-group-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-dim); padding: 0 12px; margin-bottom: 10px;
+}
+.nav-group ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.nav-group a {
+  display: block; padding: 7px 12px; border-radius: 8px;
+  font-size: 14px; color: var(--text-muted); transition: all 0.18s; cursor: pointer;
+}
+.nav-group a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-group a.active {
+  color: var(--accent-light); background: rgba(124,92,255,0.1);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.doc-main { min-width: 0; padding: 48px 56px 96px; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 13px; color: var(--text-dim); margin-bottom: 22px;
+}
+.breadcrumb span.sep { opacity: 0.5; }
+.breadcrumb a { cursor: pointer; }
+.breadcrumb a:hover { color: var(--text-muted); }
+.breadcrumb .current { color: var(--text-muted); }
+
+.doc-article { max-width: 760px; }
+.doc-article h1 {
+  font-size: clamp(30px, 4vw, 42px); font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 16px;
+}
+.doc-lead { font-size: 18px; color: var(--text-muted); line-height: 1.65; margin-bottom: 40px; }
+.doc-article h2 {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.01em;
+  margin: 52px 0 16px; scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+.doc-article h3 {
+  font-size: 18px; font-weight: 600; margin: 32px 0 12px;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+.doc-article p { color: var(--text-muted); font-size: 15.5px; margin-bottom: 18px; }
+.doc-article ul, .doc-article ol { color: var(--text-muted); font-size: 15.5px; margin: 0 0 18px; padding-left: 22px; }
+.doc-article li { margin-bottom: 8px; }
+.doc-article li::marker { color: var(--accent); }
+.doc-article strong { color: var(--text); font-weight: 600; }
+.doc-article a.inline { color: var(--accent-light); cursor: pointer; }
+.doc-article a.inline:hover { text-decoration: underline; }
+.doc-article hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.88em;
+  background: rgba(0,0,0,0.35); border: 1px solid var(--border);
+  padding: 1px 6px; border-radius: 5px; color: var(--accent-light);
+}
+pre {
+  background: rgba(0,0,0,0.42); border: 1px solid var(--border-strong);
+  border-radius: var(--radius); padding: 18px 20px; overflow-x: auto; margin: 0 0 22px;
+}
+pre code { background: none; border: none; padding: 0; color: var(--text); font-size: 13px; line-height: 1.75; }
+
+.spec-table { width: 100%; border-collapse: collapse; margin: 0 0 24px; font-size: 14px; }
+.spec-table th, .spec-table td { text-align: left; padding: 11px 16px; border: 1px solid var(--border); vertical-align: top; }
+.spec-table th { background: rgba(255,255,255,0.03); color: var(--text-dim); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+.spec-table td { color: var(--text-muted); }
+.spec-table td.val { font-family: 'JetBrains Mono', monospace; color: var(--accent-light); font-size: 13px; }
+.spec-table dt { color: var(--text); font-weight: 600; }
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+  padding: 5px 12px; border-radius: 8px;
+  background: rgba(124,92,255,0.08); border: 1px solid rgba(124,92,255,0.22); color: var(--accent-light);
+}
+
+.callout {
+  display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius);
+  background: rgba(124,92,255,0.06); border: 1px solid var(--border-accent);
+  margin: 28px 0;
+}
+.callout svg { width: 20px; height: 20px; color: var(--accent-light); flex-shrink: 0; margin-top: 2px; }
+.callout p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
+.callout.warn { background: rgba(255,107,107,0.06); border-color: rgba(255,107,107,0.3); }
+.callout.warn svg { color: #ff8a8a; }
+.callout.ok { background: rgba(0,212,170,0.06); border-color: rgba(0,212,170,0.28); }
+.callout.ok svg { color: var(--accent-3); }
+
+.doc-footer-nav {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);
+}
+.doc-footer-nav a {
+  display: flex; flex-direction: column; gap: 4px; padding: 18px 22px;
+  border-radius: var(--radius); border: 1px solid var(--border);
+  background: var(--bg-card); transition: all 0.2s; cursor: pointer;
+}
+.doc-footer-nav a:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
+.doc-footer-nav a.next { text-align: right; }
+.doc-footer-nav a.empty { visibility: hidden; }
+.doc-footer-nav .dir { font-size: 12px; color: var(--text-dim); }
+.doc-footer-nav .ttl { font-size: 15px; font-weight: 600; color: var(--text); }
+
+.toc {
+  position: sticky; top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  overflow-y: auto; padding: 48px 24px;
+  border-left: 1px solid var(--border);
+}
+.toc-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-dim); margin-bottom: 14px;
+}
+.toc ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.toc a {
+  display: block; padding: 5px 12px; border-radius: 7px;
+  font-size: 13px; color: var(--text-muted); border-left: 2px solid transparent; transition: all 0.18s;
+}
+.toc a:hover { color: var(--text); }
+.toc a.sub { padding-left: 24px; font-size: 12.5px; }
+.toc a.active { color: var(--accent-light); border-left-color: var(--accent); }
+
+.sidebar-scrim {
+  display: none; position: fixed; inset: var(--nav-h) 0 0; z-index: 90;
+  background: rgba(4,5,10,0.6); backdrop-filter: blur(2px);
+}
+
+.search-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(4,5,10,0.7); backdrop-filter: blur(4px);
+  padding: 14vh 20px 20px; justify-content: center; align-items: flex-start;
+}
+.search-overlay.open { display: flex; }
+.search-modal {
+  width: 100%; max-width: 580px; max-height: 70vh; display: flex; flex-direction: column;
+  background: var(--bg-elev); border: 1px solid var(--border-strong);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 40px 110px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+.search-field { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.search-field svg { width: 18px; height: 18px; color: var(--text-dim); flex-shrink: 0; }
+.search-field input {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-family: inherit; font-size: 16px;
+}
+.search-field input::placeholder { color: var(--text-dim); }
+.search-field .esc {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim);
+  padding: 3px 8px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+}
+.search-results { overflow-y: auto; padding: 8px; }
+.search-result {
+  display: flex; flex-direction: column; gap: 2px; padding: 10px 14px;
+  border-radius: 10px; cursor: pointer;
+}
+.search-result .r-title { font-size: 14.5px; color: var(--text); font-weight: 500; }
+.search-result .r-group { font-size: 12px; color: var(--text-dim); }
+.search-result:hover, .search-result.active { background: rgba(124,92,255,0.12); }
+.search-result.active .r-title { color: var(--accent-light); }
+.search-empty { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 14px; }
+
+@media (max-width: 1180px) {
+  .docs-shell { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+  .toc { display: none; }
+  .doc-main { padding: 44px 44px 88px; }
+}
+@media (max-width: 860px) {
+  .docs-shell { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .sidebar-toggle { display: inline-flex; }
+  .sidebar {
+    position: fixed; top: var(--nav-h); left: 0; z-index: 95;
+    width: var(--sidebar-w); max-width: 84vw;
+    background: var(--bg-elev);
+    transform: translateX(-100%); transition: transform 0.28s ease;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-scrim.open { display: block; }
+  .doc-main { padding: 36px 24px 80px; }
+}
+@media (max-width: 560px) {
+  .nav-cta span { display: none; }
+  .doc-footer-nav { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="index.html" class="logo">
+        <img src="logo.png" class="logo-mark" alt="Stade" />
+        Stade
+      </a>
+      <span class="docs-tag">docs</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#transport">Transport</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="index.html#tech">Technical</a></li>
+      <li><a href="docs.html">Docs</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="sidebar-scrim" id="sidebarScrim"></div>
+
+<div class="docs-shell">
+
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-search" id="searchTrigger" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Search docs
+      <span class="kbd">Ctrl K</span>
+    </button>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Getting Started</div>
+      <ul>
+        <li><a data-id="introduction">Introduction</a></li>
+        <li><a data-id="installation">Installation</a></li>
+        <li><a data-id="quick-start">Quick Start</a></li>
+        <li><a data-id="creating-your-identity">Creating Your Identity</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Core Concepts</div>
+      <ul>
+        <li><a data-id="architecture-overview">Architecture Overview</a></li>
+        <li><a data-id="peer-to-peer-model">Peer-to-Peer Model</a></li>
+        <li><a data-id="encryption">Encryption</a></li>
+        <li><a data-id="identity-and-keys">Identity &amp; Keys</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Transport Layers</div>
+      <ul>
+        <li><a data-id="transport-layers">Overview</a></li>
+        <li><a data-id="lan">LAN</a></li>
+        <li><a data-id="tor">Tor</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Guides</div>
+      <ul>
+        <li><a data-id="verifying-a-contact">Verifying a Contact</a></li>
+        <li><a data-id="locking-the-app">Locking the App</a></li>
+        <li><a data-id="troubleshooting">Troubleshooting</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-title">Reference</div>
+      <ul>
+        <li><a data-id="cryptographic-primitives">Cryptographic Primitives</a></li>
+        <li><a data-id="glossary">Glossary</a></li>
+        <li><a data-id="faq">FAQ</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <article class="doc-article" id="introduction" data-group="Getting Started" data-title="Introduction">
+      <h1>Introduction</h1>
+      <p class="doc-lead">Stade is a private messenger built on a simple promise: <strong>a message belongs only to the two people having the conversation.</strong> No company sits in the middle, no server stores your chats, and no account ties your identity to a phone number or an email address.</p>
+
+      <h2 id="what-makes-stade-different">What makes Stade different</h2>
+      <p>Most messaging apps route your messages through their servers. Even when those messages are encrypted, the provider still sees who you talk to, when, and from where. Stade removes that middleman entirely:</p>
+      <ul>
+        <li><strong>No servers.</strong> Two devices connect <em>directly</em> to each other. The app is the whole network.</li>
+        <li><strong>No accounts.</strong> You are identified by a cryptographic key you generate on your own device. Nothing is registered anywhere.</li>
+        <li><strong>End-to-end encryption by default.</strong> Every message is sealed so only the recipient's device can open it. Keys never leave your device.</li>
+        <li><strong>Post-quantum cryptography.</strong> Stade combines classical elliptic-curve cryptography with NIST's post-quantum algorithms (ML-KEM and ML-DSA), so conversations stay protected even against a future quantum adversary.</li>
+        <li><strong>Metadata resistance.</strong> Conversations can travel over Tor, hiding not just <em>what</em> you say but <em>who</em> you talk to and <em>where</em> you are.</li>
+      </ul>
+
+      <h2 id="what-you-can-do">What you can do with it</h2>
+      <ul>
+        <li>Exchange one-to-one text messages with full end-to-end encryption.</li>
+        <li>Create and participate in group chats.</li>
+        <li>Connect over your <strong>local network</strong> (fast, zero-internet) or over <strong>Tor</strong> (anonymous, works across the internet).</li>
+        <li>Verify a contact's identity with a <strong>safety number</strong>, so you know there is no impostor in the middle.</li>
+        <li>Lock the app behind a password that encrypts your entire message database at rest.</li>
+      </ul>
+
+      <h2 id="where-it-runs">Where it runs</h2>
+      <p>Stade is a single application that runs on <strong>Android 8.0 (API 26)</strong> and newer, and on the <strong>desktop</strong> — Windows, Linux and macOS. The same cryptography, identity format and wire protocol are shared across every platform, so an Android user and a desktop user are simply two peers talking to each other.</p>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Because there is no server, Stade cannot read, log, recover or reset anything for you. That is the point &mdash; but it also means <strong>you</strong> hold the keys. Lose your device and your backup, and that identity and its conversations are gone.</p>
+      </div>
+    </article>
+
+    <article class="doc-article" id="installation" data-group="Getting Started" data-title="Installation" hidden>
+      <h1>Installation</h1>
+      <p class="doc-lead">Stade ships as a native application for Android and for the desktop. You can install a prebuilt package or build it yourself from source.</p>
+
+      <h2 id="android">Android</h2>
+      <p><strong>Requirements:</strong> Android 8.0 (API level 26) or newer.</p>
+      <ol>
+        <li>Download the Stade APK (<code>composeApp-debug.apk</code> for development builds, or a signed release APK).</li>
+        <li>Allow installation from your browser or file manager (<em>Settings &rarr; Apps &rarr; Special access &rarr; Install unknown apps</em>).</li>
+        <li>Open the APK and tap <strong>Install</strong>.</li>
+      </ol>
+      <p>The embedded Tor binaries for every Android ABI (<code>arm64-v8a</code>, <code>armeabi-v7a</code>, <code>x86_64</code>, <code>x86</code>) are bundled inside the APK, so Tor works out of the box with no extra download.</p>
+
+      <h2 id="desktop">Desktop</h2>
+      <p>Stade produces native installers per operating system:</p>
+      <table class="spec-table">
+        <tr><th>OS</th><th>Package format</th></tr>
+        <tr><td>Windows</td><td class="val">.exe installer</td></tr>
+        <tr><td>Linux</td><td class="val">.deb and AppImage</td></tr>
+        <tr><td>macOS</td><td class="val">.dmg</td></tr>
+      </table>
+      <p>Install the package the same way you would any other desktop app. On first launch the app extracts its bundled Tor runtime into a private application directory. On Linux it installs as <code>stade</code>, categorized under <em>Network</em>.</p>
+
+      <h2 id="building-from-source">Building from source</h2>
+      <p>Stade is a Kotlin Multiplatform + Compose Multiplatform project built with Gradle.</p>
+      <p><strong>Requirements:</strong></p>
+      <ul>
+        <li>JDK 17 (the project pins a JVM toolchain to 17).</li>
+        <li>The Android SDK for Android builds, with <code>compileSdk</code> 35.</li>
+        <li>An internet connection on the first build &mdash; Gradle downloads the official Tor Expert Bundle (version 13.5.6) for each target and stages it into the app's resources.</li>
+      </ul>
+      <pre><code>./gradlew :composeApp:assembleDebug                      # debug APK
+./gradlew :composeApp:assembleRelease                    # release APK (needs a keystore)
+./gradlew :composeApp:run                                # run the desktop app
+./gradlew :composeApp:packageDistributionForCurrentOS    # native desktop installer</code></pre>
+      <ul>
+        <li><strong>Tor binaries are hash-checked at build time.</strong> You can pin each platform's expected SHA-256 via <code>gradle.properties</code>; an unpinned hash logs a warning, a mismatched pinned hash fails the build.</li>
+        <li><strong>Native desktop packaging is host-only.</strong> <code>jpackage</code> builds an installer only for the OS it runs on &mdash; build the <code>.deb</code>/AppImage on Linux, the <code>.exe</code> on Windows, the <code>.dmg</code> on macOS.</li>
+        <li><strong>Cloud-synced folders are redirected.</strong> Inside OneDrive, Dropbox, Google Drive, iCloud, pCloud or Box, build output relocates to <code>~/.stade-build/&lt;project-name&gt;/&hellip;</code> so the sync client doesn't fight Gradle.</li>
+      </ul>
+
+      <h3 id="release-signing">Release signing (Android)</h3>
+      <p>To produce a signed release, add your keystore to <code>local.properties</code>:</p>
+      <pre><code>keystore.path=/absolute/path/to/your.keystore
+keystore.password=...
+keystore.alias=...
+keystore.keyPassword=...</code></pre>
+      <p>If no keystore is configured, release builds fall back to the debug signing key so the build still succeeds for testing.</p>
+    </article>
+
+    <article class="doc-article" id="quick-start" data-group="Getting Started" data-title="Quick Start" hidden>
+      <h1>Quick Start</h1>
+      <p class="doc-lead">This guide takes you from a fresh install to your first encrypted message.</p>
+
+      <h2 id="qs-create">1. Create your identity</h2>
+      <p>The first time you open Stade, you are asked for a <strong>nickname</strong>. Type one and tap <strong>Create</strong>. That is the entire signup &mdash; Stade generates a fresh set of cryptographic keys on your device and derives your <strong>Stade ID</strong> from them:</p>
+      <pre><code>STADE-XXXX-XXXX-XXXX</code></pre>
+      <p>This is your public address. It is safe to share; it contains no private information.</p>
+
+      <h2 id="qs-invite">2. Share your invite</h2>
+      <p>To let someone add you, share your <strong>invite</strong> &mdash; a self-contained, signed bundle carrying your nickname, public keys and current reachable addresses (LAN and/or Tor). Share it as a <code>STADE2-&hellip;</code> text code, a <strong>QR code</strong>, or a <code>.stadeid</code> file. It is signed twice &mdash; classical <em>and</em> post-quantum &mdash; so the recipient's app can confirm it really came from your keys.</p>
+
+      <h2 id="qs-add">3. Add a contact</h2>
+      <p>Open <strong>Add Contact</strong> and paste their <code>STADE2-&hellip;</code> code, scan their QR, or open their <code>.stadeid</code> file. Give the contact a name and confirm. At this point Stade has parsed and verified the invite locally, but the contact is not saved yet &mdash; it first needs to <strong>connect to the peer and complete a live handshake</strong>.</p>
+
+      <h2 id="qs-wait">4. Wait for the connection</h2>
+      <ul>
+        <li><strong>LAN</strong> &mdash; if you are both on the same network, this is nearly instant.</li>
+        <li><strong>Tor</strong> &mdash; works across the internet, but the first connection can take a few seconds to a couple of minutes while Tor bootstraps and the hidden-service descriptor propagates. This is normal.</li>
+      </ul>
+      <p>Both peers must be online and running the app for the handshake to complete. The connection manager keeps retrying with backoff, so you don't have to time it perfectly.</p>
+
+      <h2 id="qs-send">5. Send a message</h2>
+      <p>Open the conversation, type and send. The first message establishes a <strong>Double Ratchet</strong> session; every message after that uses a fresh key, so even if one key were ever exposed, your other messages stay protected.</p>
+
+      <h2 id="qs-verify">6. Verify your contact (recommended)</h2>
+      <p>Open the contact's profile and tap <strong>Verify</strong>. Compare the <strong>safety number</strong> shown on both devices &mdash; read it aloud or compare in person. If they match, you have cryptographic proof there is no impostor in the middle.</p>
+
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>That's it &mdash; you now have a serverless, end-to-end-encrypted conversation. If a connection won't establish, see <a class="inline" data-go="troubleshooting">Troubleshooting</a>.</p>
+      </div>
+    </article>
+
+    <article class="doc-article" id="creating-your-identity" data-group="Getting Started" data-title="Creating Your Identity" hidden>
+      <h1>Creating Your Identity</h1>
+      <p class="doc-lead">In Stade there is no signup server, no username database and no password recovery. Your identity is a set of cryptographic keys generated locally the moment you choose a nickname.</p>
+
+      <h2 id="cyi-generated">What gets generated</h2>
+      <p>When you create an identity, Stade generates <strong>four key pairs</strong> and stores them in your encrypted local database:</p>
+      <table class="spec-table">
+        <tr><th>Purpose</th><th>Algorithm</th><th>Family</th></tr>
+        <tr><td>Signing (identity)</td><td class="val">Ed25519</td><td>Classical</td></tr>
+        <tr><td>Key agreement (DH)</td><td class="val">X25519</td><td>Classical</td></tr>
+        <tr><td>Key encapsulation (KEM)</td><td class="val">ML-KEM-768</td><td>Post-quantum</td></tr>
+        <tr><td>Signing (PQ)</td><td class="val">ML-DSA-65</td><td>Post-quantum</td></tr>
+      </table>
+      <p>The <strong>Ed25519</strong> and <strong>ML-DSA</strong> pairs prove that messages and invites really came from you &mdash; Stade signs with <em>both</em>, so an attacker would have to break a classical <em>and</em> a post-quantum signature to impersonate you. The <strong>X25519</strong> and <strong>ML-KEM</strong> pairs establish shared secrets with a contact; combining them means the session key is secure unless <em>both</em> are broken. The private halves never leave your device.</p>
+
+      <h2 id="cyi-stade-id">How your Stade ID is derived</h2>
+      <p>Your Stade ID is a short, human-readable fingerprint of your <em>public</em> identity keys:</p>
+      <ol>
+        <li>Concatenate a domain label (<code>stade-id-v1</code>), your Ed25519 public signing key and your ML-DSA public key.</li>
+        <li>Hash that with <strong>BLAKE2b-256</strong>.</li>
+        <li>Take 60 bits of the digest as the identity value, plus a 4-bit checksum.</li>
+        <li>Encode in <strong>Crockford Base32</strong> (no ambiguous I, L, O, U) &mdash; 12 characters grouped <code>STADE-XXXX-XXXX-XXXX</code>.</li>
+      </ol>
+      <p>Because the ID is derived <em>from your keys</em>, it cannot be forged: anyone who receives your invite recomputes the ID and checks it matches. The format is also typo-tolerant &mdash; input is uppercased, spaces/dashes stripped, and look-alikes (<code>O&rarr;0</code>, <code>I&rarr;1</code>, <code>L&rarr;1</code>) remapped before the checksum is validated.</p>
+
+      <h2 id="cyi-share">What is safe to share</h2>
+      <ul>
+        <li><strong>Your Stade ID and invite are public.</strong> They contain only public keys and reachability hints &mdash; sharing them is how people add you.</li>
+        <li><strong>Your private keys are never shared, exported or transmitted.</strong> They live only in your encrypted database.</li>
+      </ul>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>No server holds a copy of anything. Lose your device <strong>and</strong> your backup of the app's data directory, and the identity and its conversations are unrecoverable. A new identity means a new Stade ID, and contacts would need to add you again.</p>
+      </div>
+    </article>
+
+    <article class="doc-article" id="architecture-overview" data-group="Core Concepts" data-title="Architecture Overview" hidden>
+      <h1>Architecture Overview</h1>
+      <p class="doc-lead">Stade is one application that runs on Android and desktop from a single shared codebase. This is the map: the major pieces, how they layer, and how a message travels from your keyboard to your contact's screen.</p>
+
+      <h2 id="ao-codebase">One codebase, many platforms</h2>
+      <p>Stade is written in <strong>Kotlin Multiplatform (KMP)</strong> with a <strong>Compose Multiplatform</strong> UI, organized into layered source sets:</p>
+      <ul>
+        <li><code>commonMain</code> &mdash; the bulk of the app: UI, identity, contacts, messaging, the handshake, the Double Ratchet, the sync protocol and transport <em>interfaces</em>. Platform-agnostic.</li>
+        <li><code>jvmCommonMain</code> &mdash; shared by Android and desktop: the BouncyCastle-backed cryptography, the LAN and Tor transports, and the encrypted vault.</li>
+        <li><code>androidMain</code> / <code>desktopMain</code> &mdash; thin platform layers: the Android <code>Activity</code>/<code>Service</code>, the desktop <code>main()</code>, Tor binary loading and file pickers.</li>
+      </ul>
+      <p>Platform-specific behavior is declared in <code>commonMain</code> as an <code>expect</code> and implemented per platform with <code>actual</code> &mdash; for example <code>platformCrypto()</code> and <code>platformPq()</code> resolve to the JVM/BouncyCastle implementations.</p>
+
+      <h2 id="ao-layers">The layers</h2>
+      <pre><code>UI            Compose screens, view state
+App services  ContactManager / MessageManager, ChatService / GroupManager, SyncEngine
+Cryptography  CryptoApi (Ed25519, X25519, AEAD, HKDF), PqCrypto (ML-KEM-768, ML-DSA-65),
+              HandshakeService, DoubleRatchet
+Transport     ConnectionManager (dial/retry/backoff), LanTransport, TorTransport
+Storage       SQLDelight / SQLite, Vault (password-encrypted DB at rest)</code></pre>
+      <p>The single object that wires everything together is the <strong><code>AppContainer</code></strong> &mdash; it constructs the crypto providers, the database, the managers, the transports and the sync engine, and exposes them to the UI.</p>
+
+      <h2 id="ao-flow">How a message flows</h2>
+      <ol>
+        <li><code>SyncEngine.queueOutgoing</code> asks the <strong>Double Ratchet</strong> session to <em>seal</em> the plaintext, producing a ratchet frame with a fresh message key.</li>
+        <li>The sealed frame is wrapped in a <code>MessagePayload</code>, serialized and placed in the <strong>Outbox</strong> so it survives until acknowledged.</li>
+        <li>The active session sends the frame over whichever transport is connected, using length-prefixed framing (<code>FrameCodec</code>: a one-byte record type + four-byte length + payload).</li>
+        <li>The peer's Double Ratchet <strong>opens</strong> it, the message is stored and shown, and an <strong>ACK</strong> comes back to mark it delivered.</li>
+      </ol>
+      <p>A background pinger keeps the connection warm, and the <strong>ConnectionManager</strong> continuously dials un-connected contacts with exponential backoff until a session is established.</p>
+
+      <h2 id="ao-state">Where state lives</h2>
+      <p>Messages, contacts, groups and transport settings live in a local <strong>SQLite</strong> database accessed through <strong>SQLDelight</strong> (package <code>dev.stade.db</code>). At rest that database is encrypted by the Vault under a key derived from your password; while unlocked a decrypted working copy exists, and when you lock or close it is re-encrypted and the plaintext securely wiped.</p>
+
+      <h2 id="ao-principles">Design principles</h2>
+      <ul>
+        <li><strong>No server, ever.</strong> Every peer is symmetric; there is no privileged node.</li>
+        <li><strong>Defense in depth via hybrid crypto.</strong> Classical and post-quantum algorithms are combined so a break in either family alone does not compromise a session.</li>
+        <li><strong>Fail closed.</strong> Handshakes that don't match expected keys, sizes, protocol versions or transcript commitments are rejected rather than downgraded.</li>
+      </ul>
+    </article>
+
+    <article class="doc-article" id="peer-to-peer-model" data-group="Core Concepts" data-title="Peer-to-Peer Model" hidden>
+      <h1>Peer-to-Peer Model</h1>
+      <p class="doc-lead">Stade has no servers. There is no central node that relays, stores or brokers your messages. Every device runs the same code and is a full, equal peer.</p>
+
+      <h2 id="p2p-direct">Two peers, one direct connection</h2>
+      <p>A conversation is a <strong>direct connection between two devices</strong>. Each device both <em>listens</em> for incoming connections and <em>dials</em> out to its contacts. When two contacts are online and reachable, one side's dial meets the other's listener and a session is born. Because the link is direct:</p>
+      <ul>
+        <li>Your messages are never uploaded to a third party.</li>
+        <li>There is no operator to be subpoenaed, hacked, or to go out of business and take your data.</li>
+        <li>Delivery requires <strong>both peers online</strong> at overlapping times. Stade keeps an <strong>Outbox</strong> and retries, but a message only arrives once a connection is actually established.</li>
+      </ul>
+
+      <h2 id="p2p-find">How peers find each other</h2>
+      <p>A peer can be reached at one or more <strong>addresses</strong>, each tagged by transport:</p>
+      <pre><code>lan://192.168.1.42:5901          a local-network address
+tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code></pre>
+      <p>Addresses are exchanged inside your <strong>invite</strong> and refreshed inside the <strong>HELLO</strong> at the start of every handshake, so contacts learn your current addresses automatically. On the LAN, peers also <strong>broadcast their presence</strong> over UDP so they can discover each other with nothing typed in.</p>
+
+      <h2 id="p2p-cm">The connection manager</h2>
+      <p>The <strong><code>ConnectionManager</code></strong> turns "I have a contact" into "I have a live session." It runs continuously and:</p>
+      <ul>
+        <li>Tries each known address of any contact not currently connected, through the matching transport.</li>
+        <li>Applies <strong>backoff</strong> so an offline peer isn't hammered.</li>
+        <li>Runs a separate <strong>pending-dial loop</strong> for freshly added invite addresses.</li>
+        <li>Skips your <em>own</em> addresses and de-duplicates parallel attempts.</li>
+      </ul>
+      <p>Every attempt is recorded as a diagnostic (<code>TRYING &rarr; CONNECT_OK &rarr; HANDSHAKE_OK</code>, or the matching failure), which powers the connection-status detail in the UI.</p>
+
+      <h2 id="p2p-session">Establishing a session</h2>
+      <p>Connecting at the socket level is only step one. Before any message flows, the two peers run a mutual <strong>handshake</strong> that exchanges identities, proves possession of both the classical and post-quantum private keys, checks each Stade ID matches its keys, rejects version/size mismatches and downgrades, and derives a shared root key from a hybrid Diffie&ndash;Hellman + ML-KEM exchange. Only then is the contact considered <strong>connected</strong> &mdash; and, if it was new, actually saved.</p>
+
+      <h2 id="p2p-resilience">Resilience</h2>
+      <ul>
+        <li><strong>Self-healing transports.</strong> The Tor transport restarts its process if it dies; the LAN transport falls back across a range of ports.</li>
+        <li><strong>Multiple addresses, raced in parallel.</strong> If a peer is reachable on both LAN and Tor, both are attempted and the first handshake wins.</li>
+        <li><strong>Idempotent delivery.</strong> Messages carry IDs; a peer that already has one just re-acknowledges instead of storing a duplicate.</li>
+      </ul>
+      <p>Because no server aggregates data, no party &mdash; not even Stade's developers &mdash; has a contact graph, message logs, timestamps or address books. That information exists only on the two devices in a conversation.</p>
+    </article>
+
+    <article class="doc-article" id="encryption" data-group="Core Concepts" data-title="Encryption" hidden>
+      <h1>Encryption</h1>
+      <p class="doc-lead">Stade's encryption has one job: make sure only the two devices in a conversation can read it &mdash; and keep that true even against an attacker who records everything today and owns a quantum computer tomorrow.</p>
+
+      <h2 id="enc-hybrid">Hybrid by design</h2>
+      <p>Every secret-establishing and authentication step is <strong>hybrid</strong>: it combines a well-trusted classical algorithm with a NIST post-quantum one.</p>
+      <ul>
+        <li><strong>Key agreement:</strong> X25519 Diffie&ndash;Hellman <strong>+</strong> ML-KEM-768 encapsulation.</li>
+        <li><strong>Authentication:</strong> Ed25519 signatures <strong>+</strong> ML-DSA-65 signatures.</li>
+      </ul>
+      <p>The shared secret feeding a session is the <em>concatenation</em> of the classical and post-quantum secrets, run through a KDF. An attacker must break <strong>both</strong> families to compromise a session.</p>
+
+      <h2 id="enc-handshake">Stage 1 — The handshake (PQXDH-style)</h2>
+      <ol>
+        <li><strong>HELLO &harr; HELLO.</strong> Each side sends its identity (Stade ID, nickname, all four public keys), a random 32-byte nonce, its addresses and a <strong>transcript commitment</strong> hashing the protocol version and all public keys. Each side checks the peer's Stade ID derives from those keys, that sizes and versions match, and that the commitment matches what it recomputes. A mismatch is treated as a possible <strong>downgrade attack</strong> and rejected.</li>
+        <li><strong>AUTH &harr; AUTH.</strong> Each side signs a message built from the peer's nonce and both commitments using <strong>both</strong> Ed25519 and ML-DSA private keys; the peer verifies both. The nonce prevents replay.</li>
+        <li><strong>KEM_OFFER.</strong> The peers are ordered deterministically (lexicographically by Stade ID) into initiator and responder; the initiator encapsulates a secret to the responder's ML-KEM key and the responder decapsulates it.</li>
+        <li><strong>Root key derivation.</strong> Each side concatenates the X25519 secret with the ML-KEM secret and runs it through <strong>HKDF</strong>, salted with a hash of the full transcript, to produce the 32-byte <strong>root key</strong>.</li>
+      </ol>
+      <p>Because the root key is bound to the entire transcript, both peers derive the same root key only if they saw the exact same, untampered handshake.</p>
+
+      <h2 id="enc-ratchet">Stage 2 — The Double Ratchet</h2>
+      <p>The root key seeds a <strong>post-quantum Double Ratchet</strong> that protects the ongoing conversation:</p>
+      <ul>
+        <li><strong>Forward secrecy</strong> &mdash; each message uses a unique key from a one-way chain, so compromising today's key does not reveal yesterday's messages.</li>
+        <li><strong>Post-compromise security (self-healing)</strong> &mdash; the session periodically performs a fresh key exchange, locking an attacker back out.</li>
+        <li>Each <strong>DH ratchet step</strong> performs a fresh X25519 exchange <em>and</em> generates a fresh ML-KEM key pair, mixing the post-quantum secret back into the root key continuously.</li>
+        <li>Message keys derive a separate AEAD key and nonce; the plaintext is sealed with <strong>ChaCha20-Poly1305</strong>, with the header authenticated as associated data.</li>
+        <li><strong>Out-of-order</strong> messages are handled by caching skipped keys (bounded window of 128). Decryption is <strong>transactional</strong> &mdash; state rolls back if authentication fails, so a forged frame can't poison the session.</li>
+      </ul>
+
+      <h2 id="enc-rest">Stage 3 — Encryption at rest</h2>
+      <ul>
+        <li>Your message database is stored as a file encrypted with <strong>AES-256-GCM</strong> under a random data-encryption key (DEK).</li>
+        <li>That DEK is itself encrypted with a key derived from <strong>your password</strong> via <strong>PBKDF2-HMAC-SHA256</strong> (210,000 iterations).</li>
+        <li>On unlock the DEK is recovered and the database decrypted into a working copy; on lock or quit it is re-encrypted and the plaintext securely overwritten and deleted.</li>
+      </ul>
+
+      <h2 id="enc-attacker">What an attacker on the network sees</h2>
+      <p>An adversary capturing Stade traffic sees length-prefixed ciphertext frames &mdash; no contents, no ability to forge or inject without the private keys. Over <strong>Tor</strong> they additionally cannot tell <em>who</em> is talking to <em>whom</em> or <em>where</em>. The one thing encryption alone can't prevent is a man-in-the-middle substituting keys at first contact &mdash; which is what <a class="inline" data-go="verifying-a-contact">Verifying a Contact</a> catches.</p>
+    </article>
+
+    <article class="doc-article" id="identity-and-keys" data-group="Core Concepts" data-title="Identity &amp; Keys" hidden>
+      <h1>Identity &amp; Keys</h1>
+      <p class="doc-lead">Stade replaces accounts with keys. This describes the keys that make up an identity, how your Stade ID and invite are built from them, and how each key is used.</p>
+
+      <h2 id="ik-pairs">The four key pairs</h2>
+      <table class="spec-table">
+        <tr><th>Key pair</th><th>Algorithm</th><th>Used for</th></tr>
+        <tr><td>Signing</td><td class="val">Ed25519</td><td>Authenticating you (classical signatures)</td></tr>
+        <tr><td>Handshake (DH)</td><td class="val">X25519</td><td>Classical Diffie&ndash;Hellman key agreement</td></tr>
+        <tr><td>KEM</td><td class="val">ML-KEM-768</td><td>Post-quantum key encapsulation</td></tr>
+        <tr><td>PQ signing</td><td class="val">ML-DSA-65</td><td>Authenticating you (post-quantum signatures)</td></tr>
+      </table>
+      <p>The public halves are packed into your invite; the private halves never leave the device. A <code>LocalIdentity</code> holds all four pairs plus your nickname and creation time; a contact's <code>RemoteIdentity</code> holds the same four <em>public</em> keys with no private material.</p>
+
+      <h2 id="ik-id">The Stade ID</h2>
+      <p>Your Stade ID is a compact, self-certifying fingerprint of your public identity, formatted <code>STADE-XXXX-XXXX-XXXX</code>. It hashes (<code>BLAKE2b-256</code>) a domain label with your Ed25519 and ML-DSA public keys, takes 60 bits plus a 4-bit checksum, and encodes in Crockford Base32. Anyone with your invite recomputes it &mdash; if the keys were swapped, the ID wouldn't match. Because both signing keys feed the hash, the ID commits you to both.</p>
+
+      <h2 id="ik-invite">The invite</h2>
+      <p>Where the Stade ID is a <em>fingerprint</em>, the <strong>invite</strong> is the <em>full</em> public bundle. It is a binary record, Base32-encoded and prefixed <code>STADE2-</code>, containing a magic marker and version, your nickname, your four public keys, your reachable LAN/Tor addresses, and <strong>two signatures</strong> (one Ed25519, one ML-DSA). On parse, the app checks magic/version/sizes, verifies <strong>both</strong> signatures, and recomputes the Stade ID. Only a fully valid, doubly-signed invite is accepted. Invites can also be a <strong>QR code</strong> (chunked when large) or a <code>.stadeid</code> file.</p>
+
+      <h2 id="ik-runtime">How each key is used at runtime</h2>
+      <ul>
+        <li><strong>Ed25519 + ML-DSA</strong> &mdash; sign your invite and each handshake's AUTH message; verified on every connection.</li>
+        <li><strong>X25519</strong> &mdash; the classical half of the handshake secret, and the ratcheting key that advances the Double Ratchet.</li>
+        <li><strong>ML-KEM-768</strong> &mdash; the post-quantum half of the handshake secret, with a fresh ML-KEM key pair generated at each ratchet step to keep re-injecting post-quantum security.</li>
+      </ul>
+      <p>Stade never relies on a single algorithm for either secrecy or authenticity. A future break of <em>either</em> the elliptic-curve or the lattice family &mdash; but not both &mdash; still leaves your identity and conversations protected.</p>
+    </article>
+
+    <article class="doc-article" id="transport-layers" data-group="Transport Layers" data-title="Overview" hidden>
+      <h1>Transport Layers</h1>
+      <p class="doc-lead">A <strong>transport</strong> is how two Stade peers actually move bytes between each other. The cryptography is identical no matter which transport carries it &mdash; a transport only has to deliver opaque, length-prefixed frames from one device to another.</p>
+
+      <h2 id="tl-two">Two transports</h2>
+      <table class="spec-table">
+        <tr><th>Transport</th><th>Address scheme</th><th>Best for</th></tr>
+        <tr><td><strong>LAN</strong></td><td class="val">lan://&lt;ip&gt;:&lt;port&gt;</td><td>Same network &mdash; fast, offline</td></tr>
+        <tr><td><strong>Tor</strong></td><td class="val">tor://&lt;onion&gt;:&lt;port&gt;</td><td>Across the internet &mdash; anonymous</td></tr>
+      </table>
+      <p>Both are <strong>enabled by default</strong> and can be toggled individually in the app's transport settings.</p>
+
+      <h2 id="tl-contract">The common transport contract</h2>
+      <p>Every transport implements the same small interface: <code>start</code> (listen and hand connections to the sync engine), <code>connect(address)</code> (dial a peer), <code>selfAddress</code> / <code>selfAddresses</code> (report current reachability for invites and HELLO), and <code>stop</code>. A connection is just <code>send(frame)</code>, <code>receive()</code> and <code>close()</code>, with a 4-byte length prefix per frame. Each transport also publishes a live <strong>status</strong> (<code>TransportInfo</code>) the UI surfaces, e.g. "SOCKS5 &#10003; &middot; onion &#10003;" for Tor.</p>
+
+      <h2 id="tl-choose">How a transport is chosen</h2>
+      <p>Addresses are self-describing by scheme: <code>lan://&hellip;</code> routes to the LAN transport, <code>tor://&hellip;</code> to the Tor transport. If the relevant transport is disabled or not yet running, the attempt is queued and retried once it's up. A peer advertising <em>both</em> a LAN and a Tor address is dialed on both in parallel, and the first to complete a handshake wins &mdash; which is why two people on the same network connect almost instantly while still being reachable over Tor when apart.</p>
+
+      <h2 id="tl-why">Why two transports</h2>
+      <ul>
+        <li><strong>LAN</strong> is fast and works with no internet, but only when both peers share a network, and it reveals local IPs to peers on that network.</li>
+        <li><strong>Tor</strong> works anywhere there's internet and hides both endpoints, at the cost of higher latency and a bootstrap delay.</li>
+      </ul>
+      <p>Having both lets Stade be quick when it can and private when it must, without you having to think about it. Read on: <a class="inline" data-go="lan">LAN</a> &middot; <a class="inline" data-go="tor">Tor</a>.</p>
+    </article>
+
+    <article class="doc-article" id="lan" data-group="Transport Layers" data-title="LAN" hidden>
+      <h1>LAN Transport</h1>
+      <p class="doc-lead">The LAN transport connects two peers directly over a shared local network &mdash; the same Wi-Fi, switch or hotspot. It is the fastest way for two nearby devices to talk and needs no internet at all.</p>
+
+      <div class="pill-row">
+        <span class="pill">TCP 5901</span>
+        <span class="pill">UDP discovery 5902</span>
+        <span class="pill">offline</span>
+      </div>
+
+      <h2 id="lan-address">Addressing</h2>
+      <p>A LAN address is just a local IP and a TCP port:</p>
+      <pre><code>lan://192.168.1.42:5901</code></pre>
+      <p>Stade advertises a LAN address for <strong>every</strong> non-loopback, site-local IPv4 interface it finds (<code>10.x</code>, <code>172.x</code>, <code>192.168.x</code>), so a peer can reach you on whichever interface you share.</p>
+
+      <h2 id="lan-listen">Listening</h2>
+      <p>On start, the transport binds a TCP server socket on port <strong>5901</strong>. If busy, it walks forward through <strong>5901&ndash;5910</strong> until it finds a free one and reports the actual bound port. Incoming connections are handed straight to the sync engine for the handshake.</p>
+
+      <h2 id="lan-discovery">Local discovery</h2>
+      <p>LAN peers find each other automatically via a lightweight <strong>UDP discovery service</strong>:</p>
+      <ul>
+        <li>It <strong>broadcasts</strong> a presence beacon &mdash; <code>STADE|&lt;node-id&gt;|&lt;tcp-port&gt;</code> &mdash; every 15 seconds.</li>
+        <li>It <strong>listens</strong> on UDP port <strong>5902</strong> for other beacons, ignoring its own.</li>
+        <li>Discovered peers <strong>expire after 60 seconds</strong> of silence, so the list reflects who is present right now.</li>
+      </ul>
+      <p>This is what lets two people on the same network connect with essentially zero setup. Frames use the same 4-byte big-endian length prefix as every Stade connection, capped at 4 MB.</p>
+
+      <h2 id="lan-limits">Strengths and limits</h2>
+      <p><strong>Strengths:</strong> near-instant connection on the same network; fully offline; auto-discovery means addresses often don't need sharing.</p>
+      <p><strong>Limits:</strong> only works when both peers share a network; your local IP is visible to peers on that network (content stays end-to-end encrypted, but LAN is not anonymous); some networks block UDP broadcast or use "AP isolation," disabling discovery. If LAN isn't possible, Stade falls back to <a class="inline" data-go="tor">Tor</a>.</p>
+    </article>
+
+    <article class="doc-article" id="tor" data-group="Transport Layers" data-title="Tor" hidden>
+      <h1>Tor Transport</h1>
+      <p class="doc-lead">The Tor transport lets two peers reach each other across the internet while hiding who they are and where they are. Each device runs as a Tor hidden (onion) service, so neither side learns the other's IP and an observer can't tell they're communicating.</p>
+
+      <div class="pill-row">
+        <span class="pill">v3 onion</span>
+        <span class="pill">embedded Tor</span>
+        <span class="pill">SOCKS5</span>
+      </div>
+
+      <h2 id="tor-address">Addressing</h2>
+      <pre><code>tor://&lt;onion-address&gt;:&lt;port&gt;</code></pre>
+      <p>The onion address is your device's hidden-service identity, advertised in your invite and in the HELLO at the start of each handshake so contacts always have your current address.</p>
+
+      <h2 id="tor-embedded">Embedded Tor — no Orbot, no setup</h2>
+      <p>Stade bundles its own Tor runtime (the official <strong>Tor Expert Bundle, version 13.5.6</strong>, downloaded and hash-verified at build time) for every platform. On desktop the correct binary is extracted into a private directory on first run; on Android the binaries for all ABIs (<code>arm64-v8a</code>, <code>armeabi-v7a</code>, <code>x86_64</code>, <code>x86</code>) ship inside the APK with geoip data as assets. <strong>You do not need Orbot or a system Tor.</strong></p>
+
+      <h2 id="tor-how">How it works</h2>
+      <ol>
+        <li>Binds a local TCP listener on a free loopback port (where your onion service forwards incoming connections).</li>
+        <li>Launches the embedded Tor process, which <strong>bootstraps</strong> (you'll see progress like "Tor boot 80% &middot; Loading relay descriptors") and publishes an onion service pointing at that port.</li>
+        <li>Exposes a local <strong>SOCKS5</strong> proxy for outgoing connections. To dial a peer, Stade performs the SOCKS5 handshake itself and asks Tor to connect to the peer's onion address.</li>
+      </ol>
+      <p>Its status reads, e.g., <code>SOCKS5 &#10003; (127.0.0.1:&hellip;) &middot; onion :&lt;port&gt; &#10003;</code>.</p>
+
+      <h2 id="tor-healing">Self-healing &amp; external Tor</h2>
+      <p>A <strong>health monitor</strong> checks roughly every 10 seconds that Tor is alive and brings it back up automatically (rate-limited) if it exits. If you prefer a system Tor or Orbot, the transport can run in <strong>external mode</strong>, probing common SOCKS ports (<strong>9050</strong> and <strong>9150</strong>) and auto-selecting one that responds. The default embedded mode needs no configuration.</p>
+
+      <h2 id="tor-limits">Strengths and limits</h2>
+      <p><strong>Strengths:</strong> works across the internet through NAT and firewalls with no port forwarding; hides both endpoints' IPs and the existence of the conversation; no external dependencies.</p>
+      <p><strong>Limits:</strong> higher latency than LAN and a bootstrap delay; the first connection to a new peer can take from seconds to a couple of minutes while Tor bootstraps and the descriptor propagates (expected &mdash; Stade keeps retrying); a few networks actively block Tor.</p>
+    </article>
+
+    <article class="doc-article" id="verifying-a-contact" data-group="Guides" data-title="Verifying a Contact" hidden>
+      <h1>Verifying a Contact</h1>
+      <p class="doc-lead">End-to-end encryption guarantees only the holder of a contact's keys can read your messages. What it can't tell you on its own is whether the keys you received at first contact really belong to the right person. Verifying a contact closes that gap.</p>
+
+      <h2 id="vc-safety">The safety number</h2>
+      <p>For every contact, Stade computes a <strong>safety number</strong>: a 60-digit value derived by hashing <em>both</em> participants' Ed25519 signing public keys (sorted, so both devices compute the identical number) with BLAKE2b-256 and formatting the result in groups of five digits.</p>
+      <ul>
+        <li>It is <strong>symmetric</strong> &mdash; you and your contact see the same number for each other.</li>
+        <li>It is <strong>bound to the keys</strong> &mdash; if either side's keys were substituted, the numbers would not match.</li>
+      </ul>
+
+      <h2 id="vc-how">How to verify</h2>
+      <ol>
+        <li>Open the contact and choose <strong>Verify</strong>.</li>
+        <li>You'll see the contact's avatar, nickname, <strong>Stade ID</strong> and the <strong>safety number</strong>.</li>
+        <li>Have your contact open the same screen for you.</li>
+        <li><strong>Compare the safety numbers</strong> through a trusted channel &mdash; read them aloud in person or over a voice call.</li>
+        <li>If they match exactly, tap <strong>Mark as Verified</strong> (you'll see a "Verified" badge). If they don't match, do not mark them &mdash; treat it as a red flag and re-exchange invites through a trusted channel.</li>
+      </ol>
+      <p>Verification is a local action: it records your own confidence and does not notify anyone or change the encryption.</p>
+
+      <h2 id="vc-when">When to verify</h2>
+      <ul>
+        <li><strong>Always, ideally</strong>, for any contact whose conversations matter.</li>
+        <li><strong>Especially</strong> if you exchanged invites over an untrusted channel &mdash; that initial exchange is the one moment a man-in-the-middle could strike.</li>
+        <li><strong>Again</strong> if a safety number ever changes unexpectedly &mdash; that means the contact's identity keys changed (e.g. they reinstalled), so re-verify before trusting it.</li>
+      </ul>
+
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>Verification confirms you and your contact hold matching keys &mdash; it doesn't prove their real-world identity beyond the out-of-band channel you used, and it doesn't add encryption (your messages were already end-to-end encrypted; this confirms <em>to whom</em>).</p>
+      </div>
+    </article>
+
+    <article class="doc-article" id="locking-the-app" data-group="Guides" data-title="Locking the App" hidden>
+      <h1>Locking the App</h1>
+      <p class="doc-lead">Stade can lock itself behind a password that encrypts your entire message database on disk. When locked, your conversations exist only as ciphertext &mdash; without your password there is no way for you, an attacker, or anyone to read them.</p>
+
+      <h2 id="lock-how">How the lock works</h2>
+      <p>Stade uses a layered key model so your password protects everything without ever being stored:</p>
+      <ol>
+        <li><strong>Your password &rarr; a key (KEK).</strong> Stretched with <strong>PBKDF2-HMAC-SHA256</strong>, <strong>210,000 iterations</strong> and a random salt, producing a key-encryption key.</li>
+        <li><strong>A random data key (DEK) encrypts the database</strong> with <strong>AES-256-GCM</strong>.</li>
+        <li><strong>The KEK encrypts the DEK</strong> and stores it (encrypted) alongside a small <strong>verifier</strong> used to check whether an entered password is correct.</li>
+      </ol>
+      <p>So your password never touches disk &mdash; only the salt, the encrypted DEK and the verifier do. On unlock, Stade derives the KEK, checks the verifier, then decrypts the DEK and the database into a working copy. On lock or close, it re-encrypts the database and <strong>securely deletes the plaintext copy</strong> by overwriting with zeros and flushing to disk; the key is also zeroed in memory.</p>
+
+      <h2 id="lock-guessing">Protection against guessing</h2>
+      <p>To resist password attempts on a seized device, Stade enforces an <strong>escalating lockout</strong>: after a threshold of failures (5) the required wait grows step by step &mdash; seconds, then minutes, then up to a full day. The counter resets on a successful unlock.</p>
+
+      <h2 id="lock-timeout">Session timeout</h2>
+      <p>You choose how quickly Stade re-locks when idle or backgrounded: <strong>Immediately</strong>, or after <strong>30 seconds</strong>, <strong>1 minute</strong>, <strong>5 minutes</strong>, <strong>15 minutes</strong>, <strong>1 hour</strong>, or <strong>Never</strong>. "Immediately" locks as soon as the app leaves the foreground.</p>
+
+      <h2 id="lock-hardening">Extra hardening</h2>
+      <ul>
+        <li><strong>Scramble keypad</strong> &mdash; randomizes the on-screen PIN layout so an onlooker can't learn your entry from finger position.</li>
+        <li><strong>Screenshot blocking</strong> &mdash; prevents screenshots and keeps Stade out of the app switcher / thumbnails (on by default).</li>
+      </ul>
+
+      <h2 id="lock-change-wipe">Changing your password &amp; wiping</h2>
+      <p>Changing your password re-derives a fresh KEK and re-wraps the existing DEK &mdash; messages are never re-encrypted from scratch and no data is lost. Wiping securely deletes the encrypted database, any plaintext copy, the vault metadata and the session file.</p>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>There is <strong>no recovery</strong>. The database can only be decrypted with a key derived from your password, and that key is never stored. Forget the password and the messages are unrecoverable &mdash; by anyone. That's the guarantee, not a limitation.</p>
+      </div>
+    </article>
+
+    <article class="doc-article" id="troubleshooting" data-group="Guides" data-title="Troubleshooting" hidden>
+      <h1>Troubleshooting</h1>
+      <p class="doc-lead">Because Stade is fully peer-to-peer, "it won't connect" almost always comes down to <em>reachability</em> &mdash; one peer can't currently reach the other &mdash; rather than a server being down.</p>
+
+      <h2 id="ts-wont-connect">A contact won't connect</h2>
+      <p><strong>Both peers must be online and running the app.</strong> A session only forms when both sides are reachable at the same time; Stade keeps retrying with backoff, so leave both apps open. Then, in order:</p>
+      <ol>
+        <li><strong>Are the transports up?</strong> Check transport settings &mdash; for Tor you want SOCKS and onion both &#10003;; for LAN a bound IP/port.</li>
+        <li><strong>Same network? Try LAN.</strong> It connects in seconds; if it doesn't, the network may block UDP broadcast or isolate clients.</li>
+        <li><strong>Apart? Give Tor time.</strong> The first connection to a new peer can take seconds to a couple of minutes while Tor bootstraps and the descriptor propagates.</li>
+        <li><strong>Stale addresses.</strong> If a contact's advertised address is old and you've never connected, re-exchange invites so current addresses propagate.</li>
+      </ol>
+
+      <h2 id="ts-add-nothing">Adding a contact "does nothing"</h2>
+      <p>An invite is parsed and verified <strong>locally</strong>, but the contact is only <strong>saved after a live handshake completes</strong>. So if the other side isn't reachable yet, it can look like nothing happened. Make sure both fields (invite code <em>and</em> a contact name) are filled, the other peer is online, and watch the diagnostics &mdash; you should see <code>TRYING &rarr; CONNECT_OK &rarr; HANDSHAKE_OK</code>. If you only ever see <code>TRYING</code> or <code>CONNECT_FAIL</code>, it's a reachability problem, not a key problem.</p>
+
+      <h2 id="ts-socks">Reading Tor SOCKS errors</h2>
+      <table class="spec-table">
+        <tr><th>Message</th><th>Likely cause</th></tr>
+        <tr><td class="val">SOCKS5 unavailable</td><td>Tor isn't running yet, or an external Tor/Orbot isn't up.</td></tr>
+        <tr><td class="val">host unreachable (onion descriptor)</td><td>The peer's onion descriptor hasn't propagated yet &mdash; wait.</td></tr>
+        <tr><td class="val">connection refused</td><td>The peer is reachable but not listening on its onion port.</td></tr>
+        <tr><td class="val">network unreachable</td><td>Local network can't reach Tor at all.</td></tr>
+      </table>
+      <p>Most onion-descriptor and "host unreachable" cases resolve themselves as Tor finishes publishing the hidden-service descriptor.</p>
+
+      <h2 id="ts-bootstrap">Tor seems stuck "bootstrapping"</h2>
+      <p>The status shows progress like <code>Tor boot 45% &middot; &hellip;</code>; on a slow or restricted network the first bootstrap can take a while. If the process dies, Stade's health monitor restarts it (rate-limited) &mdash; you may briefly see "Tor process exited — restarting…". A few networks block Tor entirely; try a different network, or LAN if you're on the same one as your contact.</p>
+
+      <h2 id="ts-lan-discovery">LAN auto-discovery isn't finding peers</h2>
+      <p>Both devices must be on the <strong>same subnet</strong>, and the network must allow <strong>UDP broadcast</strong> and <strong>client-to-client</strong> traffic. Public Wi-Fi and many corporate networks enable "AP/client isolation," which blocks peer-to-peer connections and discovery. Guest networks and VPNs can also separate clients &mdash; try a phone hotspot or home network to confirm.</p>
+
+      <h2 id="ts-port">Port already in use (LAN)</h2>
+      <p>The LAN transport prefers TCP port <strong>5901</strong> but falls back through <strong>5901&ndash;5910</strong>, reporting the port it bound. An "all ports in use" message means you should free the range or close other instances.</p>
+
+      <h2 id="ts-desktop">Desktop app won't launch</h2>
+      <p>Ensure you're running a <strong>JDK 17</strong> runtime. If launching from an IDE run configuration, make sure the configured main class is current (<code>dev.stade.MainKt</code>) &mdash; a stale main class from an older build causes an immediate exit.</p>
+
+      <h2 id="ts-password">I forgot my password</h2>
+      <p>There is <strong>no recovery</strong>. The database is encrypted with a key derived from your password, and that key is never stored. See <a class="inline" data-go="locking-the-app">Locking the App</a>.</p>
+    </article>
+
+    <article class="doc-article" id="cryptographic-primitives" data-group="Reference" data-title="Cryptographic Primitives" hidden>
+      <h1>Cryptographic Primitives</h1>
+      <p class="doc-lead">A reference for the exact algorithms, parameters and constructions Stade uses. Cryptography is provided by <strong>BouncyCastle</strong> on the JVM (shared by Android and desktop) behind two interfaces: <code>CryptoApi</code> (classical) and <code>PqCrypto</code> (post-quantum).</p>
+
+      <h2 id="cp-summary">Algorithm summary</h2>
+      <table class="spec-table">
+        <tr><th>Role</th><th>Algorithm</th><th>Notes</th></tr>
+        <tr><td>Hash</td><td class="val">BLAKE2b-256</td><td>IDs, safety numbers, KDF base</td></tr>
+        <tr><td>Classical signatures</td><td class="val">Ed25519</td><td>32-byte key, 64-byte signature</td></tr>
+        <tr><td>Classical key agreement</td><td class="val">X25519 (ECDH)</td><td>32-byte keys</td></tr>
+        <tr><td>AEAD (messages)</td><td class="val">ChaCha20-Poly1305</td><td>128-bit tag, 96-bit nonce</td></tr>
+        <tr><td>Key derivation</td><td class="val">HKDF / BLAKE2b-256</td><td>Domain-separated by info labels</td></tr>
+        <tr><td>Post-quantum KEM</td><td class="val">ML-KEM-768</td><td>Public key 1184 B, ciphertext 1088 B</td></tr>
+        <tr><td>Post-quantum signatures</td><td class="val">ML-DSA-65</td><td>Public key 1952 B, signature 3309 B</td></tr>
+        <tr><td>At-rest password KDF</td><td class="val">PBKDF2-HMAC-SHA256</td><td>210,000 iterations, 256-bit output</td></tr>
+        <tr><td>At-rest encryption</td><td class="val">AES-256-GCM</td><td>128-bit tag, 96-bit nonce</td></tr>
+      </table>
+
+      <h2 id="cp-classical">Classical &amp; post-quantum primitives</h2>
+      <p>The classical <code>CryptoApi</code> provides BLAKE2b hashing, Ed25519 signing, X25519 agreement (raw 32-byte shared secret), <code>hkdf(secret, salt, info, length)</code> over BLAKE2b-256 with domain-separation labels (e.g. <code>stade-dr-chain</code>, <code>stade-dr-key</code>, <code>stade-dr-nonce</code>), ChaCha20-Poly1305 AEAD (<code>aeadOpen</code> returns <code>null</code> on any auth failure rather than throwing), and <code>SecureRandom</code>. The post-quantum <code>PqCrypto</code> provides <strong>ML-KEM-768</strong> (FIPS 203: encapsulate/decapsulate) and <strong>ML-DSA-65</strong> (FIPS 204: sign/verify, returning <code>false</code> on error).</p>
+
+      <h2 id="cp-id">Identity derivation</h2>
+      <pre><code>material = "stade-id-v1\0" || ed25519_pub || mldsa_pub
+digest   = BLAKE2b-256(material)
+id60     = first 60 bits of digest
+crc4     = 4-bit checksum from the digest
+value    = (id60 &lt;&lt; 4) | crc4
+StadeID  = "STADE-" + CrockfordBase32(value)   // 12 chars, grouped 4-4-4</code></pre>
+      <p>The Crockford Base32 alphabet is <code>0123456789ABCDEFGHJKMNPQRSTVWXYZ</code> (no I, L, O, U); input normalization maps <code>O&rarr;0</code>, <code>I&rarr;1</code>, <code>L&rarr;1</code>.</p>
+
+      <h2 id="cp-handshake">Handshake (PQXDH-style) key schedule</h2>
+      <pre><code>dh        = X25519(own_handshake_priv, peer_handshake_pub)
+kem_ss    = ML-KEM shared secret (initiator encapsulates to responder)
+transcript = "stade-pqxdh-v2" || lo_id || hi_id
+                              || lo_sign_pub || hi_sign_pub
+                              || lo_handshake_pub || hi_handshake_pub
+                              || lo_mlkem_pub || hi_mlkem_pub
+                              || kem_ciphertext
+salt      = BLAKE2b-256(transcript)
+rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len = 32)</code></pre>
+      <p><code>lo</code>/<code>hi</code> denote the two parties' values in canonical (sorted) order so both derive the identical transcript. Authentication signs <code>"stade-auth-v2" || peer_nonce || own_commitment || peer_commitment</code> with <strong>both</strong> Ed25519 and ML-DSA; a transcript commitment <code>BLAKE2b-256("stade-tc-v2" || version || sign_pub || handshake_pub || mlkem_pub || mldsa_pub)</code> is exchanged and checked to detect downgrade/tampering.</p>
+
+      <h2 id="cp-ratchet">Double Ratchet construction</h2>
+      <ul>
+        <li><strong>Chain step:</strong> <code>HKDF(chainKey, info="stade-dr-chain", len=64)</code> &rarr; next chain key (32 B) + message key (32 B).</li>
+        <li><strong>Message key &rarr; AEAD inputs:</strong> <code>HKDF(messageKey, "stade-dr-key", 32)</code> and <code>HKDF(messageKey, "stade-dr-nonce", 12)</code>.</li>
+        <li><strong>DH ratchet step:</strong> fresh X25519 secret + fresh ML-KEM key pair folded into the root via <code>HKDF(dh || kem_ss, salt=rootKey, info="stade-pqdr-step-v2", 64)</code>.</li>
+        <li><strong>KEM mix:</strong> an arriving ML-KEM ciphertext mixes via <code>HKDF(kem_ss, salt=rootKey, info="stade-pqdr-mix-v2", 32)</code>.</li>
+        <li><strong>AEAD:</strong> ChaCha20-Poly1305 with the ratchet header authenticated as associated data.</li>
+        <li><strong>Skipped keys</strong> bounded to a window of 128; <strong>decrypt is transactional</strong> with rollback on auth failure.</li>
+      </ul>
+
+      <h2 id="cp-framing">Wire framing &amp; at-rest vault</h2>
+      <pre><code>[ 1 byte record type ][ 4 byte big-endian length ][ payload ]   max 4 MiB</code></pre>
+      <p>Record types include HELLO, AUTH, KEM_OFFER, MESSAGE, ACK, PING and BYE. The at-rest vault uses PBKDF2-HMAC-SHA256 (210,000 iterations, 16-byte salt), a random 256-bit DEK encrypted with AES-256-GCM, a verifier to detect wrong passwords, secure zero-overwrite deletion, and an escalating lockout (threshold 5; delays from seconds to up to 24 hours). Version-tagged labels (<code>-v2</code>) and explicit record-type codes mean the app's package name can change without breaking on-the-wire compatibility.</p>
+    </article>
+
+    <article class="doc-article" id="glossary" data-group="Reference" data-title="Glossary" hidden>
+      <h1>Glossary</h1>
+      <p class="doc-lead">Terms used throughout the Stade documentation.</p>
+      <table class="spec-table">
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td><strong>AEAD</strong></td><td>Authenticated Encryption with Associated Data &mdash; encryption that also detects tampering. Stade uses ChaCha20-Poly1305 for messages and AES-256-GCM at rest.</td></tr>
+        <tr><td><strong>AppContainer</strong></td><td>The central object that constructs and wires Stade's services: crypto, database, managers, transports and the sync engine.</td></tr>
+        <tr><td><strong>Backoff</strong></td><td>The growing wait between repeated connection attempts to an unreachable peer.</td></tr>
+        <tr><td><strong>BLAKE2b-256</strong></td><td>The hash function used for Stade IDs, safety numbers, and as the basis for HKDF.</td></tr>
+        <tr><td><strong>ConnectionManager</strong></td><td>Continuously dials un-connected contacts and freshly added invite addresses, with backoff and diagnostics.</td></tr>
+        <tr><td><strong>Crockford Base32</strong></td><td>A Base32 encoding omitting I, L, O, U; used to format the Stade ID.</td></tr>
+        <tr><td><strong>DEK</strong></td><td>Data Encryption Key &mdash; the random key that encrypts your database, itself encrypted by a password-derived key.</td></tr>
+        <tr><td><strong>Double Ratchet</strong></td><td>The protocol protecting an ongoing conversation with a fresh key per message; Stade's variant adds post-quantum ML-KEM at each step.</td></tr>
+        <tr><td><strong>Ed25519</strong></td><td>The classical signature algorithm authenticating identities and handshakes.</td></tr>
+        <tr><td><strong>Forward secrecy</strong></td><td>Compromising a current key does not expose past messages.</td></tr>
+        <tr><td><strong>Handshake</strong></td><td>The mutual authenticated key exchange peers run before messaging (HELLO &rarr; AUTH &rarr; KEM_OFFER &rarr; root key).</td></tr>
+        <tr><td><strong>HKDF</strong></td><td>A key-derivation function turning shared secrets and chain keys into keys/nonces, domain-separated by an info label.</td></tr>
+        <tr><td><strong>Hidden / onion service</strong></td><td>A Tor feature letting a device accept connections without revealing its IP. Each Stade peer runs one.</td></tr>
+        <tr><td><strong>Hybrid cryptography</strong></td><td>Combining a classical and a post-quantum algorithm so breaking one family isn't enough.</td></tr>
+        <tr><td><strong>Invite</strong></td><td>A signed, Base32-encoded bundle (<code>STADE2-&hellip;</code>) carrying your nickname, public keys and addresses. Also a QR code or <code>.stadeid</code> file.</td></tr>
+        <tr><td><strong>KEK</strong></td><td>Key Encryption Key &mdash; derived from your password via PBKDF2, it encrypts the DEK.</td></tr>
+        <tr><td><strong>ML-DSA-65</strong></td><td>The NIST post-quantum signature algorithm (FIPS 204), used alongside Ed25519.</td></tr>
+        <tr><td><strong>ML-KEM-768</strong></td><td>The NIST post-quantum key-encapsulation mechanism (FIPS 203), used alongside X25519.</td></tr>
+        <tr><td><strong>Outbox</strong></td><td>The local queue of unacknowledged messages, re-sent until delivery is confirmed.</td></tr>
+        <tr><td><strong>PBKDF2</strong></td><td>The password-based KDF (HMAC-SHA256, 210,000 iterations) that turns your password into the KEK.</td></tr>
+        <tr><td><strong>Peer</strong></td><td>Any device running Stade. All peers are equal; there are no servers.</td></tr>
+        <tr><td><strong>PQXDH</strong></td><td>Post-Quantum Extended Diffie&ndash;Hellman &mdash; the handshake style deriving a root key from a hybrid X25519 + ML-KEM exchange.</td></tr>
+        <tr><td><strong>Safety number</strong></td><td>A 60-digit value from both contacts' signing keys; comparing it out of band confirms there's no man-in-the-middle.</td></tr>
+        <tr><td><strong>Stade ID</strong></td><td>Your public address, <code>STADE-XXXX-XXXX-XXXX</code>, a checksummed fingerprint of your signing keys.</td></tr>
+        <tr><td><strong>SOCKS5</strong></td><td>The proxy protocol Stade speaks to the local Tor process for outgoing onion connections.</td></tr>
+        <tr><td><strong>Sync engine</strong></td><td>Runs the handshake on each new connection, then manages the per-contact message session.</td></tr>
+        <tr><td><strong>Transcript commitment</strong></td><td>A hash binding a peer's protocol version and public keys, checked during the handshake to detect tampering.</td></tr>
+        <tr><td><strong>Vault</strong></td><td>The at-rest encryption layer: password-encrypts the database and handles unlock, lock, lockout and secure deletion.</td></tr>
+        <tr><td><strong>X25519</strong></td><td>The classical Diffie&ndash;Hellman algorithm for the classical half of key exchange and the ratcheting key.</td></tr>
+      </table>
+    </article>
+
+    <article class="doc-article" id="faq" data-group="Reference" data-title="FAQ" hidden>
+      <h1>Frequently Asked Questions</h1>
+      <p class="doc-lead">Quick answers to common questions about how Stade works.</p>
+
+      <h2 id="faq-serverless">Is Stade really serverless?</h2>
+      <p>Yes. There is no Stade server, relay or account service. Two devices connect directly over the local network or Tor &mdash; the app <em>is</em> the entire network. Nothing about your conversations is stored anywhere except on the two devices in them.</p>
+
+      <h2 id="faq-account">Do I need an account, phone number or email?</h2>
+      <p>No. You create an identity locally by choosing a nickname; Stade generates your keys on the device and derives your <strong>Stade ID</strong> from them. Nothing is registered.</p>
+
+      <h2 id="faq-add">How do I add someone, and why not immediately?</h2>
+      <p>Exchange <strong>invites</strong> (a <code>STADE2-&hellip;</code> code, QR, or <code>.stadeid</code> file). The invite is verified locally, but the contact is only saved once a <strong>live handshake</strong> completes &mdash; both peers must be online and reachable.</p>
+
+      <h2 id="faq-tor-slow">Why is the first Tor connection slow, and do I need Orbot?</h2>
+      <p>Tor has to bootstrap and the peer's onion descriptor has to propagate, so the first connection can take seconds to a couple of minutes &mdash; leave both apps open. You do <strong>not</strong> need Orbot: Stade bundles its own Tor runtime (it can also use an external one if you prefer).</p>
+
+      <h2 id="faq-pq">What does "post-quantum" mean here?</h2>
+      <p>Stade combines classical cryptography (X25519, Ed25519) with NIST post-quantum algorithms (<strong>ML-KEM-768</strong>, <strong>ML-DSA-65</strong>) in a <strong>hybrid</strong> scheme. An attacker would have to break <em>both</em> to compromise a conversation &mdash; so it stays secure even against a future quantum computer, including "harvest now, decrypt later" attacks.</p>
+
+      <h2 id="faq-mitm">Can someone impersonate a contact?</h2>
+      <p>The handshake authenticates both sides with two independent signature schemes, so a network attacker can't inject themselves. The one residual risk is key substitution during your <em>first</em> invite exchange &mdash; which is exactly what <strong>safety-number verification</strong> catches.</p>
+
+      <h2 id="faq-offline">What happens to my messages if I'm offline?</h2>
+      <p>Outgoing messages wait in an <strong>Outbox</strong> and are re-sent until acknowledged. Delivery still requires both peers online at some overlapping time, since there's no server to hold messages.</p>
+
+      <h2 id="faq-rest">Are my messages encrypted on disk, and can I recover a lost password?</h2>
+      <p>Locally they're in a SQLite database; with a password set it's encrypted at rest with AES-256-GCM under a PBKDF2-derived key (210k iterations). There is <strong>no recovery</strong> &mdash; the key is derived from your password and never stored, so a forgotten password means the data can't be decrypted by anyone.</p>
+
+      <h2 id="faq-platforms">Which platforms, and are group chats supported?</h2>
+      <p>Android 8.0+ and desktop (Windows, Linux, macOS), all from one shared codebase. <strong>Group messaging is supported</strong> in addition to one-to-one conversations.</p>
+
+      <h2 id="faq-who">Who can see who I'm talking to?</h2>
+      <p>On <strong>LAN</strong>, peers on your local network can see your device's local IP (but not your messages). Over <strong>Tor</strong>, the endpoints' locations and the existence of the conversation are hidden. In neither case can anyone read message contents &mdash; and because there's no server, no third party (including Stade's developers) has any contact graph or logs.</p>
+    </article>
+
+    <nav class="doc-footer-nav" id="docFooterNav" aria-label="Article navigation"></nav>
+  </main>
+
+  <aside class="toc">
+    <div class="toc-title">On This Page</div>
+    <ul id="tocList"></ul>
+  </aside>
+
+</div>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off" spellcheck="false" />
+      <span class="esc">Esc</span>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('sidebarScrim');
+  function setSidebar(open) {
+    sidebar.classList.toggle('open', open);
+    scrim.classList.toggle('open', open);
+  }
+  toggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  scrim.addEventListener('click', () => setSidebar(false));
+
+  const sidebarLinks = Array.from(document.querySelectorAll('.nav-group a[data-id]'));
+  const order = sidebarLinks.map(a => a.getAttribute('data-id'));
+  const articles = Array.from(document.querySelectorAll('.doc-article'));
+  const breadcrumb = document.getElementById('breadcrumb');
+  const tocList = document.getElementById('tocList');
+  const footerNav = document.getElementById('docFooterNav');
+  const main = document.querySelector('.doc-main');
+
+  let spy = null;
+
+  function buildToc(article) {
+    const headings = Array.from(article.querySelectorAll('h2[id], h3[id]'));
+    tocList.innerHTML = headings.map(h =>
+      '<li><a class="' + (h.tagName === 'H3' ? 'sub' : '') + '" href="#' + h.id + '">' + h.textContent + '</a></li>'
+    ).join('');
+    if (spy) spy.disconnect();
+    const tocLinks = Array.from(tocList.querySelectorAll('a'));
+    spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.getAttribute('id');
+          tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
+    headings.forEach(h => spy.observe(h));
+  }
+
+  function buildBreadcrumb(article) {
+    breadcrumb.innerHTML =
+      '<a data-home>Docs</a><span class="sep">/</span>' +
+      '<span>' + article.dataset.group + '</span><span class="sep">/</span>' +
+      '<span class="current">' + article.dataset.title + '</span>';
+    breadcrumb.querySelector('[data-home]').addEventListener('click', () => navigate(order[0]));
+  }
+
+  function buildFooterNav(id) {
+    const i = order.indexOf(id);
+    const prev = i > 0 ? articles.find(a => a.id === order[i - 1]) : null;
+    const next = i < order.length - 1 ? articles.find(a => a.id === order[i + 1]) : null;
+    const prevHtml = prev
+      ? '<a class="prev" data-go="' + prev.id + '"><span class="dir">&larr; Previous</span><span class="ttl">' + prev.dataset.title + '</span></a>'
+      : '<a class="prev empty"></a>';
+    const nextHtml = next
+      ? '<a class="next" data-go="' + next.id + '"><span class="dir">Next &rarr;</span><span class="ttl">' + next.dataset.title + '</span></a>'
+      : '<a class="next empty"></a>';
+    footerNav.innerHTML = prevHtml + nextHtml;
+    footerNav.querySelectorAll('[data-go]').forEach(a =>
+      a.addEventListener('click', () => navigate(a.getAttribute('data-go')))
+    );
+  }
+
+  function navigate(id, skipScroll) {
+    if (!order.includes(id)) id = order[0];
+    articles.forEach(a => { a.hidden = a.id !== id; });
+    const article = articles.find(a => a.id === id);
+    sidebarLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-id') === id));
+    buildBreadcrumb(article);
+    buildToc(article);
+    buildFooterNav(id);
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    else location.hash = id;
+    if (!skipScroll) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      main.scrollIntoView({ block: 'start' });
+    }
+    setSidebar(false);
+  }
+
+  sidebarLinks.forEach(a =>
+    a.addEventListener('click', (e) => { e.preventDefault(); navigate(a.getAttribute('data-id')); })
+  );
+
+  document.querySelector('.doc-main').addEventListener('click', (e) => {
+    const link = e.target.closest('a.inline[data-go]');
+    if (link) { e.preventDefault(); navigate(link.getAttribute('data-go')); }
+  });
+
+  const initial = location.hash ? location.hash.slice(1) : order[0];
+  navigate(initial, true);
+
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    if (order.includes(id) && articles.find(a => a.id === id).hidden) navigate(id);
+  });
+
+  const searchIndex = sidebarLinks.map(a => {
+    const group = a.closest('.nav-group').querySelector('.nav-group-title').textContent.trim();
+    return { id: a.getAttribute('data-id'), title: a.textContent.trim(), group };
+  });
+
+  const overlay = document.getElementById('searchOverlay');
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('searchResults');
+  const trigger = document.getElementById('searchTrigger');
+  let activeIndex = 0;
+
+  function renderResults(query) {
+    const q = query.trim().toLowerCase();
+    const matches = q
+      ? searchIndex.filter(item => item.title.toLowerCase().includes(q) || item.group.toLowerCase().includes(q))
+      : searchIndex;
+    activeIndex = 0;
+    if (!matches.length) {
+      results.innerHTML = '<div class="search-empty">No results found</div>';
+      return;
+    }
+    results.innerHTML = matches.map((item, i) =>
+      '<div class="search-result' + (i === 0 ? ' active' : '') + '" data-go="' + item.id + '">' +
+      '<span class="r-title">' + item.title + '</span>' +
+      '<span class="r-group">' + item.group + '</span></div>'
+    ).join('');
+    Array.from(results.querySelectorAll('.search-result')).forEach(el =>
+      el.addEventListener('click', () => { navigate(el.getAttribute('data-go')); closeSearch(); })
+    );
+  }
+
+  function updateActive(delta) {
+    const items = results.querySelectorAll('.search-result');
+    if (!items.length) return;
+    items[activeIndex].classList.remove('active');
+    activeIndex = (activeIndex + delta + items.length) % items.length;
+    items[activeIndex].classList.add('active');
+    items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  function openSearch() {
+    overlay.classList.add('open');
+    renderResults('');
+    input.value = '';
+    input.focus();
+  }
+  function closeSearch() { overlay.classList.remove('open'); }
+
+  trigger.addEventListener('click', openSearch);
+  input.addEventListener('input', () => renderResults(input.value));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); updateActive(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); updateActive(-1); }
+    else if (e.key === 'Enter') {
+      e.preventDefault();
+      const active = results.querySelector('.search-result.active');
+      if (active) active.click();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      overlay.classList.contains('open') ? closeSearch() : openSearch();
+    } else if (e.key === 'Escape' && overlay.classList.contains('open')) {
+      closeSearch();
+    }
+  });
+</script>
+</body>
+</html>
