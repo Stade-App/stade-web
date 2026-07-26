@@ -389,6 +389,7 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
     <div class="nav-group">
       <div class="nav-group-title">Guides</div>
       <ul>
+        <li><a data-id="stadium">Stadium</a></li>
         <li><a data-id="verifying-a-contact">Verifying a Contact</a></li>
         <li><a data-id="locking-the-app">Locking the App</a></li>
         <li><a data-id="troubleshooting">Troubleshooting</a></li>
@@ -427,6 +428,7 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
       <ul>
         <li>Exchange one-to-one text messages with full end-to-end encryption.</li>
         <li>Create and participate in group chats.</li>
+        <li>Broadcast to an open audience with a <a class="inline" data-go="stadium">Stadium</a>, a public channel where only the admin posts.</li>
         <li>Connect over your <strong>local network</strong> (fast, zero-internet) or over <strong>Tor</strong> (anonymous, works across the internet).</li>
         <li>Verify a contact's identity with a <strong>safety number</strong>, so you know there is no impostor in the middle.</li>
         <li>Lock the app behind a password that encrypts your entire message database at rest.</li>
@@ -806,6 +808,60 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
       <p><strong>Limits:</strong> higher latency than LAN and a bootstrap delay; the first connection to a new peer can take from seconds to a couple of minutes while Tor bootstraps and the descriptor propagates (expected &mdash; Stade keeps retrying); a few networks actively block Tor.</p>
     </article>
 
+    <article class="doc-article" id="stadium" data-group="Guides" data-title="Stadium" hidden>
+      <h1>Stadium</h1>
+      <p class="doc-lead">A Stadium is a public, one-to-many broadcast channel inside Stade &mdash; one admin posts, and anyone with the link can subscribe and read. Use it for announcements, updates, or broadcasting to an open audience, rather than a specific set of contacts.</p>
+
+      <h2 id="std-what">What a Stadium is</h2>
+      <p>A Stadium works like the "channel" feature in other messaging apps: a single <strong>admin</strong> &mdash; its creator &mdash; posts, and everyone else can only read. There is exactly one admin per Stadium, and it cannot be shared or transferred.</p>
+      <p>It differs from a group chat in one important way: <strong>joining is public and one-step.</strong> A Stadium's invite is a single shareable link, and anyone who has it can join directly &mdash; you do not need to already be connected to the admin first.</p>
+
+      <h2 id="std-create">Creating a Stadium</h2>
+      <ol>
+        <li>Open the <strong>+</strong> / new-chat menu and choose <strong>New Stadium</strong>.</li>
+        <li>Give it a name.</li>
+        <li>Post whenever you like &mdash; there's nothing else to configure.</li>
+      </ol>
+
+      <h2 id="std-join">Joining a Stadium</h2>
+      <ol>
+        <li>Open the <strong>+</strong> menu and choose <strong>Join Stadium</strong>.</li>
+        <li>Paste the invite link.</li>
+      </ol>
+      <p>That's it &mdash; no prior connection to the admin is needed, unlike adding a contact or being added to a group.</p>
+
+      <h2 id="std-posting">Posting and the subscriber feed</h2>
+      <p>Only the admin can post: text, photos and voice messages, using the same crop-and-draw photo editor as regular chats. Everyone else sees a read-only feed with no compose box at all &mdash; subscribers cannot post, reply or react.</p>
+
+      <h2 id="std-notifications">Notifications and muting</h2>
+      <p>New posts notify subscribers the same way a normal message does. Each Stadium can be muted independently &mdash; long-press it on mobile or right-click it on desktop &mdash; without muting anything else.</p>
+
+      <h2 id="std-privacy">Privacy and encryption</h2>
+      <p>Posts are end-to-end encrypted the same way 1:1 and group messages are &mdash; nothing about a Stadium's content, member list, or who subscribed to what is ever visible to anyone but the people in it.</p>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>No one can ever see who else has subscribed to a Stadium &mdash; not other subscribers, and not even the admin. The only visible signal is a live <strong>subscriber count</strong> shown next to the Stadium's name.</p>
+      </div>
+
+      <h2 id="std-manage">Managing your Stadium</h2>
+      <p>From the Stadium's management screen (the gear icon), the admin can:</p>
+      <ul>
+        <li><strong>Copy the invite link</strong> to share anywhere &mdash; social media, other chats, wherever.</li>
+        <li><strong>Rename</strong> the Stadium.</li>
+        <li>See the <strong>live subscriber count</strong>.</li>
+        <li><strong>Delete</strong> the Stadium.</li>
+      </ul>
+      <p>Deletion is local to the admin's device: subscribers keep their own copy of everything posted before it, they just stop receiving new posts.</p>
+
+      <h2 id="std-faq">Common questions</h2>
+      <h3 id="std-faq-admin">Can a Stadium have more than one admin?</h3>
+      <p>No. Each Stadium has exactly one admin: whoever created it.</p>
+      <h3 id="std-faq-react">Can subscribers react or reply?</h3>
+      <p>Not currently. The feed is read-only for everyone except the admin.</p>
+      <h3 id="std-faq-see-joined">Can I see who joined my Stadium?</h3>
+      <p>No &mdash; not even as the admin. Only the live subscriber count is shown.</p>
+    </article>
+
     <article class="doc-article" id="verifying-a-contact" data-group="Guides" data-title="Verifying a Contact" hidden>
       <h1>Verifying a Contact</h1>
       <p class="doc-lead">End-to-end encryption guarantees only the holder of a contact's keys can read your messages. What it can't tell you on its own is whether the keys you received at first contact really belong to the right person. Verifying a contact closes that gap.</p>
@@ -1040,6 +1096,9 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
 
       <h2 id="faq-platforms">Which platforms, and are group chats supported?</h2>
       <p>Android 8.0+ and desktop (Windows, Linux, macOS), all from one shared codebase. <strong>Group messaging is supported</strong> in addition to one-to-one conversations.</p>
+
+      <h2 id="faq-broadcast">Can I broadcast to a public audience instead of specific contacts?</h2>
+      <p>Yes &mdash; that's what a <a class="inline" data-go="stadium">Stadium</a> is for: a public channel with one admin posting and anyone with the link able to join and read. See the <a class="inline" data-go="stadium">Stadium</a> guide.</p>
 
       <h2 id="faq-who">Who can see who I'm talking to?</h2>
       <p>On <strong>LAN</strong>, peers on your local network can see your device's local IP (but not your messages). Over <strong>Tor</strong>, the endpoints' locations and the existence of the conversation are hidden. In neither case can anyone read message contents &mdash; and because there's no server, no third party (including Stade's developers) has any contact graph or logs.</p>
