@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Stade's privacy policy — how a serverless, peer-to-peer, end-to-end encrypted messenger with no accounts and no servers handles your data. In plain terms." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<title>Privacy Policy — Stade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #101010;
+  --bg-card: rgba(26,26,26,0.6);
+  --bg-card-hover: rgba(34,34,34,0.82);
+  --border: rgba(140,140,140,0.1);
+  --border-strong: rgba(170,170,170,0.2);
+  --border-accent: rgba(224,224,224,0.32);
+  --text: #f0f0f0;
+  --text-muted: #8a8a8a;
+  --text-dim: #545454;
+  --accent: #e0e0e0;
+  --accent-light: #ffffff;
+  --accent-2: #b0b0b0;
+  --accent-3: #cacaca;
+  --accent-glow: rgba(224,224,224,0.38);
+  --gradient: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --nav-h: 65px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(224,224,224,0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(176,176,176,0.1), transparent 55%);
+  pointer-events: none; z-index: 0;
+}
+a { color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+nav {
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(10,10,10,0.82); border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 100%; max-width: 1200px; margin: 0 auto; gap: 20px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; text-decoration: none; color: var(--text); flex-shrink: 0; }
+.logo-mark { width: 32px; height: 32px; border-radius: 9px; display: block; object-fit: cover; flex-shrink: 0; }
+.docs-tag {
+  font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-light); padding: 3px 9px; border-radius: 6px;
+  background: rgba(224,224,224,0.1); border: 1px solid var(--border-accent); margin-left: 4px;
+}
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 13px; border-radius: 8px; transition: all 0.2s; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-strong);
+  color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 38px; padding: 0 12px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+@media (max-width: 560px) { .nav-links { display: none; } .nav-cta span { display: none; } }
+
+main { position: relative; z-index: 1; padding: 64px 0 40px; }
+
+.privacy-header { max-width: 760px; margin: 0 auto 40px; }
+.privacy-header h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px; }
+.privacy-header .lead { font-size: 17px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; max-width: 620px; }
+.privacy-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 12.5px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+.privacy-meta .dot { opacity: 0.5; }
+
+.doc-article { max-width: 760px; margin: 0 auto; }
+.doc-article h2 {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.01em;
+  margin: 52px 0 16px; scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+.doc-article h3 { font-size: 17px; font-weight: 600; margin: 30px 0 12px; scroll-margin-top: calc(var(--nav-h) + 24px); }
+.doc-article p { color: var(--text-muted); font-size: 15.5px; margin-bottom: 18px; }
+.doc-article ul, .doc-article ol { color: var(--text-muted); font-size: 15.5px; margin: 0 0 18px; padding-left: 22px; }
+.doc-article li { margin-bottom: 8px; }
+.doc-article li::marker { color: var(--accent); }
+.doc-article strong { color: var(--text); font-weight: 600; }
+.doc-article a.inline { color: var(--accent-light); text-decoration: none; }
+.doc-article a.inline:hover { text-decoration: underline; }
+.doc-article hr { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
+
+.spec-table { width: 100%; border-collapse: collapse; margin: 0 0 24px; font-size: 14px; }
+.spec-table th, .spec-table td { text-align: left; padding: 12px 16px; border: 1px solid var(--border); vertical-align: top; }
+.spec-table th { background: rgba(255,255,255,0.03); color: var(--text-dim); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+.spec-table td { color: var(--text-muted); font-size: 14px; line-height: 1.55; }
+.spec-table td strong { color: var(--text); }
+
+.callout {
+  display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius);
+  background: rgba(224,224,224,0.06); border: 1px solid var(--border-accent);
+  margin: 26px 0;
+}
+.callout svg { width: 20px; height: 20px; color: var(--accent-light); flex-shrink: 0; margin-top: 2px; }
+.callout p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
+.callout p + p { margin-top: 10px; }
+.callout ul { margin: 10px 0 0; padding-left: 18px; }
+.callout ul li { font-size: 14.5px; color: var(--text-muted); margin-bottom: 6px; }
+.callout.ok { background: rgba(202,202,202,0.06); border-color: rgba(202,202,202,0.28); }
+.callout.ok svg { color: var(--accent-3); }
+.callout.warn { background: rgba(122,122,122,0.06); border-color: rgba(122,122,122,0.3); }
+.callout.warn svg { color: #a0a0a0; }
+
+.toc-inline { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; margin: 0 0 44px; backdrop-filter: blur(8px); }
+.toc-inline-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 14px; }
+.toc-inline ol { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; padding: 0; margin: 0; counter-reset: toc; }
+.toc-inline li { counter-increment: toc; font-size: 14px; }
+.toc-inline li::before { content: counter(toc) '.'; color: var(--accent-light); font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-right: 6px; }
+.toc-inline a { color: var(--text-muted); text-decoration: none; }
+.toc-inline a:hover { color: var(--text); text-decoration: underline; }
+@media (max-width: 600px) { .toc-inline ol { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: relative; z-index: 1; margin-top: 40px; }
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 340px; margin: 10px 0 16px; }
+.footer-badge {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 8px;
+  background: rgba(200,200,200,0.06); border: 1px solid rgba(200,200,200,0.2);
+  font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #c8c8c8;
+}
+.footer-badge svg { width: 12px; height: 12px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 26px; border-top: 1px solid var(--border); }
+.footer-bottom small { font-size: 13px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.png" class="logo-mark" alt="Stade" />
+      Stade
+      <span class="docs-tag" data-tr="gizlilik">privacy</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+        <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
+      </ul>
+      <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="lang-toggle" id="langToggle" type="button" data-tr-aria="Dili değiştir" aria-label="Switch language">TR</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <div class="privacy-header">
+      <h1 data-tr="Gizlilik Politikası">Privacy Policy</h1>
+      <p class="lead" data-tr="Kısacası: Stade'in sunucusu yok, hesabı yok, teslim edecek hiçbir şeyi yok. Aşağıdaki her şey bunun neden doğru olduğunu tam olarak açıklıyor — bir vaat olarak değil, uygulamanın nasıl inşa edildiğinin bir açıklaması olarak.">The short version: Stade has no servers, no accounts, and nothing to hand over. Everything below explains exactly why that's true — not as a promise, but as a description of how the app is built.</p>
+      <div class="privacy-meta">
+        <span data-tr="Son güncelleme: 2 Ağustos 2026">Last updated: August 2, 2026</span>
+        <span class="dot">&middot;</span>
+        <span data-tr="Stade'in Android ve Masaüstü sürümü için geçerlidir">Applies to Stade for Android and Desktop</span>
+        <span class="dot">&middot;</span>
+        <span data-tr="GPL-3.0 &middot; Açık Kaynak">GPL-3.0 &middot; Open Source</span>
+      </div>
+    </div>
+
+    <article class="doc-article" id="privacyArticle">
+
+      <div class="toc-inline">
+        <div class="toc-inline-title">On this page</div>
+        <ol>
+          <li><a class="inline" href="#who">Who this covers</a></li>
+          <li><a class="inline" href="#architecture">How Stade actually works</a></li>
+          <li><a class="inline" href="#storage">Where your data lives</a></li>
+          <li><a class="inline" href="#identity">Your identity &mdash; no accounts</a></li>
+          <li><a class="inline" href="#stadium">Stadium broadcast channels</a></li>
+          <li><a class="inline" href="#not-collected">What we do not collect</a></li>
+          <li><a class="inline" href="#permissions">Permissions, and why</a></li>
+          <li><a class="inline" href="#tor">Tor</a></li>
+          <li><a class="inline" href="#limitations">What this doesn't protect against</a></li>
+          <li><a class="inline" href="#children">Children's privacy</a></li>
+          <li><a class="inline" href="#changes">Changes to this policy</a></li>
+          <li><a class="inline" href="#rights">Your rights</a></li>
+          <li><a class="inline" href="#contact">Contact</a></li>
+        </ol>
+      </div>
+
+      <h2 id="who">Who this covers</h2>
+      <p>This policy explains how the official Stade app &mdash; for Android and desktop &mdash; handles data. Stade is an open-source project released under the GPL-3.0 license, not a company built around a customer-data business model. &ldquo;We&rdquo; below just means the people who maintain the project.</p>
+      <p>It covers your use of the Stade app itself. It doesn't cover your device's operating system, other apps, or third-party software you separately choose to run alongside it &mdash; a system VPN, a standalone Tor client, your phone's own OS-level backup service. Those make their own choices about data, outside our control and outside this policy.</p>
+      <p>There's no sign-up step, so there's no separate moment a different agreement kicks in. This policy applies from the moment you install the app, for as long as you use it.</p>
+
+      <h2 id="architecture">How Stade actually works</h2>
+      <p>Most privacy policies describe rules a company promises to follow when handling your data. This one is different, because there's no infrastructure of ours sitting in the path of your conversations to make promises about.</p>
+      <p>When you send a message, photo, video, or voice clip in Stade, it travels directly from your device to your contact's device. Nothing routes through a server we run, because no such server exists. The connection is:</p>
+      <ul>
+        <li><strong>End-to-end encrypted</strong> with the Double Ratchet protocol, layered on a hybrid key exchange that combines classical (X25519) and post-quantum (ML-KEM) cryptography &mdash; so the session stays secure even if only one of the two is ever broken.</li>
+        <li><strong>Carried over whichever transport can reach your contact</strong>: your local network (LAN) when you're nearby, or Tor when you're not.</li>
+      </ul>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>We do not operate any server that stores, relays, or has access to your message content, your contact list, or metadata about who you talk to and when. There is nothing on our end to breach, subpoena, or hand over &mdash; because we don't have it.</p>
+      </div>
+      <p>For the exact algorithms, wire protocol, and key derivation, see <a class="inline" href="docs.html#cryptographic-primitives">Cryptographic Primitives</a> in the docs. This page is about what the architecture means for your data, not how it's built.</p>
+
+      <h2 id="storage">Where your data lives</h2>
+      <p>Everything Stade knows &mdash; your messages, your contact list, your keys &mdash; is stored in exactly one place: your own device. Nothing is mirrored, synced, or backed up to any server we run, because none exists.</p>
+      <p>That has a direct consequence: deleting is real. Delete a conversation, or uninstall the app, and that data is gone &mdash; permanently, and only from your device, because your device was the only place it ever existed. We hold no copy anywhere to restore it from, and neither can anyone who compels us to try.</p>
+      <p>You can also lock the app behind a password of your own choosing. While locked, your local message database is encrypted at rest, and there is no recovery path if you forget that password &mdash; which is by design, not an oversight. A backdoor for you would be a backdoor for anyone who takes your device.</p>
+
+      <h2 id="identity">Your identity &mdash; no accounts</h2>
+      <p>Stade has no sign-up, no username database, and nothing resembling a user account. The first time you open the app, it generates a cryptographic identity locally, on your device &mdash; your <strong>Stade ID</strong>. That's the only identity that exists anywhere.</p>
+      <p>We never ask for, and the app has no field for, a phone number, an email address, or any other personal information. There's no password-recovery flow, because there's no server-side account for a password to unlock. You're identified to your contacts only by a key you generated yourself, on hardware you control.</p>
+
+      <h2 id="stadium">Stadium broadcast channels</h2>
+      <p>A <a class="inline" href="docs.html#stadium">Stadium</a> is a public channel inside Stade where one admin posts and anyone with the invite link can subscribe and read. Posts are end-to-end encrypted the same way any other message is.</p>
+      <p>The one piece of aggregate information a Stadium exposes is a live subscriber count, shown next to its name.</p>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Beyond that count, no one can see who has subscribed to a Stadium &mdash; not other subscribers, and not even the admin who created it. There's no membership list to leak, because none is ever assembled, by anyone, anywhere.</p>
+      </div>
+
+      <h2 id="not-collected">What we do not collect</h2>
+      <p>Beyond having no server to collect data on, we've also kept third parties out of the app entirely:</p>
+      <ul>
+        <li><strong>No analytics SDKs.</strong></li>
+        <li><strong>No crash reporting.</strong></li>
+        <li><strong>No push-notification service</strong> &mdash; no Firebase Cloud Messaging, no equivalent. Notifications are generated entirely on your device.</li>
+        <li><strong>No advertising SDKs.</strong></li>
+        <li><strong>No bootstrap, relay, or discovery server</strong> that observes your activity &mdash; even establishing a connection happens directly between peers or through the public Tor network, not through infrastructure we run.</li>
+      </ul>
+      <p>We do not track how you use the app. We do not build a profile of you. We have no advertising relationships and no data-broker relationships, because we have no data to advertise against or broker.</p>
+      <p>You don't have to take our word for any of this. Stade is fully open source under the GPL-3.0 license &mdash; every dependency and every line of code that ships in the app is public at <a class="inline" href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">github.com/Stade-App/stade</a>. Anyone can read the source and confirm the above directly, rather than trust it.</p>
+
+      <h2 id="permissions">Permissions, and why</h2>
+      <p>Stade asks your device for a small number of permissions. Every one exists to make the app function, not to gather information about you.</p>
+      <table class="spec-table">
+        <thead>
+          <tr><th>Permission</th><th>Why Stade asks for it</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Internet, network state, Wi&#8209;Fi state</strong></td>
+            <td>To connect directly to other Stade users &mdash; over your local network or through Tor. There's no server to &ldquo;call home&rdquo; to; this exists purely to reach peers.</td>
+          </tr>
+          <tr>
+            <td><strong>Camera</strong></td>
+            <td>Used only when you actively open the camera inside Stade to take a photo or video to send. Never accessed in the background.</td>
+          </tr>
+          <tr>
+            <td><strong>Microphone</strong></td>
+            <td>Used only while you're actively recording a voice message inside the app. Never accessed in the background.</td>
+          </tr>
+          <tr>
+            <td><strong>Notifications</strong></td>
+            <td>To alert you to new messages or connections. These are generated entirely on your device &mdash; there is no push-notification server (no Firebase/FCM) involved, because that would mean a third party learning when you receive a message.</td>
+          </tr>
+          <tr>
+            <td><strong>Foreground service</strong> (Android)</td>
+            <td>Keeps your peer-to-peer connection alive while the app is open or running in the background, so messages can still arrive. It exists to keep a connection socket alive &mdash; not to collect data in the background.</td>
+          </tr>
+          <tr>
+            <td><strong>Boot-completed receiver</strong> (Android)</td>
+            <td>Stade doesn't use push notifications to wake the app when a message arrives, so this is used only to remind you to reopen Stade after your device restarts &mdash; otherwise you might not notice the app isn't running and connected.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Foreground service and boot-completed receiver are Android-specific concepts; desktop builds don't use Android's permission model, but follow the same principle &mdash; access exists to run the app you opened, not to observe anything in the background.</p>
+
+      <h2 id="tor">Tor</h2>
+      <p>Stade includes <a class="inline" href="docs.html#tor">Tor</a> as a built-in transport, alongside your local network &mdash; both are on by default, and either can be turned off individually in settings.</p>
+      <p>Routing a connection through Tor hides your IP address from the person you're talking to and from anyone observing the network. Each device runs as a Tor hidden (onion) service, so a Stade connection stays inside the Tor network end to end, rather than exiting onto the open internet at any point. We bundle Tor directly into the app, so you don't need to separately install or trust a third-party app like Orbot to use it.</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Tor itself is a volunteer-operated network we don't run and don't control. Its performance &mdash; connection speed, time to establish a new session &mdash; depends on the state of that network, and like any anonymity network it has known limitations, documented by the Tor Project itself rather than by us.</p>
+      </div>
+
+      <h2 id="limitations">What this doesn't protect against</h2>
+      <p>Being direct about what Stade's architecture guarantees also means being direct about what it can't:</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <ul>
+          <li>A device that's lost, stolen, or seized while unlocked &mdash; or with no app password set &mdash; can be read by whoever holds it. Encryption protects data in transit and at rest; it can't protect an already-unlocked screen.</li>
+          <li>Trusting a contact's identity at first contact is only as strong as your verification. If you skip comparing safety numbers, an attacker positioned at that first exchange is a theoretical risk &mdash; <a class="inline" href="docs.html#verifying-a-contact">verifying a contact</a> closes that gap.</li>
+          <li>Malware already running on your device can read anything the app can. No app-layer encryption defends against a compromised operating system.</li>
+          <li>Tor hides who you're talking to from the network; it doesn't hide the fact that you're running Tor from your own internet provider, and it's only as fast and reliable as the volunteer network behind it.</li>
+        </ul>
+      </div>
+
+      <h2 id="children">Children's privacy</h2>
+      <p>Stade does not knowingly collect personal information from anyone &mdash; adult or minor &mdash; because it doesn't collect personal information at all, and has no account system through which age could be asked or verified in the first place. The app isn't designed or marketed for young children; if you're a parent, the judgment call is the same one you'd make for any communications tool.</p>
+
+      <h2 id="changes">Changes to this policy</h2>
+      <p>If this policy changes, we'll update the &ldquo;Last updated&rdquo; date at the top and post the change here. That's not a formality &mdash; it's genuinely the only channel we have, since we don't collect an email address or phone number to notify you through. Material changes will also be called out in the project's release notes on GitHub, alongside the version they ship with, so they're visible through the same place you'd already look to see what's new in a release. We won't apply a material change retroactively without saying so plainly.</p>
+
+      <h2 id="rights">Your rights</h2>
+      <p>Regulations like the GDPR (EU/UK) and the CCPA (California) give you rights over personal data &mdash; to access it, correct it, delete it, or take it with you. Those rights exist to give you leverage over data someone else holds about you.</p>
+      <p>In Stade's case, there's no gap for those rights to close: your messages, contacts, and keys are already stored exclusively on your own device, under your own control, in a form only you can decrypt.</p>
+      <ul>
+        <li><strong>Access</strong> &mdash; open the app. Everything is already there, in full, in real time; there's no separate copy to request from us.</li>
+        <li><strong>Deletion / erasure</strong> &mdash; delete a conversation, or uninstall the app. It's immediate, permanent, and already exactly what &ldquo;erasure&rdquo; means under these laws.</li>
+        <li><strong>Correction</strong> &mdash; edit within the app, or delete and resend. There's no external record of the old version anywhere for us to correct.</li>
+        <li><strong>Portability</strong> &mdash; there's no dedicated &ldquo;export&rdquo; button today, but there doesn't need to be one for you to have your data: it already lives in a local database file under your control, and nothing stops you from copying or backing it up yourself with your device's own tools.</li>
+        <li><strong>Objection to sale or sharing</strong> &mdash; we don't sell or share personal information. There is none in our possession to sell.</li>
+      </ul>
+      <p>If you're in the EU/UK or California and have a question about any of this, see Contact below &mdash; though as a practical matter, we're not in a position to act on data we never receive. That absence is the entire design intent, not a loophole.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Stade is an open-source project developed on GitHub. For privacy questions, the most reliable way to reach the people building it is to open a discussion or issue at <a class="inline" href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">github.com/Stade-App/stade</a> &mdash; the same place used for bug reports and everything else about the project.</p>
+
+      <template class="i18n-tr">
+      <div class="toc-inline">
+        <div class="toc-inline-title">Bu Sayfada</div>
+        <ol>
+          <li><a class="inline" href="#who">Bu politika kimleri kapsar</a></li>
+          <li><a class="inline" href="#architecture">Stade gerçekte nasıl çalışır</a></li>
+          <li><a class="inline" href="#storage">Verileriniz nerede yaşar</a></li>
+          <li><a class="inline" href="#identity">Kimliğiniz &mdash; hesap yok</a></li>
+          <li><a class="inline" href="#stadium">Stadium yayın kanalları</a></li>
+          <li><a class="inline" href="#not-collected">Toplamadığımız veriler</a></li>
+          <li><a class="inline" href="#permissions">İzinler ve nedenleri</a></li>
+          <li><a class="inline" href="#tor">Tor</a></li>
+          <li><a class="inline" href="#limitations">Bunun koruyamadığı şeyler</a></li>
+          <li><a class="inline" href="#children">Çocukların gizliliği</a></li>
+          <li><a class="inline" href="#changes">Bu politikadaki değişiklikler</a></li>
+          <li><a class="inline" href="#rights">Haklarınız</a></li>
+          <li><a class="inline" href="#contact">İletişim</a></li>
+        </ol>
+      </div>
+
+      <h2 id="who">Bu Politika Kimleri Kapsar</h2>
+      <p>Bu politika, resmi Stade uygulamasının &mdash; Android ve masaüstü için &mdash; verileri nasıl işlediğini açıklar. Stade, GPL-3.0 lisansı altında yayınlanan açık kaynaklı bir projedir; müşteri verisi üzerine kurulu bir iş modeline sahip bir şirket değildir. Aşağıda geçen &ldquo;biz&rdquo; ifadesi yalnızca projeyi geliştiren kişileri belirtir.</p>
+      <p>Bu politika yalnızca Stade uygulamasının kendisini kullanımınızı kapsar. Cihazınızın işletim sistemini, diğer uygulamaları veya yanında ayrıca kullanmayı seçtiğiniz üçüncü taraf yazılımları &mdash; sistem VPN'i, bağımsız bir Tor istemcisi, telefonunuzun işletim sistemi düzeyindeki yedekleme hizmeti &mdash; kapsamaz. Bunlar veriler hakkında kendi kararlarını verir; bu, bizim kontrolümüzün ve bu politikanın dışındadır.</p>
+      <p>Bir kayıt adımı olmadığından, farklı bir sözleşmenin devreye girdiği ayrı bir an da yoktur. Bu politika, uygulamayı kurduğunuz andan itibaren, onu kullandığınız sürece geçerlidir.</p>
+
+      <h2 id="architecture">Stade Gerçekte Nasıl Çalışır</h2>
+      <p>Çoğu gizlilik politikası, bir şirketin verilerinizi işlerken uymayı taahhüt ettiği kuralları açıklar. Bu politika farklıdır, çünkü konuşmalarınızın yolunda, hakkında söz verebileceğimiz herhangi bir altyapımız yoktur.</p>
+      <p>Stade'de bir mesaj, fotoğraf, video veya sesli mesaj gönderdiğinizde, bu doğrudan cihazınızdan kişinizin cihazına gider. Hiçbir şey bizim işlettiğimiz bir sunucudan geçmez, çünkü böyle bir sunucu yoktur. Bağlantı:</p>
+      <ul>
+        <li><strong>Double Ratchet protokolüyle uçtan uca şifrelenir</strong>; bunun altında klasik (X25519) ve kuantum-sonrası (ML-KEM) kriptografiyi birleştiren hibrit bir anahtar değişimi bulunur &mdash; böylece ikisinden yalnızca biri kırılsa bile oturum güvenli kalır.</li>
+        <li><strong>Kişinize ulaşabilecek hangi taşıma yöntemi varsa onun üzerinden iletilir</strong>: yakınındaysanız yerel ağınız (LAN), değilseniz Tor.</li>
+      </ul>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Mesaj içeriğinizi, kişi listenizi veya kiminle ne zaman konuştuğunuza dair meta verileri saklayan, ileten veya bunlara erişimi olan hiçbir sunucu işletmiyoruz. Bizim tarafımızda ihlal edilecek, mahkeme celbiyle istenecek veya teslim edilecek hiçbir şey yok &mdash; çünkü elimizde yok.</p>
+      </div>
+      <p>Tam algoritmalar, ağ protokolü ve anahtar türetimi için dokümanlardaki <a class="inline" href="docs.html#cryptographic-primitives">Kriptografik Temel Bileşenler</a> sayfasına bakın. Bu sayfa mimarinin nasıl inşa edildiğiyle değil, verileriniz için ne anlama geldiğiyle ilgilidir.</p>
+
+      <h2 id="storage">Verileriniz Nerede Yaşar</h2>
+      <p>Stade'in bildiği her şey &mdash; mesajlarınız, kişi listeniz, anahtarlarınız &mdash; tam olarak tek bir yerde saklanır: kendi cihazınızda. Hiçbir şey bizim işlettiğimiz bir sunucuya yansıtılmaz, senkronize edilmez veya yedeklenmez, çünkü böyle bir sunucu yoktur.</p>
+      <p>Bunun doğrudan bir sonucu var: silmek gerçektir. Bir görüşmeyi silin veya uygulamayı kaldırın; o veri gider &mdash; kalıcı olarak ve yalnızca cihazınızdan, çünkü var olduğu tek yer cihazınızdı. Geri yükleyebileceğimiz hiçbir kopyayı hiçbir yerde tutmuyoruz; bizi buna zorlayacak biri de bunu yapamaz.</p>
+      <p>Uygulamayı kendi seçtiğiniz bir parolayla da kilitleyebilirsiniz. Kilitliyken, yerel mesaj veritabanınız bekleme durumunda şifrelenir ve bu parolayı unutursanız bir kurtarma yolu yoktur &mdash; bu bir tasarım tercihidir, gözden kaçan bir eksiklik değil. Sizin için bir arka kapı, cihazınızı ele geçiren herkes için de bir arka kapı olurdu.</p>
+
+      <h2 id="identity">Kimliğiniz &mdash; Hesap Yok</h2>
+      <p>Stade'de kayıt olma, kullanıcı adı veritabanı veya kullanıcı hesabına benzer hiçbir şey yoktur. Uygulamayı ilk açtığınızda, cihazınızda yerel olarak kriptografik bir kimlik oluşturulur &mdash; <strong>Stade ID</strong>'niz. Var olan tek kimlik budur.</p>
+      <p>Telefon numarası, e-posta adresi veya başka herhangi bir kişisel bilgi asla istemeyiz &mdash; uygulamada bunlar için bir alan bile yoktur. Bir parola kurtarma akışı yoktur, çünkü bir parolanın açacağı sunucu tarafı bir hesap yoktur. Kişilerinize yalnızca kendi oluşturduğunuz, kontrolünüzdeki donanımda duran bir anahtarla tanınırsınız.</p>
+
+      <h2 id="stadium">Stadium Yayın Kanalları</h2>
+      <p>Bir <a class="inline" href="docs.html#stadium">Stadium</a>, Stade içinde bir yöneticinin paylaşım yaptığı ve davet bağlantısına sahip herkesin abone olup okuyabildiği herkese açık bir kanaldır. Paylaşımlar, diğer her mesaj gibi uçtan uca şifrelenir.</p>
+      <p>Bir Stadium'un ortaya koyduğu tek toplu bilgi, adının yanında gösterilen canlı bir abone sayısıdır.</p>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Bu sayının ötesinde, bir Stadium'a kimin abone olduğunu kimse göremez &mdash; ne diğer aboneler, ne de onu oluşturan yönetici. Sızdırılacak bir üye listesi yoktur, çünkü böyle bir liste hiçbir yerde, kimse tarafından hiç oluşturulmaz.</p>
+      </div>
+
+      <h2 id="not-collected">Toplamadığımız Veriler</h2>
+      <p>Veri toplayacağımız bir sunucumuz olmamasının ötesinde, üçüncü tarafları da uygulamanın tamamen dışında tuttuk:</p>
+      <ul>
+        <li><strong>Analitik SDK'sı yok.</strong></li>
+        <li><strong>Çökme raporlama yok.</strong></li>
+        <li><strong>Anlık bildirim servisi yok</strong> &mdash; Firebase Cloud Messaging yok, bir benzeri de yok. Bildirimler tamamen cihazınızda oluşturulur.</li>
+        <li><strong>Reklam SDK'sı yok.</strong></li>
+        <li><strong>Etkinliğinizi gözlemleyen bir önyükleme, aktarım veya keşif sunucusu yok</strong> &mdash; bir bağlantı kurmak bile doğrudan eşler arasında ya da kamuya açık Tor ağı üzerinden gerçekleşir, bizim işlettiğimiz bir altyapı üzerinden değil.</li>
+      </ul>
+      <p>Uygulamayı nasıl kullandığınızı izlemeyiz. Sizin hakkınızda bir profil oluşturmayız. Hiçbir reklam ilişkimiz ve veri komisyonculuğu ilişkimiz yok, çünkü karşılığında reklam verecek veya komisyonculuğunu yapacak bir verimiz yok.</p>
+      <p>Bunların hiçbiri için sözümüze güvenmek zorunda değilsiniz. Stade, GPL-3.0 lisansı altında tamamen açık kaynaklıdır &mdash; uygulamada yer alan her bağımlılık ve her kod satırı <a class="inline" href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">github.com/Stade-App/stade</a> adresinde herkese açıktır. Herkes kaynak kodu okuyup yukarıdakileri güvenmek yerine doğrudan doğrulayabilir.</p>
+
+      <h2 id="permissions">İzinler ve Nedenleri</h2>
+      <p>Stade, cihazınızdan az sayıda izin ister. Her biri, hakkınızda bilgi toplamak için değil, uygulamanın çalışmasını sağlamak için vardır.</p>
+      <table class="spec-table">
+        <thead>
+          <tr><th>İzin</th><th>Stade Neden İstiyor</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>İnternet, ağ durumu, Wi&#8209;Fi durumu</strong></td>
+            <td>Diğer Stade kullanıcılarına doğrudan bağlanmak için &mdash; yerel ağınız üzerinden veya Tor aracılığıyla. Bize &ldquo;haber vermek&rdquo; için bir sunucu yoktur; bu izin yalnızca eşlere ulaşmak içindir.</td>
+          </tr>
+          <tr>
+            <td><strong>Kamera</strong></td>
+            <td>Yalnızca göndermek üzere bir fotoğraf veya video çekmek için Stade içinde kamerayı etkin şekilde açtığınızda kullanılır. Arka planda asla erişilmez.</td>
+          </tr>
+          <tr>
+            <td><strong>Mikrofon</strong></td>
+            <td>Yalnızca uygulama içinde etkin şekilde bir sesli mesaj kaydederken kullanılır. Arka planda asla erişilmez.</td>
+          </tr>
+          <tr>
+            <td><strong>Bildirimler</strong></td>
+            <td>Yeni mesajlar veya bağlantılar konusunda sizi uyarmak için. Bunlar tamamen cihazınızda oluşturulur &mdash; bir anlık bildirim sunucusu (Firebase/FCM) devreye girmez, çünkü bu, bir mesaj aldığınızı üçüncü bir tarafın öğrenmesi anlamına gelirdi.</td>
+          </tr>
+          <tr>
+            <td><strong>Ön planda çalışan servis</strong> (Android)</td>
+            <td>Uygulama açıkken veya arka planda çalışırken eşler arası bağlantınızı canlı tutar, böylece mesajlar yine de ulaşabilir. Bir bağlantı soketini canlı tutmak için vardır &mdash; arka planda veri toplamak için değil.</td>
+          </tr>
+          <tr>
+            <td><strong>Önyükleme tamamlandı alıcısı</strong> (Android)</td>
+            <td>Stade, bir mesaj geldiğinde uygulamayı uyandırmak için anlık bildirim kullanmaz; bu nedenle bu izin yalnızca cihazınız yeniden başlatıldıktan sonra Stade'i tekrar açmanızı hatırlatmak için kullanılır &mdash; aksi hâlde uygulamanın çalışmadığını ve bağlı olmadığını fark etmeyebilirsiniz.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Ön planda çalışan servis ve önyükleme tamamlandı alıcısı Android'e özgü kavramlardır; masaüstü sürümleri Android'in izin modelini kullanmaz, ancak aynı ilkeyi izler &mdash; erişim, açtığınız uygulamayı çalıştırmak içindir, arka planda bir şeyi gözlemlemek için değil.</p>
+
+      <h2 id="tor">Tor</h2>
+      <p>Stade, yerel ağınızın yanı sıra <a class="inline" href="docs.html#tor">Tor</a>'u da yerleşik bir taşıma yöntemi olarak içerir &mdash; ikisi de varsayılan olarak açıktır ve her biri ayarlardan ayrı ayrı kapatılabilir.</p>
+      <p>Bir bağlantıyı Tor üzerinden yönlendirmek, IP adresinizi konuştuğunuz kişiden ve ağı gözlemleyen herkesten gizler. Her cihaz bir Tor gizli (onion) hizmeti olarak çalışır, böylece bir Stade bağlantısı hiçbir noktada açık internete çıkmadan baştan sona Tor ağı içinde kalır. Tor'u doğrudan uygulamanın içine gömdük; bu yüzden onu kullanmak için Orbot gibi üçüncü taraf bir uygulamayı ayrıca kurmanıza veya ona güvenmenize gerek yok.</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Tor'un kendisi, bizim işletmediğimiz ve kontrol etmediğimiz, gönüllüler tarafından işletilen bir ağdır. Performansı &mdash; bağlantı hızı, yeni bir oturum kurma süresi &mdash; bu ağın durumuna bağlıdır ve her anonimlik ağı gibi, bizim tarafımızdan değil, doğrudan Tor Project tarafından belgelenen bilinen sınırlamaları vardır.</p>
+      </div>
+
+      <h2 id="limitations">Bunun Koruyamadığı Şeyler</h2>
+      <p>Stade'in mimarisinin neyi garanti ettiği konusunda dürüst olmak, neyi garanti edemeyeceği konusunda da dürüst olmak demektir:</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <ul>
+          <li>Kilidi açıkken veya uygulama parolası ayarlanmamışken kaybolan, çalınan ya da el konulan bir cihaz, onu elinde bulunduran kişi tarafından okunabilir. Şifreleme, veriyi iletim sırasında ve bekleme durumunda korur; zaten kilidi açık bir ekranı koruyamaz.</li>
+          <li>Bir kişinin kimliğine ilk temasta güvenmek, yalnızca yaptığınız doğrulama kadar güçlüdür. Güvenlik numaralarını karşılaştırmayı atlarsanız, bu ilk değişimde konumlanmış bir saldırgan teorik bir risktir &mdash; <a class="inline" href="docs.html#verifying-a-contact">bir kişiyi doğrulamak</a> bu açığı kapatır.</li>
+          <li>Cihazınızda zaten çalışan bir kötü amaçlı yazılım, uygulamanın okuyabildiği her şeyi okuyabilir. Hiçbir uygulama katmanı şifrelemesi, ele geçirilmiş bir işletim sistemine karşı koruma sağlamaz.</li>
+          <li>Tor, kiminle konuştuğunuzu ağdan gizler; ancak Tor çalıştırdığınız gerçeğini kendi internet sağlayıcınızdan gizlemez ve yalnızca arkasındaki gönüllü ağ kadar hızlı ve güvenilirdir.</li>
+        </ul>
+      </div>
+
+      <h2 id="children">Çocukların Gizliliği</h2>
+      <p>Stade, kimseden &mdash; yetişkin ya da reşit olmayan &mdash; bilerek kişisel bilgi toplamaz, çünkü zaten hiç kişisel bilgi toplamaz ve yaşın sorulabileceği ya da doğrulanabileceği bir hesap sistemi de yoktur. Uygulama küçük çocuklar için tasarlanmamış veya pazarlanmamıştır; bir ebeveynseniz, vereceğiniz karar herhangi bir iletişim aracı için vereceğiniz kararla aynıdır.</p>
+
+      <h2 id="changes">Bu Politikadaki Değişiklikler</h2>
+      <p>Bu politika değişirse, üstteki &ldquo;Son güncelleme&rdquo; tarihini güncelleyip değişikliği burada yayımlarız. Bu bir formalite değil &mdash; gerçekten elimizdeki tek kanal bu, çünkü sizi bilgilendirmek için bir e-posta adresi veya telefon numarası toplamıyoruz. Önemli değişiklikler ayrıca GitHub'daki projenin sürüm notlarında, birlikte geldikleri sürümle birlikte belirtilecek; böylece bir sürümde nelerin değiştiğini görmek için zaten baktığınız yerden görülebilir olacaklar. Önemli bir değişikliği, bunu açıkça belirtmeden geçmişe dönük olarak uygulamayacağız.</p>
+
+      <h2 id="rights">Haklarınız</h2>
+      <p>GDPR (AB/İngiltere) ve CCPA (Kaliforniya) gibi düzenlemeler, kişisel verileriniz üzerinde size haklar tanır &mdash; ona erişmek, düzeltmek, silmek veya yanınızda götürmek gibi. Bu haklar, başka birinin sizinle ilgili elinde tuttuğu veriler üzerinde size söz hakkı vermek için vardır.</p>
+      <p>Stade söz konusu olduğunda, bu hakların kapatacağı bir boşluk yoktur: mesajlarınız, kişileriniz ve anahtarlarınız zaten yalnızca kendi cihazınızda, kendi kontrolünüzde ve yalnızca sizin çözebileceğiniz bir biçimde saklanır.</p>
+      <ul>
+        <li><strong>Erişim</strong> &mdash; uygulamayı açın. Her şey zaten orada, eksiksiz ve gerçek zamanlı olarak bulunur; bizden talep edilecek ayrı bir kopya yoktur.</li>
+        <li><strong>Silme / yok etme</strong> &mdash; bir görüşmeyi silin veya uygulamayı kaldırın. Bu, anında, kalıcı ve bu yasalar kapsamında &ldquo;yok etme&rdquo;nin tam olarak ifade ettiği şeydir.</li>
+        <li><strong>Düzeltme</strong> &mdash; uygulama içinde düzenleyin ya da silip yeniden gönderin. Eski sürümün bizim düzeltebileceğimiz herhangi bir dış kaydı yoktur.</li>
+        <li><strong>Taşınabilirlik</strong> &mdash; bugün özel bir &ldquo;dışa aktar&rdquo; düğmesi yok, ancak verinize sahip olmanız için buna gerek de yok: veri zaten kontrolünüzdeki yerel bir veritabanı dosyasında yaşıyor ve onu cihazınızın kendi araçlarıyla kopyalamanızın veya yedeklemenizin önünde hiçbir engel yok.</li>
+        <li><strong>Satışa veya paylaşıma itiraz</strong> &mdash; kişisel bilgi satmıyor veya paylaşmıyoruz. Satacak elimizde zaten hiçbir şey yok.</li>
+      </ul>
+      <p>AB/İngiltere'de veya Kaliforniya'daysanız ve bunlarla ilgili bir sorunuz varsa aşağıdaki İletişim bölümüne bakın &mdash; ancak pratikte, hiç almadığımız bir veri üzerinde işlem yapabilecek durumda değiliz. Bu yokluk bir boşluk değil, tasarımın tüm amacıdır.</p>
+
+      <h2 id="contact">İletişim</h2>
+      <p>Stade, GitHub üzerinde geliştirilen açık kaynaklı bir projedir. Gizlilikle ilgili sorularınız için, onu geliştiren kişilere ulaşmanın en güvenilir yolu <a class="inline" href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">github.com/Stade-App/stade</a> adresinde bir tartışma veya issue açmaktır &mdash; hata bildirimleri ve projeyle ilgili diğer her şey için kullanılan yer aynısıdır.</p>
+      </template>
+
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="logo.png" class="logo-mark" alt="Stade" />
+          Stade
+        </a>
+        <p data-tr="Merkezi sunucu olmadan, gözetim olmadan, sınır olmadan iletişim kurun. Kotlin Multiplatform ile Android ve masaüstü desteği.">Communicate without a central server, without surveillance, without limits. Android and desktop support via Kotlin Multiplatform.</p>
+        <span class="footer-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <span data-tr="GPL-3.0 &middot; Açık Kaynak">GPL-3.0 &middot; Open Source</span>
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" data-tr="Ana Sayfa">Home</a>
+        <a href="docs.html" data-tr="Dokümanlar">Docs</a>
+        <a href="downloads.html" data-tr="İndirmeler">Downloads</a>
+        <a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener" data-tr="Lisans">License</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small data-tr="&copy; 2026 Stade &middot; GPL-3.0 lisansı altında dağıtılmaktadır">&copy; 2026 Stade &middot; Distributed under the GPL-3.0 license</small>
+      <small style="font-family:'JetBrains Mono',monospace;font-size:12px;">github.com/Stade-App/stade</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var LANG_KEY = 'stade-lang';
+    var TITLE_EN = document.title;
+    var TITLE_TR = 'Gizlilik Politikası — Stade';
+    var DESC_EL = document.querySelector('meta[name="description"]');
+    var DESC_EN_TEXT = DESC_EL ? DESC_EL.getAttribute('content') : '';
+    var DESC_TR_TEXT = "Stade'in gizlilik politikası — sunucusuz, eşler arası, uçtan uca şifreli, hesapsız bir mesajlaşma uygulamasının verilerinizi nasıl ele aldığı. Sade bir dille.";
+
+    var article = document.getElementById('privacyArticle');
+    var tpl = article.querySelector('template.i18n-tr');
+    var articleI18n = { en: article.innerHTML, tr: tpl ? tpl.innerHTML : null };
+    if (tpl) tpl.remove();
+
+    document.querySelectorAll('[data-tr]').forEach(function (el) {
+      if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    });
+    document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+      if (el.dataset.enAria === undefined) el.dataset.enAria = el.getAttribute('aria-label') || '';
+    });
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-tr]').forEach(function (el) {
+        el.textContent = lang === 'tr' ? el.getAttribute('data-tr') : el.dataset.en;
+      });
+      document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
+      });
+      if (articleI18n.tr) article.innerHTML = lang === 'tr' ? articleI18n.tr : articleI18n.en;
+
+      var toggle = document.getElementById('langToggle');
+      if (toggle) toggle.textContent = lang === 'tr' ? 'EN' : 'TR';
+      document.title = lang === 'tr' ? TITLE_TR : TITLE_EN;
+      if (DESC_EL) DESC_EL.setAttribute('content', lang === 'tr' ? DESC_TR_TEXT : DESC_EN_TEXT);
+      localStorage.setItem(LANG_KEY, lang);
+    }
+
+    var stored = localStorage.getItem(LANG_KEY);
+    applyLang(stored === 'tr' ? 'tr' : 'en');
+
+    var langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', function () {
+      applyLang(document.documentElement.lang === 'tr' ? 'en' : 'tr');
+    });
+  })();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Stade Documentation — guides, references and resources for the serverless, end-to-end encrypted, post-quantum messaging app." />
-<meta name="theme-color" content="#080910" />
+<meta name="theme-color" content="#0a0a0a" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <title>Docs — Stade</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,22 +14,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #080910;
-  --bg-elev: #0c0e1a;
-  --bg-card: rgba(16, 19, 38, 0.6);
-  --bg-card-hover: rgba(22, 26, 52, 0.82);
-  --border: rgba(100, 115, 200, 0.1);
-  --border-strong: rgba(130, 145, 220, 0.2);
-  --border-accent: rgba(124, 92, 255, 0.32);
-  --text: #eceef8;
-  --text-muted: #838aa6;
-  --text-dim: #4b526e;
-  --accent: #7c5cff;
-  --accent-light: #9d82ff;
-  --accent-2: #3d9eff;
-  --accent-3: #00d4aa;
-  --accent-glow: rgba(124, 92, 255, 0.38);
-  --gradient: linear-gradient(135deg, #7c5cff 0%, #3d9eff 100%);
+  --bg: #0a0a0a;
+  --bg-elev: #101010;
+  --bg-card: rgba(26,26,26,0.6);
+  --bg-card-hover: rgba(34,34,34,0.82);
+  --border: rgba(140,140,140,0.1);
+  --border-strong: rgba(170,170,170,0.2);
+  --border-accent: rgba(224,224,224,0.32);
+  --text: #f0f0f0;
+  --text-muted: #8a8a8a;
+  --text-dim: #545454;
+  --accent: #e0e0e0;
+  --accent-light: #ffffff;
+  --accent-2: #b0b0b0;
+  --accent-3: #cacaca;
+  --accent-glow: rgba(224,224,224,0.38);
+  --gradient: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
   --radius: 16px;
   --radius-lg: 24px;
   --sidebar-w: 280px;
@@ -50,8 +50,8 @@ body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(124,92,255,0.14), transparent 55%),
-    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(61,158,255,0.1), transparent 55%);
+    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(224,224,224,0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(176,176,176,0.1), transparent 55%);
   pointer-events: none; z-index: 0;
 }
 
@@ -63,7 +63,7 @@ nav {
   height: var(--nav-h);
   backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
-  background: rgba(8, 9, 16, 0.82);
+  background: rgba(10,10,10,0.82);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
@@ -79,7 +79,7 @@ nav {
 .docs-tag {
   font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
   color: var(--accent-light); padding: 3px 9px; border-radius: 6px;
-  background: rgba(124,92,255,0.1); border: 1px solid var(--border-accent);
+  background: rgba(224,224,224,0.1); border: 1px solid var(--border-accent);
 }
 .nav-links { display: flex; gap: 4px; list-style: none; }
 .nav-links a {
@@ -95,6 +95,14 @@ nav {
   color: var(--text); font-size: 14px; font-weight: 500; transition: all 0.2s; white-space: nowrap;
 }
 .nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 38px; padding: 0 12px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
 .sidebar-toggle {
   display: none; width: 38px; height: 38px; flex-shrink: 0;
   background: none; border: 1px solid var(--border-strong); border-radius: 8px;
@@ -142,7 +150,7 @@ nav {
 }
 .nav-group a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 .nav-group a.active {
-  color: var(--accent-light); background: rgba(124,92,255,0.1);
+  color: var(--accent-light); background: rgba(224,224,224,0.1);
   box-shadow: inset 2px 0 0 var(--accent);
 }
 
@@ -201,19 +209,19 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
 .pill {
   font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
   padding: 5px 12px; border-radius: 8px;
-  background: rgba(124,92,255,0.08); border: 1px solid rgba(124,92,255,0.22); color: var(--accent-light);
+  background: rgba(224,224,224,0.08); border: 1px solid rgba(224,224,224,0.22); color: var(--accent-light);
 }
 
 .callout {
   display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius);
-  background: rgba(124,92,255,0.06); border: 1px solid var(--border-accent);
+  background: rgba(224,224,224,0.06); border: 1px solid var(--border-accent);
   margin: 28px 0;
 }
 .callout svg { width: 20px; height: 20px; color: var(--accent-light); flex-shrink: 0; margin-top: 2px; }
 .callout p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
-.callout.warn { background: rgba(255,107,107,0.06); border-color: rgba(255,107,107,0.3); }
-.callout.warn svg { color: #ff8a8a; }
-.callout.ok { background: rgba(0,212,170,0.06); border-color: rgba(0,212,170,0.28); }
+.callout.warn { background: rgba(122,122,122,0.06); border-color: rgba(122,122,122,0.3); }
+.callout.warn svg { color: #a0a0a0; }
+.callout.ok { background: rgba(202,202,202,0.06); border-color: rgba(202,202,202,0.28); }
 .callout.ok svg { color: var(--accent-3); }
 
 .doc-footer-nav {
@@ -252,12 +260,12 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
 
 .sidebar-scrim {
   display: none; position: fixed; inset: var(--nav-h) 0 0; z-index: 90;
-  background: rgba(4,5,10,0.6); backdrop-filter: blur(2px);
+  background: rgba(6,6,6,0.6); backdrop-filter: blur(2px);
 }
 
 .search-overlay {
   display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(4,5,10,0.7); backdrop-filter: blur(4px);
+  background: rgba(6,6,6,0.7); backdrop-filter: blur(4px);
   padding: 14vh 20px 20px; justify-content: center; align-items: flex-start;
 }
 .search-overlay.open { display: flex; }
@@ -285,7 +293,7 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
 }
 .search-result .r-title { font-size: 14.5px; color: var(--text); font-weight: 500; }
 .search-result .r-group { font-size: 12px; color: var(--text-dim); }
-.search-result:hover, .search-result.active { background: rgba(124,92,255,0.12); }
+.search-result:hover, .search-result.active { background: rgba(224,224,224,0.12); }
 .search-result.active .r-title { color: var(--accent-light); }
 .search-empty { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 14px; }
 
@@ -320,27 +328,29 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" data-tr-aria="Kenar çubuğunu aç/kapat" aria-label="Toggle sidebar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <a href="index.html" class="logo">
         <img src="logo.png" class="logo-mark" alt="Stade" />
         Stade
       </a>
-      <span class="docs-tag">docs</span>
+      <span class="docs-tag" data-tr="dokümanlar">docs</span>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html#features">Features</a></li>
-      <li><a href="index.html#transport">Transport</a></li>
-      <li><a href="index.html#how">How It Works</a></li>
-      <li><a href="index.html#tech">Technical</a></li>
-      <li><a href="docs.html">Docs</a></li>
+      <li><a href="index.html#features" data-tr="Özellikler">Features</a></li>
+      <li><a href="index.html#transport" data-tr="Taşıma">Transport</a></li>
+      <li><a href="index.html#how" data-tr="Nasıl Çalışır">How It Works</a></li>
+      <li><a href="index.html#tech" data-tr="Teknik">Technical</a></li>
+      <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+      <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
         <span>GitHub</span>
       </a>
+      <button class="lang-toggle" id="langToggle" type="button" data-tr-aria="Dili değiştir" aria-label="Switch language">TR</button>
     </div>
   </div>
 </nav>
@@ -353,55 +363,55 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
    <div class="sidebar-scroll">
     <button class="sidebar-search" id="searchTrigger" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Search docs
+      <span data-tr="Dokümanlarda ara">Search docs</span>
       <span class="kbd">Ctrl K</span>
     </button>
 
     <div class="nav-group">
-      <div class="nav-group-title">Getting Started</div>
+      <div class="nav-group-title" data-tr="Başlarken">Getting Started</div>
       <ul>
-        <li><a data-id="introduction">Introduction</a></li>
-        <li><a data-id="installation">Installation</a></li>
-        <li><a data-id="quick-start">Quick Start</a></li>
-        <li><a data-id="creating-your-identity">Creating Your Identity</a></li>
+        <li><a data-id="introduction" data-tr="Giriş">Introduction</a></li>
+        <li><a data-id="installation" data-tr="Kurulum">Installation</a></li>
+        <li><a data-id="quick-start" data-tr="Hızlı Başlangıç">Quick Start</a></li>
+        <li><a data-id="creating-your-identity" data-tr="Kimliğinizi Oluşturma">Creating Your Identity</a></li>
       </ul>
     </div>
 
     <div class="nav-group">
-      <div class="nav-group-title">Core Concepts</div>
+      <div class="nav-group-title" data-tr="Temel Kavramlar">Core Concepts</div>
       <ul>
-        <li><a data-id="architecture-overview">Architecture Overview</a></li>
-        <li><a data-id="peer-to-peer-model">Peer-to-Peer Model</a></li>
-        <li><a data-id="encryption">Encryption</a></li>
-        <li><a data-id="identity-and-keys">Identity &amp; Keys</a></li>
+        <li><a data-id="architecture-overview" data-tr="Mimariye Genel Bakış">Architecture Overview</a></li>
+        <li><a data-id="peer-to-peer-model" data-tr="Eşler Arası Model">Peer-to-Peer Model</a></li>
+        <li><a data-id="encryption" data-tr="Şifreleme">Encryption</a></li>
+        <li><a data-id="identity-and-keys" data-tr="Kimlik ve Anahtarlar">Identity &amp; Keys</a></li>
       </ul>
     </div>
 
     <div class="nav-group">
-      <div class="nav-group-title">Transport Layers</div>
+      <div class="nav-group-title" data-tr="Taşıma Katmanları">Transport Layers</div>
       <ul>
-        <li><a data-id="transport-layers">Overview</a></li>
+        <li><a data-id="transport-layers" data-tr="Genel Bakış">Overview</a></li>
         <li><a data-id="lan">LAN</a></li>
         <li><a data-id="tor">Tor</a></li>
       </ul>
     </div>
 
     <div class="nav-group">
-      <div class="nav-group-title">Guides</div>
+      <div class="nav-group-title" data-tr="Rehberler">Guides</div>
       <ul>
         <li><a data-id="stadium">Stadium</a></li>
-        <li><a data-id="verifying-a-contact">Verifying a Contact</a></li>
-        <li><a data-id="locking-the-app">Locking the App</a></li>
-        <li><a data-id="troubleshooting">Troubleshooting</a></li>
+        <li><a data-id="verifying-a-contact" data-tr="Bir Kişiyi Doğrulama">Verifying a Contact</a></li>
+        <li><a data-id="locking-the-app" data-tr="Uygulamayı Kilitleme">Locking the App</a></li>
+        <li><a data-id="troubleshooting" data-tr="Sorun Giderme">Troubleshooting</a></li>
       </ul>
     </div>
 
     <div class="nav-group">
-      <div class="nav-group-title">Reference</div>
+      <div class="nav-group-title" data-tr="Referans">Reference</div>
       <ul>
-        <li><a data-id="cryptographic-primitives">Cryptographic Primitives</a></li>
-        <li><a data-id="glossary">Glossary</a></li>
-        <li><a data-id="faq">FAQ</a></li>
+        <li><a data-id="cryptographic-primitives" data-tr="Kriptografik Temel Bileşenler">Cryptographic Primitives</a></li>
+        <li><a data-id="glossary" data-tr="Sözlük">Glossary</a></li>
+        <li><a data-id="faq" data-tr="SSS">FAQ</a></li>
       </ul>
     </div>
    </div>
@@ -410,7 +420,7 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
   <main class="doc-main">
     <div class="breadcrumb" id="breadcrumb"></div>
 
-    <article class="doc-article" id="introduction" data-group="Getting Started" data-title="Introduction">
+    <article class="doc-article" id="introduction" data-group="Getting Started" data-title="Introduction" data-group-tr="Başlarken" data-title-tr="Giriş">
       <h1>Introduction</h1>
       <p class="doc-lead">Stade is a private messenger built on a simple promise: <strong>a message belongs only to the two people having the conversation.</strong> No company sits in the middle, no server stores your chats, and no account ties your identity to a phone number or an email address.</p>
 
@@ -441,16 +451,46 @@ pre code { background: none; border: none; padding: 0; color: var(--text); font-
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <p>Because there is no server, Stade cannot read, log, recover or reset anything for you. That is the point &mdash; but it also means <strong>you</strong> hold the keys. Lose your device and your backup, and that identity and its conversations are gone.</p>
       </div>
+      <template class="i18n-tr"><h1>Giriş</h1>
+      <p class="doc-lead">Stade, basit bir vaade dayanan özel bir mesajlaşma uygulamasıdır: <strong>bir mesaj yalnızca sohbeti yapan iki kişiye aittir.</strong> Aradaki bir şirket yoktur, sohbetlerinizi saklayan bir sunucu yoktur ve kimliğinizi bir telefon numarasına veya e-posta adresine bağlayan bir hesap yoktur.</p>
+
+      <h2 id="what-makes-stade-different">Stade'i farklı kılan nedir</h2>
+      <p>Çoğu mesajlaşma uygulaması, mesajlarınızı kendi sunucuları üzerinden yönlendirir. Bu mesajlar şifrelenmiş olsa bile, sağlayıcı yine de kiminle, ne zaman ve nereden konuştuğunuzu görür. Stade bu aracıyı tamamen ortadan kaldırır:</p>
+      <ul>
+        <li><strong>Sunucu yok.</strong> İki cihaz birbirine <em>doğrudan</em> bağlanır. Uygulamanın kendisi ağın tamamıdır.</li>
+        <li><strong>Hesap yok.</strong> Kendi cihazınızda oluşturduğunuz kriptografik bir anahtarla tanımlanırsınız. Hiçbir yerde hiçbir şey kayıtlı değildir.</li>
+        <li><strong>Varsayılan olarak uçtan uca şifreleme.</strong> Her mesaj, yalnızca alıcının cihazının açabileceği şekilde mühürlenir. Anahtarlar cihazınızdan asla çıkmaz.</li>
+        <li><strong>Kuantum sonrası kriptografi.</strong> Stade, klasik eliptik eğri kriptografisini NIST'in kuantum sonrası algoritmalarıyla (ML-KEM ve ML-DSA) birleştirir, böylece konuşmalar gelecekteki bir kuantum saldırganına karşı bile korunmaya devam eder.</li>
+        <li><strong>Meta veri direnci.</strong> Konuşmalar Tor üzerinden seyahat edebilir; bu da yalnızca <em>ne</em> söylediğinizi değil, <em>kiminle</em> konuştuğunuzu ve <em>nerede</em> olduğunuzu da gizler.</li>
+      </ul>
+
+      <h2 id="what-you-can-do">Neler yapabilirsiniz</h2>
+      <ul>
+        <li>Tam uçtan uca şifrelemeyle birebir metin mesajları alışverişi yapın.</li>
+        <li>Grup sohbetleri oluşturun ve bunlara katılın.</li>
+        <li>Yalnızca yöneticinin paylaşım yaptığı herkese açık bir kanal olan bir <a class="inline" data-go="stadium">Stadium</a> ile açık bir kitleye yayın yapın.</li>
+        <li><strong>Yerel ağınız</strong> üzerinden (hızlı, internetsiz) veya <strong>Tor</strong> üzerinden (anonim, internet üzerinden çalışır) bağlanın.</li>
+        <li>Bir kişinin kimliğini bir <strong>güvenlik numarasıyla</strong> doğrulayın, böylece arada bir sahtekar olmadığını bilirsiniz.</li>
+        <li>Uygulamayı, tüm mesaj veritabanınızı diskte şifreleyen bir parolayla kilitleyin.</li>
+      </ul>
+
+      <h2 id="where-it-runs">Nerede çalışır</h2>
+      <p>Stade, <strong>Android 8.0 (API 26)</strong> ve üzerinde ile <strong>masaüstünde</strong> &mdash; Windows, Linux ve macOS &mdash; çalışan tek bir uygulamadır. Aynı kriptografi, kimlik biçimi ve iletişim protokolü tüm platformlarda paylaşılır; böylece bir Android kullanıcısı ile bir masaüstü kullanıcısı, birbiriyle konuşan yalnızca iki eş olur.</p>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Sunucu olmadığı için Stade sizin adınıza hiçbir şeyi okuyamaz, günlüğe kaydedemez, kurtaramaz veya sıfırlayamaz. Bu, tam olarak amaçlanan şeydir &mdash; ama aynı zamanda anahtarları <strong>sizin</strong> elinizde tuttuğunuz anlamına da gelir. Cihazınızı ve yedeğinizi kaybederseniz, o kimlik ve konuşmaları da gitmiş olur.</p>
+      </div></template>
     </article>
 
-    <article class="doc-article" id="installation" data-group="Getting Started" data-title="Installation" hidden>
+    <article class="doc-article" id="installation" data-group="Getting Started" data-title="Installation" data-group-tr="Başlarken" data-title-tr="Kurulum" hidden>
       <h1>Installation</h1>
       <p class="doc-lead">Stade ships as a native application for Android and for the desktop. You can install a prebuilt package or build it yourself from source.</p>
 
       <h2 id="android">Android</h2>
       <p><strong>Requirements:</strong> Android 8.0 (API level 26) or newer.</p>
       <ol>
-        <li>Download the Stade APK (<code>composeApp-debug.apk</code> for development builds, or a signed release APK).</li>
+        <li><a class="inline" href="downloads.html">Download the Stade APK</a> (<code>composeApp-debug.apk</code> for development builds, or a signed release APK).</li>
         <li>Allow installation from your browser or file manager (<em>Settings &rarr; Apps &rarr; Special access &rarr; Install unknown apps</em>).</li>
         <li>Open the APK and tap <strong>Install</strong>.</li>
       </ol>
@@ -491,9 +531,56 @@ keystore.password=...
 keystore.alias=...
 keystore.keyPassword=...</code></pre>
       <p>If no keystore is configured, release builds fall back to the debug signing key so the build still succeeds for testing.</p>
+      <template class="i18n-tr"><h1>Kurulum</h1>
+      <p class="doc-lead">Stade, Android ve masaüstü için yerel bir uygulama olarak sunulur. Önceden derlenmiş bir paketi kurabilir veya kaynak koddan kendiniz derleyebilirsiniz.</p>
+
+      <h2 id="android">Android</h2>
+      <p><strong>Gereksinimler:</strong> Android 8.0 (API seviyesi 26) veya üzeri.</p>
+      <ol>
+        <li><a class="inline" href="downloads.html">Stade APK'sını indirin</a> (geliştirme derlemeleri için <code>composeApp-debug.apk</code>, ya da imzalı bir sürüm APK'sı).</li>
+        <li>Tarayıcınızdan veya dosya yöneticinizden kuruluma izin verin (<em>Ayarlar &rarr; Uygulamalar &rarr; Özel erişim &rarr; Bilinmeyen uygulamaları yükle</em>).</li>
+        <li>APK'yı açın ve <strong>Yükle</strong>'ye dokunun.</li>
+      </ol>
+      <p>Her Android ABI'si (<code>arm64-v8a</code>, <code>armeabi-v7a</code>, <code>x86_64</code>, <code>x86</code>) için gömülü Tor ikili dosyaları APK'nın içine paketlenmiştir; böylece Tor, ekstra indirme yapmadan kutudan çıktığı gibi çalışır.</p>
+
+      <h2 id="desktop">Masaüstü</h2>
+      <p>Stade, her işletim sistemi için yerel kurulum dosyaları üretir:</p>
+      <table class="spec-table">
+        <tr><th>İşletim Sistemi</th><th>Paket biçimi</th></tr>
+        <tr><td>Windows</td><td class="val">.exe installer</td></tr>
+        <tr><td>Linux</td><td class="val">.deb and AppImage</td></tr>
+        <tr><td>macOS</td><td class="val">.dmg</td></tr>
+      </table>
+      <p>Paketi, herhangi bir masaüstü uygulaması gibi kurun. İlk açılışta uygulama, gömülü Tor çalışma zamanını özel bir uygulama dizinine çıkarır. Linux'ta <em>Network</em> kategorisi altında <code>stade</code> olarak kurulur.</p>
+
+      <h2 id="building-from-source">Kaynaktan derleme</h2>
+      <p>Stade, Gradle ile derlenen bir Kotlin Multiplatform + Compose Multiplatform projesidir.</p>
+      <p><strong>Gereksinimler:</strong></p>
+      <ul>
+        <li>JDK 17 (proje, JVM araç zincirini 17'ye sabitler).</li>
+        <li>Android derlemeleri için <code>compileSdk</code> 35 ile Android SDK.</li>
+        <li>İlk derlemede internet bağlantısı &mdash; Gradle, her hedef için resmi Tor Expert Bundle'ı (sürüm 13.5.6) indirir ve uygulamanın kaynaklarına yerleştirir.</li>
+      </ul>
+      <pre><code>./gradlew :composeApp:assembleDebug                      # debug APK
+./gradlew :composeApp:assembleRelease                    # release APK (needs a keystore)
+./gradlew :composeApp:run                                # run the desktop app
+./gradlew :composeApp:packageDistributionForCurrentOS    # native desktop installer</code></pre>
+      <ul>
+        <li><strong>Tor ikili dosyaları derleme sırasında hash ile denetlenir.</strong> Her platformun beklenen SHA-256 değerini <code>gradle.properties</code> üzerinden sabitleyebilirsiniz; sabitlenmemiş bir hash uyarı verir, sabitlenmiş ama eşleşmeyen bir hash derlemeyi başarısız kılar.</li>
+        <li><strong>Yerel masaüstü paketleme yalnızca ana makinede çalışır.</strong> <code>jpackage</code> yalnızca çalıştığı işletim sistemi için bir kurulum dosyası üretir &mdash; <code>.deb</code>/AppImage'ı Linux'ta, <code>.exe</code>'yi Windows'ta, <code>.dmg</code>'yi macOS'ta derleyin.</li>
+        <li><strong>Bulutla senkronize klasörler yönlendirilir.</strong> OneDrive, Dropbox, Google Drive, iCloud, pCloud veya Box içindeyken derleme çıktısı <code>~/.stade-build/&lt;project-name&gt;/&hellip;</code> konumuna taşınır, böylece senkronizasyon istemcisi Gradle ile çakışmaz.</li>
+      </ul>
+
+      <h3 id="release-signing">Sürüm imzalama (Android)</h3>
+      <p>İmzalı bir sürüm üretmek için anahtar deponuzu <code>local.properties</code> dosyasına ekleyin:</p>
+      <pre><code>keystore.path=/absolute/path/to/your.keystore
+keystore.password=...
+keystore.alias=...
+keystore.keyPassword=...</code></pre>
+      <p>Bir anahtar deposu yapılandırılmamışsa, sürüm derlemeleri hata ayıklama imzalama anahtarına geri döner; böylece derleme test için yine de başarılı olur.</p></template>
     </article>
 
-    <article class="doc-article" id="quick-start" data-group="Getting Started" data-title="Quick Start" hidden>
+    <article class="doc-article" id="quick-start" data-group="Getting Started" data-title="Quick Start" data-group-tr="Başlarken" data-title-tr="Hızlı Başlangıç" hidden>
       <h1>Quick Start</h1>
       <p class="doc-lead">This guide takes you from a fresh install to your first encrypted message.</p>
 
@@ -525,9 +612,40 @@ keystore.keyPassword=...</code></pre>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         <p>That's it &mdash; you now have a serverless, end-to-end-encrypted conversation. If a connection won't establish, see <a class="inline" data-go="troubleshooting">Troubleshooting</a>.</p>
       </div>
+      <template class="i18n-tr"><h1>Hızlı Başlangıç</h1>
+      <p class="doc-lead">Bu kılavuz sizi yeni bir kurulumdan ilk şifreli mesajınıza kadar götürür.</p>
+
+      <h2 id="qs-create">1. Kimliğinizi oluşturun</h2>
+      <p>Stade'i ilk açtığınızda sizden bir <strong>takma ad</strong> istenir. Bir tane yazın ve <strong>Oluştur</strong>'a dokunun. Kayıt işleminin tamamı bu kadar &mdash; Stade cihazınızda yepyeni bir kriptografik anahtar seti oluşturur ve bunlardan <strong>Stade ID</strong>'nizi türetir:</p>
+      <pre><code>STADE-XXXX-XXXX-XXXX</code></pre>
+      <p>Bu sizin genel adresinizdir. Paylaşmak güvenlidir; hiçbir özel bilgi içermez.</p>
+
+      <h2 id="qs-invite">2. Davetinizi paylaşın</h2>
+      <p>Birinin sizi eklemesine izin vermek için <strong>davetinizi</strong> paylaşın &mdash; takma adınızı, genel anahtarlarınızı ve mevcut ulaşılabilir adreslerinizi (LAN ve/veya Tor) taşıyan, kendi kendine yeten, imzalı bir paket. Bunu bir <code>STADE2-&hellip;</code> metin kodu, bir <strong>QR kodu</strong> veya bir <code>.stadeid</code> dosyası olarak paylaşın. İki kez imzalanır &mdash; hem klasik <em>hem de</em> kuantum sonrası &mdash; böylece alıcının uygulaması davetin gerçekten sizin anahtarlarınızdan geldiğini doğrulayabilir.</p>
+
+      <h2 id="qs-add">3. Bir kişi ekleyin</h2>
+      <p><strong>Kişi Ekle</strong>'yi açın ve onların <code>STADE2-&hellip;</code> kodunu yapıştırın, QR kodlarını tarayın veya <code>.stadeid</code> dosyalarını açın. Kişiye bir isim verin ve onaylayın. Bu noktada Stade daveti yerel olarak ayrıştırmış ve doğrulamıştır, ancak kişi henüz kaydedilmemiştir &mdash; önce <strong>eşe bağlanması ve canlı bir el sıkışmayı tamamlaması</strong> gerekir.</p>
+
+      <h2 id="qs-wait">4. Bağlantıyı bekleyin</h2>
+      <ul>
+        <li><strong>LAN</strong> &mdash; ikiniz de aynı ağdaysanız bu neredeyse anındadır.</li>
+        <li><strong>Tor</strong> &mdash; internet üzerinden çalışır, ancak Tor önyükleme yaparken ve gizli hizmet tanımlayıcısı yayılırken ilk bağlantı birkaç saniyeden birkaç dakikaya kadar sürebilir. Bu normaldir.</li>
+      </ul>
+      <p>El sıkışmanın tamamlanması için her iki eşin de çevrimiçi olması ve uygulamayı çalıştırıyor olması gerekir. Bağlantı yöneticisi geri çekilmeli olarak yeniden denemeye devam eder, bu yüzden zamanlamayı mükemmel yapmanız gerekmez.</p>
+
+      <h2 id="qs-send">5. Bir mesaj gönderin</h2>
+      <p>Konuşmayı açın, yazın ve gönderin. İlk mesaj bir <strong>Double Ratchet</strong> oturumu kurar; ondan sonraki her mesaj yeni bir anahtar kullanır, böylece bir anahtar açığa çıksa bile diğer mesajlarınız korunmaya devam eder.</p>
+
+      <h2 id="qs-verify">6. Kişinizi doğrulayın (önerilir)</h2>
+      <p>Kişinin profilini açın ve <strong>Doğrula</strong>'ya dokunun. Her iki cihazda gösterilen <strong>güvenlik numarasını</strong> karşılaştırın &mdash; yüksek sesle okuyun veya yüz yüze karşılaştırın. Eşleşiyorsa, arada bir sahtekar olmadığına dair kriptografik kanıtınız var demektir.</p>
+
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Bu kadar &mdash; artık sunucusuz, uçtan uca şifreli bir konuşmanız var. Bir bağlantı kurulamıyorsa <a class="inline" data-go="troubleshooting">Sorun Giderme</a> bölümüne bakın.</p>
+      </div></template>
     </article>
 
-    <article class="doc-article" id="creating-your-identity" data-group="Getting Started" data-title="Creating Your Identity" hidden>
+    <article class="doc-article" id="creating-your-identity" data-group="Getting Started" data-title="Creating Your Identity" data-group-tr="Başlarken" data-title-tr="Kimliğinizi Oluşturma" hidden>
       <h1>Creating Your Identity</h1>
       <p class="doc-lead">In Stade there is no signup server, no username database and no password recovery. Your identity is a set of cryptographic keys generated locally the moment you choose a nickname.</p>
 
@@ -562,9 +680,43 @@ keystore.keyPassword=...</code></pre>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <p>No server holds a copy of anything. Lose your device <strong>and</strong> your backup of the app's data directory, and the identity and its conversations are unrecoverable. A new identity means a new Stade ID, and contacts would need to add you again.</p>
       </div>
+      <template class="i18n-tr"><h1>Kimliğinizi Oluşturma</h1>
+      <p class="doc-lead">Stade'de kayıt sunucusu, kullanıcı adı veritabanı veya parola kurtarma yoktur. Kimliğiniz, bir takma ad seçtiğiniz anda yerel olarak oluşturulan bir kriptografik anahtar setidir.</p>
+
+      <h2 id="cyi-generated">Ne üretilir</h2>
+      <p>Bir kimlik oluşturduğunuzda Stade <strong>dört anahtar çifti</strong> üretir ve bunları şifreli yerel veritabanınızda saklar:</p>
+      <table class="spec-table">
+        <tr><th>Amaç</th><th>Algoritma</th><th>Aile</th></tr>
+        <tr><td>İmzalama (kimlik)</td><td class="val">Ed25519</td><td>Klasik</td></tr>
+        <tr><td>Anahtar anlaşması (DH)</td><td class="val">X25519</td><td>Klasik</td></tr>
+        <tr><td>Anahtar kapsülleme (KEM)</td><td class="val">ML-KEM-768</td><td>Kuantum sonrası</td></tr>
+        <tr><td>İmzalama (KS)</td><td class="val">ML-DSA-65</td><td>Kuantum sonrası</td></tr>
+      </table>
+      <p><strong>Ed25519</strong> ve <strong>ML-DSA</strong> çiftleri, mesajların ve davetlerin gerçekten sizden geldiğini kanıtlar &mdash; Stade <em>her ikisiyle de</em> imzalar, böylece bir saldırganın sizi taklit edebilmesi için hem klasik hem de kuantum sonrası bir imzayı kırması gerekir. <strong>X25519</strong> ve <strong>ML-KEM</strong> çiftleri bir kişiyle paylaşılan sırlar kurar; bunları birleştirmek, oturum anahtarının yalnızca <em>ikisi de</em> kırılırsa güvensiz hale geleceği anlamına gelir. Özel yarılar cihazınızdan asla çıkmaz.</p>
+
+      <h2 id="cyi-stade-id">Stade ID'niz nasıl türetilir</h2>
+      <p>Stade ID'niz, <em>genel</em> kimlik anahtarlarınızın kısa, insan tarafından okunabilir bir parmak izidir:</p>
+      <ol>
+        <li>Bir alan etiketini (<code>stade-id-v1</code>), Ed25519 genel imzalama anahtarınızı ve ML-DSA genel anahtarınızı birleştirin.</li>
+        <li>Bunu <strong>BLAKE2b-256</strong> ile özetleyin (hash'leyin).</li>
+        <li>Özetin 60 bitini kimlik değeri olarak alın, artı 4 bitlik bir sağlama toplamı.</li>
+        <li><strong>Crockford Base32</strong> ile kodlayın (belirsiz I, L, O, U yok) &mdash; <code>STADE-XXXX-XXXX-XXXX</code> olarak gruplanmış 12 karakter.</li>
+      </ol>
+      <p>Kimlik <em>anahtarlarınızdan</em> türetildiği için sahtesi yapılamaz: davetinizi alan herkes ID'yi yeniden hesaplar ve eşleştiğini kontrol eder. Biçim ayrıca yazım hatalarına toleranslıdır &mdash; girdi büyük harfe çevrilir, boşluklar/tireler kaldırılır ve benzer görünen karakterler (<code>O&rarr;0</code>, <code>I&rarr;1</code>, <code>L&rarr;1</code>) sağlama toplamı doğrulanmadan önce yeniden eşlenir.</p>
+
+      <h2 id="cyi-share">Neyin paylaşılması güvenlidir</h2>
+      <ul>
+        <li><strong>Stade ID'niz ve davetiniz herkese açıktır.</strong> Yalnızca genel anahtarlar ve ulaşılabilirlik ipuçları içerirler &mdash; bunları paylaşmak, insanların sizi eklemesinin yoludur.</li>
+        <li><strong>Özel anahtarlarınız asla paylaşılmaz, dışa aktarılmaz veya iletilmez.</strong> Yalnızca şifreli veritabanınızda yaşarlar.</li>
+      </ul>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Hiçbir sunucu hiçbir şeyin kopyasını tutmaz. Cihazınızı <strong>ve</strong> uygulamanın veri dizininin yedeğini kaybederseniz, kimlik ve konuşmaları kurtarılamaz olur. Yeni bir kimlik, yeni bir Stade ID anlamına gelir ve kişilerin sizi yeniden eklemesi gerekir.</p>
+      </div></template>
     </article>
 
-    <article class="doc-article" id="architecture-overview" data-group="Core Concepts" data-title="Architecture Overview" hidden>
+    <article class="doc-article" id="architecture-overview" data-group="Core Concepts" data-title="Architecture Overview" data-group-tr="Temel Kavramlar" data-title-tr="Mimariye Genel Bakış" hidden>
       <h1>Architecture Overview</h1>
       <p class="doc-lead">Stade is one application that runs on Android and desktop from a single shared codebase. This is the map: the major pieces, how they layer, and how a message travels from your keyboard to your contact's screen.</p>
 
@@ -604,9 +756,48 @@ Storage       SQLDelight / SQLite, Vault (password-encrypted DB at rest)</code><
         <li><strong>Defense in depth via hybrid crypto.</strong> Classical and post-quantum algorithms are combined so a break in either family alone does not compromise a session.</li>
         <li><strong>Fail closed.</strong> Handshakes that don't match expected keys, sizes, protocol versions or transcript commitments are rejected rather than downgraded.</li>
       </ul>
+      <template class="i18n-tr"><h1>Mimariye Genel Bakış</h1>
+      <p class="doc-lead">Stade, tek bir paylaşılan kod tabanından Android ve masaüstünde çalışan tek bir uygulamadır. Bu, ana parçaların, birbirleriyle nasıl katmanlandıklarının ve bir mesajın klavyenizden kişinizin ekranına nasıl gittiğinin haritasıdır.</p>
+
+      <h2 id="ao-codebase">Tek kod tabanı, birçok platform</h2>
+      <p>Stade, <strong>Compose Multiplatform</strong> arayüzüyle <strong>Kotlin Multiplatform (KMP)</strong> ile yazılmıştır ve katmanlı kaynak setleri halinde düzenlenmiştir:</p>
+      <ul>
+        <li><code>commonMain</code> &mdash; uygulamanın büyük kısmı: arayüz, kimlik, kişiler, mesajlaşma, el sıkışma, Double Ratchet, senkronizasyon protokolü ve taşıma <em>arayüzleri</em>. Platformdan bağımsızdır.</li>
+        <li><code>jvmCommonMain</code> &mdash; Android ve masaüstü tarafından paylaşılır: BouncyCastle destekli kriptografi, LAN ve Tor taşımaları ve şifreli kasa.</li>
+        <li><code>androidMain</code> / <code>desktopMain</code> &mdash; ince platform katmanları: Android <code>Activity</code>/<code>Service</code>, masaüstü <code>main()</code>, Tor ikili dosya yükleme ve dosya seçiciler.</li>
+      </ul>
+      <p>Platforma özgü davranışlar <code>commonMain</code> içinde bir <code>expect</code> olarak tanımlanır ve her platformda <code>actual</code> ile uygulanır &mdash; örneğin <code>platformCrypto()</code> ve <code>platformPq()</code>, JVM/BouncyCastle uygulamalarına çözümlenir.</p>
+
+      <h2 id="ao-layers">Katmanlar</h2>
+      <pre><code>UI            Compose screens, view state
+App services  ContactManager / MessageManager, ChatService / GroupManager, SyncEngine
+Cryptography  CryptoApi (Ed25519, X25519, AEAD, HKDF), PqCrypto (ML-KEM-768, ML-DSA-65),
+              HandshakeService, DoubleRatchet
+Transport     ConnectionManager (dial/retry/backoff), LanTransport, TorTransport
+Storage       SQLDelight / SQLite, Vault (password-encrypted DB at rest)</code></pre>
+      <p>Her şeyi birbirine bağlayan tek nesne <strong><code>AppContainer</code></strong>'dır &mdash; kripto sağlayıcılarını, veritabanını, yöneticileri, taşımaları ve senkronizasyon motorunu inşa eder ve bunları arayüze sunar.</p>
+
+      <h2 id="ao-flow">Bir mesaj nasıl akar</h2>
+      <ol>
+        <li><code>SyncEngine.queueOutgoing</code>, <strong>Double Ratchet</strong> oturumundan düz metni <em>mühürlemesini</em> ister ve yeni bir mesaj anahtarıyla bir ratchet çerçevesi üretir.</li>
+        <li>Mühürlenmiş çerçeve bir <code>MessagePayload</code> içine sarılır, serileştirilir ve onaylanana kadar hayatta kalması için <strong>Giden Kutusu</strong>'na yerleştirilir.</li>
+        <li>Etkin oturum, uzunluk ön ekli çerçeveleme kullanarak (<code>FrameCodec</code>: bir bayt kayıt türü + dört bayt uzunluk + yük) çerçeveyi bağlı olan taşıma üzerinden gönderir.</li>
+        <li>Eşin Double Ratchet'i onu <strong>açar</strong>, mesaj saklanır ve gösterilir, teslim edildiğini işaretlemek için bir <strong>ACK</strong> geri döner.</li>
+      </ol>
+      <p>Arka plandaki bir ping mekanizması bağlantıyı sıcak tutar ve <strong>ConnectionManager</strong>, bir oturum kurulana kadar bağlı olmayan kişileri üstel geri çekilmeyle sürekli aramaya devam eder.</p>
+
+      <h2 id="ao-state">Durum nerede yaşar</h2>
+      <p>Mesajlar, kişiler, gruplar ve taşıma ayarları, <strong>SQLDelight</strong> (paket <code>dev.stade.db</code>) üzerinden erişilen yerel bir <strong>SQLite</strong> veritabanında yaşar. Beklemede iken bu veritabanı, parolanızdan türetilen bir anahtar altında Kasa tarafından şifrelenir; kilit açıkken şifresi çözülmüş bir çalışma kopyası bulunur, kilitlendiğinde veya kapatıldığında yeniden şifrelenir ve düz metin güvenli bir şekilde silinir.</p>
+
+      <h2 id="ao-principles">Tasarım ilkeleri</h2>
+      <ul>
+        <li><strong>Asla sunucu yok.</strong> Her eş simetriktir; ayrıcalıklı bir düğüm yoktur.</li>
+        <li><strong>Hibrit kriptografi ile derinlemesine savunma.</strong> Yalnızca bir ailedeki bir kırılmanın oturumu tehlikeye atmaması için klasik ve kuantum sonrası algoritmalar birleştirilir.</li>
+        <li><strong>Kapalı başarısız olma (fail closed).</strong> Beklenen anahtarlarla, boyutlarla, protokol sürümleriyle veya transkript taahhütleriyle eşleşmeyen el sıkışmalar, düşürülmek yerine reddedilir.</li>
+      </ul></template>
     </article>
 
-    <article class="doc-article" id="peer-to-peer-model" data-group="Core Concepts" data-title="Peer-to-Peer Model" hidden>
+    <article class="doc-article" id="peer-to-peer-model" data-group="Core Concepts" data-title="Peer-to-Peer Model" data-group-tr="Temel Kavramlar" data-title-tr="Eşler Arası Model" hidden>
       <h1>Peer-to-Peer Model</h1>
       <p class="doc-lead">Stade has no servers. There is no central node that relays, stores or brokers your messages. Every device runs the same code and is a full, equal peer.</p>
 
@@ -644,9 +835,46 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
         <li><strong>Idempotent delivery.</strong> Messages carry IDs; a peer that already has one just re-acknowledges instead of storing a duplicate.</li>
       </ul>
       <p>Because no server aggregates data, no party &mdash; not even Stade's developers &mdash; has a contact graph, message logs, timestamps or address books. That information exists only on the two devices in a conversation.</p>
+      <template class="i18n-tr"><h1>Eşler Arası Model</h1>
+      <p class="doc-lead">Stade'in sunucusu yoktur. Mesajlarınızı ileten, saklayan veya aracılık eden merkezi bir düğüm yoktur. Her cihaz aynı kodu çalıştırır ve tam, eşit bir eştir.</p>
+
+      <h2 id="p2p-direct">İki eş, tek doğrudan bağlantı</h2>
+      <p>Bir konuşma, <strong>iki cihaz arasında doğrudan bir bağlantıdır.</strong> Her cihaz hem gelen bağlantıları <em>dinler</em> hem de kişilerini <em>arar</em>. İki kişi çevrimiçi ve ulaşılabilir olduğunda, bir tarafın araması diğerinin dinleyicisiyle buluşur ve bir oturum doğar. Bağlantı doğrudan olduğu için:</p>
+      <ul>
+        <li>Mesajlarınız hiçbir zaman üçüncü bir tarafa yüklenmez.</li>
+        <li>Mahkeme celbi alınacak, hacklenecek veya iş yapmayı bırakıp verilerinizi alıp götürecek bir operatör yoktur.</li>
+        <li>Teslimat, çakışan zamanlarda <strong>her iki eşin de çevrimiçi olmasını</strong> gerektirir. Stade bir <strong>Giden Kutusu</strong> tutar ve yeniden dener, ancak bir mesaj yalnızca gerçekten bir bağlantı kurulduğunda ulaşır.</li>
+      </ul>
+
+      <h2 id="p2p-find">Eşler birbirini nasıl bulur</h2>
+      <p>Bir eşe, her biri taşımaya göre etiketlenmiş bir veya daha fazla <strong>adresten</strong> ulaşılabilir:</p>
+      <pre><code>lan://192.168.1.42:5901          a local-network address
+tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code></pre>
+      <p>Adresler <strong>davetinizin</strong> içinde paylaşılır ve her el sıkışmanın başındaki <strong>HELLO</strong> içinde yenilenir; böylece kişiler mevcut adreslerinizi otomatik olarak öğrenir. Yerel ağda, eşler ayrıca hiçbir şey yazmadan birbirlerini keşfedebilmek için varlıklarını UDP üzerinden <strong>yayınlar</strong>.</p>
+
+      <h2 id="p2p-cm">Bağlantı yöneticisi</h2>
+      <p><strong><code>ConnectionManager</code></strong>, "bir kişim var"ı "canlı bir oturumum var"a çevirir. Sürekli çalışır ve:</p>
+      <ul>
+        <li>Şu anda bağlı olmayan herhangi bir kişinin bilinen her adresini, eşleşen taşıma üzerinden dener.</li>
+        <li>Çevrimdışı bir eşin bombardımana tutulmaması için <strong>geri çekilme</strong> uygular.</li>
+        <li>Yeni eklenen davet adresleri için ayrı bir <strong>bekleyen arama döngüsü</strong> çalıştırır.</li>
+        <li>Kendi adreslerinizi atlar ve paralel denemeleri tekilleştirir.</li>
+      </ul>
+      <p>Her deneme, arayüzdeki bağlantı durumu ayrıntısını besleyen bir tanılama olarak kaydedilir (<code>TRYING &rarr; CONNECT_OK &rarr; HANDSHAKE_OK</code>, veya eşleşen başarısızlık).</p>
+
+      <h2 id="p2p-session">Bir oturum kurma</h2>
+      <p>Soket seviyesinde bağlanmak yalnızca birinci adımdır. Herhangi bir mesaj akmadan önce, iki eş kimlikleri değiştiren, hem klasik hem de kuantum sonrası özel anahtarlara sahip olduklarını kanıtlayan, her Stade ID'nin kendi anahtarlarıyla eşleştiğini kontrol eden, sürüm/boyut uyuşmazlıklarını ve düşürmeleri reddeden ve hibrit bir Diffie&ndash;Hellman + ML-KEM alışverişinden paylaşılan bir kök anahtar türeten karşılıklı bir <strong>el sıkışma</strong> çalıştırır. Ancak o zaman kişi <strong>bağlı</strong> sayılır &mdash; ve yeniyse, gerçekten kaydedilir.</p>
+
+      <h2 id="p2p-resilience">Dayanıklılık</h2>
+      <ul>
+        <li><strong>Kendi kendini iyileştiren taşımalar.</strong> Tor taşıması sürecinin çökmesi durumunda yeniden başlatır; LAN taşıması bir port aralığı boyunca geri döner.</li>
+        <li><strong>Birden fazla adres, paralel olarak yarıştırılır.</strong> Bir eşe hem LAN hem de Tor üzerinden ulaşılabiliyorsa, ikisi de denenir ve ilk el sıkışmayı tamamlayan kazanır.</li>
+        <li><strong>Bağımsız (idempotent) teslimat.</strong> Mesajlar kimlik taşır; zaten birine sahip olan bir eş, kopyasını saklamak yerine yalnızca yeniden onaylar.</li>
+      </ul>
+      <p>Hiçbir sunucu veri toplamadığı için, hiçbir taraf &mdash; Stade'in geliştiricileri bile &mdash; bir kişi grafiğine, mesaj günlüklerine, zaman damgalarına veya adres defterlerine sahip değildir. Bu bilgi yalnızca bir konuşmadaki iki cihazda var olur.</p></template>
     </article>
 
-    <article class="doc-article" id="encryption" data-group="Core Concepts" data-title="Encryption" hidden>
+    <article class="doc-article" id="encryption" data-group="Core Concepts" data-title="Encryption" data-group-tr="Temel Kavramlar" data-title-tr="Şifreleme" hidden>
       <h1>Encryption</h1>
       <p class="doc-lead">Stade's encryption has one job: make sure only the two devices in a conversation can read it &mdash; and keep that true even against an attacker who records everything today and owns a quantum computer tomorrow.</p>
 
@@ -686,9 +914,48 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
 
       <h2 id="enc-attacker">What an attacker on the network sees</h2>
       <p>An adversary capturing Stade traffic sees length-prefixed ciphertext frames &mdash; no contents, no ability to forge or inject without the private keys. Over <strong>Tor</strong> they additionally cannot tell <em>who</em> is talking to <em>whom</em> or <em>where</em>. The one thing encryption alone can't prevent is a man-in-the-middle substituting keys at first contact &mdash; which is what <a class="inline" data-go="verifying-a-contact">Verifying a Contact</a> catches.</p>
+      <template class="i18n-tr"><h1>Şifreleme</h1>
+      <p class="doc-lead">Stade'in şifrelemesinin tek bir görevi vardır: bir konuşmayı yalnızca içindeki iki cihazın okuyabilmesini sağlamak &mdash; ve bunu, bugün her şeyi kaydeden ve yarın bir kuantum bilgisayara sahip olan bir saldırgana karşı bile doğru tutmak.</p>
+
+      <h2 id="enc-hybrid">Tasarım gereği hibrit</h2>
+      <p>Sır kuran ve kimlik doğrulayan her adım <strong>hibrittir</strong>: iyi güvenilen bir klasik algoritmayı bir NIST kuantum sonrası algoritmasıyla birleştirir.</p>
+      <ul>
+        <li><strong>Anahtar anlaşması:</strong> X25519 Diffie&ndash;Hellman <strong>+</strong> ML-KEM-768 kapsülleme.</li>
+        <li><strong>Kimlik doğrulama:</strong> Ed25519 imzaları <strong>+</strong> ML-DSA-65 imzaları.</li>
+      </ul>
+      <p>Bir oturumu besleyen paylaşılan sır, klasik ve kuantum sonrası sırların bir KDF'den geçirilen <em>birleşimidir</em>. Bir saldırganın bir oturumu tehlikeye atmak için <strong>her iki</strong> aileyi de kırması gerekir.</p>
+
+      <h2 id="enc-handshake">Aşama 1 — El sıkışma (PQXDH tarzı)</h2>
+      <ol>
+        <li><strong>HELLO &harr; HELLO.</strong> Her taraf kimliğini (Stade ID, takma ad, dört genel anahtarın tümü), rastgele 32 baytlık bir nonce, adreslerini ve protokol sürümünü ve tüm genel anahtarları özetleyen bir <strong>transkript taahhüdünü</strong> gönderir. Her taraf, eşin Stade ID'sinin bu anahtarlardan türediğini, boyutların ve sürümlerin eşleştiğini ve taahhüdün kendi yeniden hesapladığıyla eşleştiğini kontrol eder. Bir uyuşmazlık, olası bir <strong>düşürme saldırısı</strong> olarak kabul edilir ve reddedilir.</li>
+        <li><strong>AUTH &harr; AUTH.</strong> Her taraf, eşin nonce'undan ve her iki taahhütten oluşturulan bir mesajı hem Ed25519 hem de ML-DSA özel anahtarlarını kullanarak imzalar; eş her ikisini de doğrular. Nonce, tekrar oynatmayı önler.</li>
+        <li><strong>KEM_OFFER.</strong> Eşler deterministik olarak (Stade ID'ye göre sözlüksel olarak) başlatıcı ve yanıtlayıcı olarak sıralanır; başlatıcı yanıtlayıcının ML-KEM anahtarına bir sır kapsüller ve yanıtlayıcı bunu açar.</li>
+        <li><strong>Kök anahtar türetimi.</strong> Her taraf, X25519 sırrını ML-KEM sırrıyla birleştirir ve 32 baytlık <strong>kök anahtarı</strong> üretmek için tam transkriptin bir özetiyle tuzlanmış olarak <strong>HKDF</strong>'den geçirir.</li>
+      </ol>
+      <p>Kök anahtar tüm transkripte bağlı olduğu için, iki eş yalnızca tam olarak aynı, üzerinde oynanmamış el sıkışmayı gördülerse aynı kök anahtarı türetir.</p>
+
+      <h2 id="enc-ratchet">Aşama 2 — Double Ratchet</h2>
+      <p>Kök anahtar, devam eden konuşmayı koruyan bir <strong>kuantum sonrası Double Ratchet</strong>'i besler:</p>
+      <ul>
+        <li><strong>İleri gizlilik</strong> &mdash; her mesaj tek yönlü bir zincirden benzersiz bir anahtar kullanır, böylece bugünün anahtarını tehlikeye atmak dünün mesajlarını ortaya çıkarmaz.</li>
+        <li><strong>Tehlikeye atılma sonrası güvenlik (kendi kendini iyileştirme)</strong> &mdash; oturum periyodik olarak yeni bir anahtar alışverişi yapar ve saldırganı yeniden dışarıda bırakır.</li>
+        <li>Her <strong>DH ratchet adımı</strong> yeni bir X25519 alışverişi yapar <em>ve</em> yeni bir ML-KEM anahtar çifti üretir, kuantum sonrası sırrı sürekli olarak kök anahtara geri karıştırır.</li>
+        <li>Mesaj anahtarları ayrı bir AEAD anahtarı ve nonce türetir; düz metin, ilişkili veri olarak doğrulanan başlıkla <strong>ChaCha20-Poly1305</strong> ile mühürlenir.</li>
+        <li><strong>Sırasız</strong> mesajlar, atlanan anahtarları önbelleğe alarak işlenir (128'lik sınırlı bir pencere). Şifre çözme <strong>işlemseldir</strong> &mdash; kimlik doğrulama başarısız olursa durum geri alınır, böylece sahte bir çerçeve oturumu zehirleyemez.</li>
+      </ul>
+
+      <h2 id="enc-rest">Aşama 3 — Bekleme durumunda şifreleme</h2>
+      <ul>
+        <li>Mesaj veritabanınız, rastgele bir veri şifreleme anahtarı (DEK) altında <strong>AES-256-GCM</strong> ile şifrelenmiş bir dosya olarak saklanır.</li>
+        <li>Bu DEK'in kendisi, <strong>PBKDF2-HMAC-SHA256</strong> (210.000 yineleme) aracılığıyla <strong>parolanızdan</strong> türetilen bir anahtarla şifrelenir.</li>
+        <li>Kilit açıldığında DEK kurtarılır ve veritabanının şifresi çalışma kopyasına çözülür; kilitlendiğinde veya çıkıldığında yeniden şifrelenir ve düz metin güvenli bir şekilde üzerine yazılıp silinir.</li>
+      </ul>
+
+      <h2 id="enc-attacker">Ağdaki bir saldırganın gördüğü</h2>
+      <p>Stade trafiğini yakalayan bir düşman, uzunluk ön ekli şifreli metin çerçeveleri görür &mdash; içerik yok, özel anahtarlar olmadan sahtecilik veya enjeksiyon yapma imkanı yok. <strong>Tor</strong> üzerinden ayrıca <em>kimin</em> <em>kiminle</em> veya <em>nerede</em> konuştuğunu söyleyemezler. Yalnızca şifrelemenin önleyemediği tek şey, ilk temasta anahtarları değiştiren bir ortadaki adam saldırısıdır &mdash; ki bunu yakalayan şey <a class="inline" data-go="verifying-a-contact">Bir Kişiyi Doğrulama</a>'dır.</p></template>
     </article>
 
-    <article class="doc-article" id="identity-and-keys" data-group="Core Concepts" data-title="Identity &amp; Keys" hidden>
+    <article class="doc-article" id="identity-and-keys" data-group="Core Concepts" data-title="Identity &amp; Keys" data-group-tr="Temel Kavramlar" data-title-tr="Kimlik ve Anahtarlar" hidden>
       <h1>Identity &amp; Keys</h1>
       <p class="doc-lead">Stade replaces accounts with keys. This describes the keys that make up an identity, how your Stade ID and invite are built from them, and how each key is used.</p>
 
@@ -715,9 +982,35 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
         <li><strong>ML-KEM-768</strong> &mdash; the post-quantum half of the handshake secret, with a fresh ML-KEM key pair generated at each ratchet step to keep re-injecting post-quantum security.</li>
       </ul>
       <p>Stade never relies on a single algorithm for either secrecy or authenticity. A future break of <em>either</em> the elliptic-curve or the lattice family &mdash; but not both &mdash; still leaves your identity and conversations protected.</p>
+      <template class="i18n-tr"><h1>Kimlik ve Anahtarlar</h1>
+      <p class="doc-lead">Stade, hesapların yerine anahtarları koyar. Burada bir kimliği oluşturan anahtarlar, Stade ID'niz ve davetinizin bunlardan nasıl inşa edildiği ve her anahtarın nasıl kullanıldığı açıklanır.</p>
+
+      <h2 id="ik-pairs">Dört anahtar çifti</h2>
+      <table class="spec-table">
+        <tr><th>Anahtar çifti</th><th>Algoritma</th><th>Kullanım amacı</th></tr>
+        <tr><td>İmzalama</td><td class="val">Ed25519</td><td>Sizi doğrulama (klasik imzalar)</td></tr>
+        <tr><td>El sıkışma (DH)</td><td class="val">X25519</td><td>Klasik Diffie&ndash;Hellman anahtar anlaşması</td></tr>
+        <tr><td>KEM</td><td class="val">ML-KEM-768</td><td>Kuantum sonrası anahtar kapsülleme</td></tr>
+        <tr><td>KS imzalama</td><td class="val">ML-DSA-65</td><td>Sizi doğrulama (kuantum sonrası imzalar)</td></tr>
+      </table>
+      <p>Genel yarılar davetinize paketlenir; özel yarılar cihazdan asla çıkmaz. Bir <code>LocalIdentity</code>, dört çiftin tümünü takma adınız ve oluşturma zamanınızla birlikte tutar; bir kişinin <code>RemoteIdentity</code>'si, özel materyal olmadan aynı dört <em>genel</em> anahtarı tutar.</p>
+
+      <h2 id="ik-id">Stade ID</h2>
+      <p>Stade ID'niz, <code>STADE-XXXX-XXXX-XXXX</code> biçiminde, genel kimliğinizin kompakt, kendi kendini onaylayan bir parmak izidir. Ed25519 ve ML-DSA genel anahtarlarınızla bir alan etiketini özetler (<code>BLAKE2b-256</code>), 60 bit artı 4 bitlik bir sağlama toplamı alır ve Crockford Base32 ile kodlar. Davetinize sahip olan herkes bunu yeniden hesaplar &mdash; anahtarlar değiştirilmiş olsaydı, ID eşleşmezdi. Her iki imzalama anahtarı da özeti beslediği için, ID sizi ikisine de bağlar.</p>
+
+      <h2 id="ik-invite">Davet</h2>
+      <p>Stade ID bir <em>parmak izi</em> iken, <strong>davet</strong> <em>tam</em> genel pakettir. Bu, Base32 ile kodlanmış ve <code>STADE2-</code> ön ekli, bir sihirli işaretçi ve sürüm, takma adınız, dört genel anahtarınız, ulaşılabilir LAN/Tor adresleriniz ve <strong>iki imza</strong> (bir Ed25519, bir ML-DSA) içeren ikili bir kayıttır. Ayrıştırma sırasında uygulama sihirli işaretçiyi/sürümü/boyutları kontrol eder, <strong>her iki</strong> imzayı da doğrular ve Stade ID'yi yeniden hesaplar. Yalnızca tamamen geçerli, çift imzalı bir davet kabul edilir. Davetler ayrıca bir <strong>QR kodu</strong> (büyükse parçalara ayrılmış) veya bir <code>.stadeid</code> dosyası olabilir.</p>
+
+      <h2 id="ik-runtime">Her anahtar çalışma zamanında nasıl kullanılır</h2>
+      <ul>
+        <li><strong>Ed25519 + ML-DSA</strong> &mdash; davetinizi ve her el sıkışmanın AUTH mesajını imzalar; her bağlantıda doğrulanır.</li>
+        <li><strong>X25519</strong> &mdash; el sıkışma sırrının klasik yarısı ve Double Ratchet'i ilerleten ratchet anahtarı.</li>
+        <li><strong>ML-KEM-768</strong> &mdash; el sıkışma sırrının kuantum sonrası yarısı; kuantum sonrası güvenliği sürekli yeniden enjekte etmek için her ratchet adımında yeni bir ML-KEM anahtar çifti üretilir.</li>
+      </ul>
+      <p>Stade, ne gizlilik ne de doğruluk için asla tek bir algoritmaya güvenmez. Eliptik eğri veya kafes ailesinden <em>yalnızca birinin</em> &mdash; ikisinin değil &mdash; gelecekte kırılması bile kimliğinizi ve konuşmalarınızı korumalı bırakır.</p></template>
     </article>
 
-    <article class="doc-article" id="transport-layers" data-group="Transport Layers" data-title="Overview" hidden>
+    <article class="doc-article" id="transport-layers" data-group="Transport Layers" data-title="Overview" data-group-tr="Taşıma Katmanları" data-title-tr="Genel Bakış" hidden>
       <h1>Transport Layers</h1>
       <p class="doc-lead">A <strong>transport</strong> is how two Stade peers actually move bytes between each other. The cryptography is identical no matter which transport carries it &mdash; a transport only has to deliver opaque, length-prefixed frames from one device to another.</p>
 
@@ -741,9 +1034,32 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
         <li><strong>Tor</strong> works anywhere there's internet and hides both endpoints, at the cost of higher latency and a bootstrap delay.</li>
       </ul>
       <p>Having both lets Stade be quick when it can and private when it must, without you having to think about it. Read on: <a class="inline" data-go="lan">LAN</a> &middot; <a class="inline" data-go="tor">Tor</a>.</p>
+      <template class="i18n-tr"><h1>Taşıma Katmanları</h1>
+      <p class="doc-lead">Bir <strong>taşıma</strong>, iki Stade eşinin birbirleri arasında bayt taşımasının yoludur. Hangi taşımanın taşıdığından bağımsız olarak kriptografi aynıdır &mdash; bir taşımanın tek yapması gereken, opak, uzunluk ön ekli çerçeveleri bir cihazdan diğerine iletmektir.</p>
+
+      <h2 id="tl-two">İki taşıma</h2>
+      <table class="spec-table">
+        <tr><th>Taşıma</th><th>Adres şeması</th><th>En iyi kullanım</th></tr>
+        <tr><td><strong>LAN</strong></td><td class="val">lan://&lt;ip&gt;:&lt;port&gt;</td><td>Aynı ağ &mdash; hızlı, çevrimdışı</td></tr>
+        <tr><td><strong>Tor</strong></td><td class="val">tor://&lt;onion&gt;:&lt;port&gt;</td><td>İnternet üzerinden &mdash; anonim</td></tr>
+      </table>
+      <p>İkisi de <strong>varsayılan olarak etkindir</strong> ve uygulamanın taşıma ayarlarında ayrı ayrı açılıp kapatılabilir.</p>
+
+      <h2 id="tl-contract">Ortak taşıma sözleşmesi</h2>
+      <p>Her taşıma aynı küçük arayüzü uygular: <code>start</code> (dinle ve bağlantıları senkronizasyon motoruna devret), <code>connect(address)</code> (bir eşi ara), <code>selfAddress</code> / <code>selfAddresses</code> (davetler ve HELLO için mevcut ulaşılabilirliği bildir) ve <code>stop</code>. Bir bağlantı yalnızca <code>send(frame)</code>, <code>receive()</code> ve <code>close()</code>'dur; çerçeve başına 4 baytlık bir uzunluk ön eki vardır. Her taşıma ayrıca arayüzün gösterdiği canlı bir <strong>durum</strong> (<code>TransportInfo</code>) yayınlar, örn. Tor için "SOCKS5 &#10003; &middot; onion &#10003;".</p>
+
+      <h2 id="tl-choose">Bir taşıma nasıl seçilir</h2>
+      <p>Adresler şemaya göre kendi kendini tanımlar: <code>lan://&hellip;</code> LAN taşımasına, <code>tor://&hellip;</code> Tor taşımasına yönlenir. İlgili taşıma devre dışıysa veya henüz çalışmıyorsa, deneme kuyruğa alınır ve çalışmaya başladığında yeniden denenir. Hem bir LAN hem de bir Tor adresi ilan eden bir eş, ikisinde de paralel olarak aranır ve el sıkışmayı ilk tamamlayan kazanır &mdash; bu yüzden aynı ağdaki iki kişi neredeyse anında bağlanırken, ayrı olduklarında da Tor üzerinden ulaşılabilir kalırlar.</p>
+
+      <h2 id="tl-why">Neden iki taşıma</h2>
+      <ul>
+        <li><strong>LAN</strong> hızlıdır ve internet olmadan çalışır, ama yalnızca her iki eş de bir ağı paylaştığında ve bu ağdaki eşlere yerel IP'leri açığa çıkarır.</li>
+        <li><strong>Tor</strong>, internetin olduğu her yerde çalışır ve her iki uç noktayı da gizler; bunun bedeli daha yüksek gecikme ve bir önyükleme gecikmesidir.</li>
+      </ul>
+      <p>İkisine birden sahip olmak, Stade'in yapabildiğinde hızlı, gerektiğinde özel olmasını sağlar; siz bunu düşünmek zorunda kalmazsınız. Devamı: <a class="inline" data-go="lan">LAN</a> &middot; <a class="inline" data-go="tor">Tor</a>.</p></template>
     </article>
 
-    <article class="doc-article" id="lan" data-group="Transport Layers" data-title="LAN" hidden>
+    <article class="doc-article" id="lan" data-group="Transport Layers" data-title="LAN" data-group-tr="Taşıma Katmanları" data-title-tr="LAN" hidden>
       <h1>LAN Transport</h1>
       <p class="doc-lead">The LAN transport connects two peers directly over a shared local network &mdash; the same Wi-Fi, switch or hotspot. It is the fastest way for two nearby devices to talk and needs no internet at all.</p>
 
@@ -773,9 +1089,38 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
       <h2 id="lan-limits">Strengths and limits</h2>
       <p><strong>Strengths:</strong> near-instant connection on the same network; fully offline; auto-discovery means addresses often don't need sharing.</p>
       <p><strong>Limits:</strong> only works when both peers share a network; your local IP is visible to peers on that network (content stays end-to-end encrypted, but LAN is not anonymous); some networks block UDP broadcast or use "AP isolation," disabling discovery. If LAN isn't possible, Stade falls back to <a class="inline" data-go="tor">Tor</a>.</p>
+      <template class="i18n-tr"><h1>LAN Taşıması</h1>
+      <p class="doc-lead">LAN taşıması, iki eşi paylaşılan bir yerel ağ üzerinden &mdash; aynı Wi-Fi, anahtar veya hotspot &mdash; doğrudan bağlar. İki yakın cihazın konuşmasının en hızlı yoludur ve hiçbir internete ihtiyaç duymaz.</p>
+
+      <div class="pill-row">
+        <span class="pill">TCP 5901</span>
+        <span class="pill">UDP discovery 5902</span>
+        <span class="pill">offline</span>
+      </div>
+
+      <h2 id="lan-address">Adresleme</h2>
+      <p>Bir LAN adresi yalnızca bir yerel IP ve bir TCP portudur:</p>
+      <pre><code>lan://192.168.1.42:5901</code></pre>
+      <p>Stade, bulduğu geri döngü olmayan, site-yerel her IPv4 arayüzü (<code>10.x</code>, <code>172.x</code>, <code>192.168.x</code>) için bir LAN adresi duyurur; böylece bir eş, paylaştığınız arayüzlerden herhangi biri üzerinden size ulaşabilir.</p>
+
+      <h2 id="lan-listen">Dinleme</h2>
+      <p>Başlangıçta taşıma, <strong>5901</strong> portunda bir TCP sunucu soketi bağlar. Meşgulse, boş bir tane bulana kadar <strong>5901&ndash;5910</strong> aralığında ilerler ve gerçekte bağlanan portu bildirir. Gelen bağlantılar el sıkışma için doğrudan senkronizasyon motoruna devredilir.</p>
+
+      <h2 id="lan-discovery">Yerel keşif</h2>
+      <p>LAN eşleri, hafif bir <strong>UDP keşif hizmeti</strong> aracılığıyla birbirlerini otomatik olarak bulur:</p>
+      <ul>
+        <li>Her 15 saniyede bir bir varlık işareti &mdash; <code>STADE|&lt;node-id&gt;|&lt;tcp-port&gt;</code> &mdash; <strong>yayınlar</strong>.</li>
+        <li>Diğer işaretler için UDP portu <strong>5902</strong>'yi <strong>dinler</strong>, kendisininkini yok sayar.</li>
+        <li>Keşfedilen eşler 60 saniyelik sessizlikten sonra <strong>süresi dolar</strong>, böylece liste şu anda kimin mevcut olduğunu yansıtır.</li>
+      </ul>
+      <p>Aynı ağdaki iki kişinin neredeyse sıfır kurulumla bağlanmasını sağlayan şey budur. Çerçeveler, her Stade bağlantısıyla aynı 4 baytlık büyük endian uzunluk ön ekini kullanır ve 4 MB ile sınırlıdır.</p>
+
+      <h2 id="lan-limits">Güçlü yönler ve sınırlar</h2>
+      <p><strong>Güçlü yönler:</strong> aynı ağda neredeyse anında bağlantı; tamamen çevrimdışı; otomatik keşif, adreslerin genellikle paylaşılmasına gerek kalmadığı anlamına gelir.</p>
+      <p><strong>Sınırlar:</strong> yalnızca her iki eş de bir ağı paylaştığında çalışır; yerel IP'niz o ağdaki eşlere görünürdür (içerik uçtan uca şifreli kalır, ama LAN anonim değildir); bazı ağlar UDP yayınını engeller veya keşfi devre dışı bırakan "AP izolasyonu" kullanır. LAN mümkün değilse, Stade <a class="inline" data-go="tor">Tor</a>'a geri döner.</p></template>
     </article>
 
-    <article class="doc-article" id="tor" data-group="Transport Layers" data-title="Tor" hidden>
+    <article class="doc-article" id="tor" data-group="Transport Layers" data-title="Tor" data-group-tr="Taşıma Katmanları" data-title-tr="Tor" hidden>
       <h1>Tor Transport</h1>
       <p class="doc-lead">The Tor transport lets two peers reach each other across the internet while hiding who they are and where they are. Each device runs as a Tor hidden (onion) service, so neither side learns the other's IP and an observer can't tell they're communicating.</p>
 
@@ -806,9 +1151,39 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
       <h2 id="tor-limits">Strengths and limits</h2>
       <p><strong>Strengths:</strong> works across the internet through NAT and firewalls with no port forwarding; hides both endpoints' IPs and the existence of the conversation; no external dependencies.</p>
       <p><strong>Limits:</strong> higher latency than LAN and a bootstrap delay; the first connection to a new peer can take from seconds to a couple of minutes while Tor bootstraps and the descriptor propagates (expected &mdash; Stade keeps retrying); a few networks actively block Tor.</p>
+      <template class="i18n-tr"><h1>Tor Taşıması</h1>
+      <p class="doc-lead">Tor taşıması, iki eşin kim olduklarını ve nerede olduklarını gizleyerek internet üzerinden birbirlerine ulaşmasını sağlar. Her cihaz bir Tor gizli (onion) hizmeti olarak çalışır, böylece hiçbir taraf diğerinin IP'sini öğrenmez ve bir gözlemci iletişim kurduklarını anlayamaz.</p>
+
+      <div class="pill-row">
+        <span class="pill">v3 onion</span>
+        <span class="pill">embedded Tor</span>
+        <span class="pill">SOCKS5</span>
+      </div>
+
+      <h2 id="tor-address">Adresleme</h2>
+      <pre><code>tor://&lt;onion-address&gt;:&lt;port&gt;</code></pre>
+      <p>Onion adresi, cihazınızın gizli hizmet kimliğidir; davetinizde ve her el sıkışmanın başındaki HELLO'da duyurulur, böylece kişiler her zaman güncel adresinize sahip olur.</p>
+
+      <h2 id="tor-embedded">Gömülü Tor — Orbot yok, kurulum yok</h2>
+      <p>Stade, her platform için kendi Tor çalışma zamanını (derleme sırasında indirilen ve hash ile doğrulanan resmi <strong>Tor Expert Bundle, sürüm 13.5.6</strong>) paketler. Masaüstünde doğru ikili dosya ilk çalıştırmada özel bir dizine çıkarılır; Android'de tüm ABI'ler (<code>arm64-v8a</code>, <code>armeabi-v7a</code>, <code>x86_64</code>, <code>x86</code>) için ikili dosyalar, geoip verileriyle birlikte varlık olarak APK'nın içinde gelir. <strong>Orbot'a veya sistem Tor'una ihtiyacınız yoktur.</strong></p>
+
+      <h2 id="tor-how">Nasıl çalışır</h2>
+      <ol>
+        <li>Boş bir geri döngü portunda yerel bir TCP dinleyici bağlar (onion hizmetinizin gelen bağlantıları ilettiği yer).</li>
+        <li>Gömülü Tor sürecini başlatır; bu süreç <strong>önyükleme yapar</strong> (ilerlemeyi "Tor boot %80 &middot; Röle tanımlayıcıları yükleniyor" gibi görürsünüz) ve o portu gösteren bir onion hizmeti yayınlar.</li>
+        <li>Giden bağlantılar için yerel bir <strong>SOCKS5</strong> proxy'si sunar. Bir eşi aramak için Stade, SOCKS5 el sıkışmasını kendisi yapar ve Tor'dan eşin onion adresine bağlanmasını ister.</li>
+      </ol>
+      <p>Durumu şöyle okunur, örn. <code>SOCKS5 &#10003; (127.0.0.1:&hellip;) &middot; onion :&lt;port&gt; &#10003;</code>.</p>
+
+      <h2 id="tor-healing">Kendi kendini iyileştirme &amp; harici Tor</h2>
+      <p>Bir <strong>sağlık monitörü</strong>, Tor'un canlı olduğunu yaklaşık her 10 saniyede bir kontrol eder ve çıkış yaparsa otomatik olarak (oran sınırlı) yeniden ayağa kaldırır. Bir sistem Tor'unu veya Orbot'u tercih ederseniz, taşıma <strong>harici modda</strong> çalışabilir; yaygın SOCKS portlarını (<strong>9050</strong> ve <strong>9150</strong>) yoklar ve yanıt vereni otomatik olarak seçer. Varsayılan gömülü mod hiçbir yapılandırma gerektirmez.</p>
+
+      <h2 id="tor-limits">Güçlü yönler ve sınırlar</h2>
+      <p><strong>Güçlü yönler:</strong> NAT ve güvenlik duvarları üzerinden port yönlendirme olmadan internet üzerinden çalışır; her iki uç noktanın IP'sini ve konuşmanın varlığını gizler; harici bağımlılık yoktur.</p>
+      <p><strong>Sınırlar:</strong> LAN'dan daha yüksek gecikme ve bir önyükleme gecikmesi; yeni bir eşe ilk bağlantı, Tor önyükleme yaparken ve tanımlayıcı yayılırken birkaç saniyeden birkaç dakikaya kadar sürebilir (beklenen bir durum &mdash; Stade yeniden denemeye devam eder); birkaç ağ Tor'u etkin biçimde engeller.</p></template>
     </article>
 
-    <article class="doc-article" id="stadium" data-group="Guides" data-title="Stadium" hidden>
+    <article class="doc-article" id="stadium" data-group="Guides" data-title="Stadium" data-group-tr="Rehberler" data-title-tr="Stadium" hidden>
       <h1>Stadium</h1>
       <p class="doc-lead">A Stadium is a public, one-to-many broadcast channel inside Stade &mdash; one admin posts, and anyone with the link can subscribe and read. Use it for announcements, updates, or broadcasting to an open audience, rather than a specific set of contacts.</p>
 
@@ -860,9 +1235,60 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
       <p>Not currently. The feed is read-only for everyone except the admin.</p>
       <h3 id="std-faq-see-joined">Can I see who joined my Stadium?</h3>
       <p>No &mdash; not even as the admin. Only the live subscriber count is shown.</p>
+      <template class="i18n-tr"><h1>Stadium</h1>
+      <p class="doc-lead">Bir Stadium, Stade içinde herkese açık, birden-çoğa bir yayın kanalıdır &mdash; bir yönetici paylaşım yapar ve bağlantıya sahip herkes abone olup okuyabilir. Belirli bir kişi grubu yerine duyurular, güncellemeler veya açık bir kitleye yayın için kullanın.</p>
+
+      <h2 id="std-what">Bir Stadium nedir</h2>
+      <p>Bir Stadium, diğer mesajlaşma uygulamalarındaki "kanal" özelliği gibi çalışır: tek bir <strong>yönetici</strong> &mdash; yaratıcısı &mdash; paylaşım yapar ve geri kalan herkes yalnızca okuyabilir. Her Stadium'un tam olarak bir yöneticisi vardır ve bu paylaşılamaz veya devredilemez.</p>
+      <p>Bir grup sohbetinden önemli bir şekilde farklıdır: <strong>katılım herkese açıktır ve tek adımdır.</strong> Bir Stadium'un daveti tek bir paylaşılabilir bağlantıdır ve ona sahip olan herkes doğrudan katılabilir &mdash; önce yöneticiye zaten bağlı olmanız gerekmez.</p>
+
+      <h2 id="std-create">Bir Stadium oluşturma</h2>
+      <ol>
+        <li><strong>+</strong> / yeni sohbet menüsünü açın ve <strong>Yeni Stadium</strong>'u seçin.</li>
+        <li>Ona bir isim verin.</li>
+        <li>İstediğiniz zaman paylaşım yapın &mdash; yapılandırılacak başka bir şey yok.</li>
+      </ol>
+
+      <h2 id="std-join">Bir Stadium'a katılma</h2>
+      <ol>
+        <li><strong>+</strong> menüsünü açın ve <strong>Stadium'a Katıl</strong>'ı seçin.</li>
+        <li>Davet bağlantısını yapıştırın.</li>
+      </ol>
+      <p>Bu kadar &mdash; bir kişi eklemenin veya bir gruba eklenmenin aksine, yöneticiyle önceden bir bağlantı gerekmez.</p>
+
+      <h2 id="std-posting">Paylaşım ve abone akışı</h2>
+      <p>Yalnızca yönetici paylaşım yapabilir: metin, fotoğraf ve sesli mesajlar, normal sohbetlerdeki aynı kırpma ve çizme fotoğraf düzenleyicisini kullanarak. Diğer herkes, hiç yazma kutusu olmayan salt okunur bir akış görür &mdash; aboneler paylaşamaz, yanıtlayamaz veya tepki veremez.</p>
+
+      <h2 id="std-notifications">Bildirimler ve sessize alma</h2>
+      <p>Yeni paylaşımlar, aboneleri normal bir mesajla aynı şekilde bilgilendirir. Her Stadium başka bir şeyi sessize almadan bağımsız olarak sessize alınabilir &mdash; mobilde uzun basarak veya masaüstünde sağ tıklayarak.</p>
+
+      <h2 id="std-privacy">Gizlilik ve şifreleme</h2>
+      <p>Paylaşımlar, birebir ve grup mesajlarıyla aynı şekilde uçtan uca şifrelenir &mdash; bir Stadium'un içeriği, üye listesi veya kimin neye abone olduğu hakkında hiçbir şey, içindeki kişiler dışında kimseye asla görünmez.</p>
+      <div class="callout ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <p>Bir Stadium'a kimin abone olduğunu kimse göremez &mdash; ne diğer aboneler, ne de yönetici. Görünen tek sinyal, Stadium'un adının yanında gösterilen canlı bir <strong>abone sayısıdır</strong>.</p>
+      </div>
+
+      <h2 id="std-manage">Stadium'unuzu yönetme</h2>
+      <p>Stadium'un yönetim ekranından (dişli simgesi), yönetici şunları yapabilir:</p>
+      <ul>
+        <li>Davet bağlantısını her yerde paylaşmak için <strong>kopyalayın</strong> &mdash; sosyal medya, diğer sohbetler, her yer.</li>
+        <li>Stadium'u <strong>yeniden adlandırın</strong>.</li>
+        <li><strong>Canlı abone sayısını</strong> görün.</li>
+        <li>Stadium'u <strong>silin</strong>.</li>
+      </ul>
+      <p>Silme işlemi yöneticinin cihazına özeldir: aboneler, silinmeden önce paylaşılan her şeyin kendi kopyasını tutar, yalnızca yeni paylaşımları almayı bırakırlar.</p>
+
+      <h2 id="std-faq">Sık sorulan sorular</h2>
+      <h3 id="std-faq-admin">Bir Stadium'un birden fazla yöneticisi olabilir mi?</h3>
+      <p>Hayır. Her Stadium'un tam olarak bir yöneticisi vardır: onu kim oluşturduysa.</p>
+      <h3 id="std-faq-react">Aboneler tepki verebilir veya yanıtlayabilir mi?</h3>
+      <p>Şu anda hayır. Akış, yönetici dışında herkes için salt okunurdur.</p>
+      <h3 id="std-faq-see-joined">Stadium'uma kimlerin katıldığını görebilir miyim?</h3>
+      <p>Hayır &mdash; yönetici olarak bile. Yalnızca canlı abone sayısı gösterilir.</p></template>
     </article>
 
-    <article class="doc-article" id="verifying-a-contact" data-group="Guides" data-title="Verifying a Contact" hidden>
+    <article class="doc-article" id="verifying-a-contact" data-group="Guides" data-title="Verifying a Contact" data-group-tr="Rehberler" data-title-tr="Bir Kişiyi Doğrulama" hidden>
       <h1>Verifying a Contact</h1>
       <p class="doc-lead">End-to-end encryption guarantees only the holder of a contact's keys can read your messages. What it can't tell you on its own is whether the keys you received at first contact really belong to the right person. Verifying a contact closes that gap.</p>
 
@@ -894,9 +1320,40 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         <p>Verification confirms you and your contact hold matching keys &mdash; it doesn't prove their real-world identity beyond the out-of-band channel you used, and it doesn't add encryption (your messages were already end-to-end encrypted; this confirms <em>to whom</em>).</p>
       </div>
+      <template class="i18n-tr"><h1>Bir Kişiyi Doğrulama</h1>
+      <p class="doc-lead">Uçtan uca şifreleme, yalnızca bir kişinin anahtarlarının sahibinin mesajlarınızı okuyabileceğini garanti eder. Kendi başına söyleyemediği şey, ilk temasta aldığınız anahtarların gerçekten doğru kişiye ait olup olmadığıdır. Bir kişiyi doğrulamak bu boşluğu kapatır.</p>
+
+      <h2 id="vc-safety">Güvenlik numarası</h2>
+      <p>Her kişi için Stade bir <strong>güvenlik numarası</strong> hesaplar: her iki katılımcının da Ed25519 imzalama genel anahtarlarını (sıralanmış, böylece her iki cihaz da aynı numarayı hesaplar) BLAKE2b-256 ile özetleyerek ve sonucu beşli haneler halinde biçimlendirerek türetilen 60 haneli bir değer.</p>
+      <ul>
+        <li><strong>Simetriktir</strong> &mdash; siz ve kişiniz birbiriniz için aynı numarayı görürsünüz.</li>
+        <li><strong>Anahtarlara bağlıdır</strong> &mdash; her iki tarafın anahtarları da değiştirilmiş olsaydı, numaralar eşleşmezdi.</li>
+      </ul>
+
+      <h2 id="vc-how">Nasıl doğrulanır</h2>
+      <ol>
+        <li>Kişiyi açın ve <strong>Doğrula</strong>'yı seçin.</li>
+        <li>Kişinin avatarını, takma adını, <strong>Stade ID</strong>'sini ve <strong>güvenlik numarasını</strong> göreceksiniz.</li>
+        <li>Kişinizin sizin için aynı ekranı açmasını sağlayın.</li>
+        <li>Güvenilir bir kanal üzerinden <strong>güvenlik numaralarını karşılaştırın</strong> &mdash; yüz yüze veya sesli aramada yüksek sesle okuyun.</li>
+        <li>Tam olarak eşleşiyorsa, <strong>Doğrulandı Olarak İşaretle</strong>'ye dokunun (bir "Doğrulandı" rozeti göreceksiniz). Eşleşmiyorlarsa işaretlemeyin &mdash; bunu bir uyarı işareti olarak değerlendirin ve davetleri güvenilir bir kanal üzerinden yeniden değiştirin.</li>
+      </ol>
+      <p>Doğrulama yerel bir eylemdir: yalnızca kendi güveninizi kaydeder, kimseyi bilgilendirmez veya şifrelemeyi değiştirmez.</p>
+
+      <h2 id="vc-when">Ne zaman doğrulanmalı</h2>
+      <ul>
+        <li>Konuşmaları önemli olan herhangi bir kişi için <strong>ideal olarak her zaman</strong>.</li>
+        <li>Davetleri güvenilmeyen bir kanal üzerinden değiştirdiyseniz <strong>özellikle</strong> &mdash; bu ilk alışveriş, bir ortadaki adamın saldırabileceği tek andır.</li>
+        <li>Bir güvenlik numarası beklenmedik şekilde değişirse <strong>tekrar</strong> &mdash; bu, kişinin kimlik anahtarlarının değiştiği anlamına gelir (örn. yeniden yüklediler), bu yüzden güvenmeden önce yeniden doğrulayın.</li>
+      </ul>
+
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>Doğrulama, siz ve kişinizin eşleşen anahtarlara sahip olduğunu onaylar &mdash; kullandığınız kanal dışı yöntemin ötesinde gerçek dünya kimliklerini kanıtlamaz ve şifreleme eklemez (mesajlarınız zaten uçtan uca şifreliydi; bu yalnızca <em>kime</em> ait olduğunu onaylar).</p>
+      </div></template>
     </article>
 
-    <article class="doc-article" id="locking-the-app" data-group="Guides" data-title="Locking the App" hidden>
+    <article class="doc-article" id="locking-the-app" data-group="Guides" data-title="Locking the App" data-group-tr="Rehberler" data-title-tr="Uygulamayı Kilitleme" hidden>
       <h1>Locking the App</h1>
       <p class="doc-lead">Stade can lock itself behind a password that encrypts your entire message database on disk. When locked, your conversations exist only as ciphertext &mdash; without your password there is no way for you, an attacker, or anyone to read them.</p>
 
@@ -928,9 +1385,40 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <p>There is <strong>no recovery</strong>. The database can only be decrypted with a key derived from your password, and that key is never stored. Forget the password and the messages are unrecoverable &mdash; by anyone. That's the guarantee, not a limitation.</p>
       </div>
+      <template class="i18n-tr"><h1>Uygulamayı Kilitleme</h1>
+      <p class="doc-lead">Stade, tüm mesaj veritabanınızı diskte şifreleyen bir parolayla kendini kilitleyebilir. Kilitliyken, konuşmalarınız yalnızca şifreli metin olarak var olur &mdash; parolanız olmadan sizin, bir saldırganın veya herhangi birinin onları okumasının bir yolu yoktur.</p>
+
+      <h2 id="lock-how">Kilit nasıl çalışır</h2>
+      <p>Stade, parolanızın hiçbir zaman saklanmadan her şeyi korumasını sağlayan katmanlı bir anahtar modeli kullanır:</p>
+      <ol>
+        <li><strong>Parolanız &rarr; bir anahtar (KEK).</strong> <strong>PBKDF2-HMAC-SHA256</strong>, <strong>210.000 yineleme</strong> ve rastgele bir tuzla genişletilerek bir anahtar şifreleme anahtarı üretilir.</li>
+        <li><strong>Rastgele bir veri anahtarı (DEK), veritabanını şifreler</strong> <strong>AES-256-GCM</strong> ile.</li>
+        <li><strong>KEK, DEK'i şifreler</strong> ve girilen bir parolanın doğru olup olmadığını kontrol etmek için kullanılan küçük bir <strong>doğrulayıcı</strong> ile birlikte (şifreli olarak) saklar.</li>
+      </ol>
+      <p>Böylece parolanız hiçbir zaman diske dokunmaz &mdash; yalnızca tuz, şifreli DEK ve doğrulayıcı dokunur. Kilit açıldığında Stade KEK'i türetir, doğrulayıcıyı kontrol eder, ardından DEK'in ve veritabanının şifresini bir çalışma kopyasına çözer. Kilitlendiğinde veya kapatıldığında, veritabanını yeniden şifreler ve sıfırlarla üzerine yazıp diske temizleyerek <strong>düz metin kopyasını güvenli bir şekilde siler</strong>; anahtar da bellekte sıfırlanır.</p>
+
+      <h2 id="lock-guessing">Tahmin etmeye karşı koruma</h2>
+      <p>Ele geçirilmiş bir cihazda parola denemelerine direnmek için Stade, <strong>artan bir kilitlenme</strong> uygular: bir eşik sayıda başarısızlıktan (5) sonra gereken bekleme adım adım büyür &mdash; saniyeler, sonra dakikalar, sonra tam bir güne kadar. Sayaç, başarılı bir kilit açmada sıfırlanır.</p>
+
+      <h2 id="lock-timeout">Oturum zaman aşımı</h2>
+      <p>Stade'in boşta veya arka plana alındığında ne kadar hızlı yeniden kilitleneceğini siz seçersiniz: <strong>Hemen</strong> veya <strong>30 saniye</strong>, <strong>1 dakika</strong>, <strong>5 dakika</strong>, <strong>15 dakika</strong>, <strong>1 saat</strong> ya da <strong>Hiçbir zaman</strong> sonra. "Hemen", uygulama ön plandan ayrılır ayrılmaz kilitler.</p>
+
+      <h2 id="lock-hardening">Ekstra güçlendirme</h2>
+      <ul>
+        <li><strong>Tuş takımını karıştır</strong> &mdash; ekrandaki PIN düzenini rastgeleleştirir, böylece bir gözlemci parmak konumundan girişinizi öğrenemez.</li>
+        <li><strong>Ekran görüntüsü engelleme</strong> &mdash; ekran görüntülerini önler ve Stade'i uygulama değiştirici/küçük resimlerden uzak tutar (varsayılan olarak açık).</li>
+      </ul>
+
+      <h2 id="lock-change-wipe">Parolanızı değiştirme &amp; silme</h2>
+      <p>Parolanızı değiştirmek yeni bir KEK türetir ve mevcut DEK'i yeniden sarar &mdash; mesajlar hiçbir zaman sıfırdan yeniden şifrelenmez ve hiçbir veri kaybolmaz. Silme, şifreli veritabanını, herhangi bir düz metin kopyasını, kasa meta verilerini ve oturum dosyasını güvenli bir şekilde siler.</p>
+
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p><strong>Kurtarma yoktur.</strong> Veritabanının şifresi yalnızca parolanızdan türetilen bir anahtarla çözülebilir ve bu anahtar hiçbir zaman saklanmaz. Parolayı unutursanız mesajlar &mdash; kimse tarafından &mdash; kurtarılamaz olur. Bu bir sınırlama değil, bir garantidir.</p>
+      </div></template>
     </article>
 
-    <article class="doc-article" id="troubleshooting" data-group="Guides" data-title="Troubleshooting" hidden>
+    <article class="doc-article" id="troubleshooting" data-group="Guides" data-title="Troubleshooting" data-group-tr="Rehberler" data-title-tr="Sorun Giderme" hidden>
       <h1>Troubleshooting</h1>
       <p class="doc-lead">Because Stade is fully peer-to-peer, "it won't connect" almost always comes down to <em>reachability</em> &mdash; one peer can't currently reach the other &mdash; rather than a server being down.</p>
 
@@ -970,9 +1458,48 @@ tor://&lt;onion-address&gt;:&lt;port&gt;      a Tor hidden-service address</code
 
       <h2 id="ts-password">I forgot my password</h2>
       <p>There is <strong>no recovery</strong>. The database is encrypted with a key derived from your password, and that key is never stored. See <a class="inline" data-go="locking-the-app">Locking the App</a>.</p>
+      <template class="i18n-tr"><h1>Sorun Giderme</h1>
+      <p class="doc-lead">Stade tamamen eşler arası olduğu için, "bağlanmıyor" neredeyse her zaman bir sunucunun çökmesinden değil, <em>ulaşılabilirlikten</em> &mdash; bir eş şu anda diğerine ulaşamıyor &mdash; kaynaklanır.</p>
+
+      <h2 id="ts-wont-connect">Bir kişi bağlanmıyor</h2>
+      <p><strong>Her iki eşin de çevrimiçi olması ve uygulamayı çalıştırıyor olması gerekir.</strong> Bir oturum yalnızca her iki taraf da aynı anda ulaşılabilir olduğunda kurulur; Stade geri çekilmeyle yeniden denemeye devam eder, bu yüzden her iki uygulamayı da açık bırakın. Sonra, sırayla:</p>
+      <ol>
+        <li><strong>Taşımalar açık mı?</strong> Taşıma ayarlarını kontrol edin &mdash; Tor için hem SOCKS hem de onion işaretli olmalı; LAN için bağlı bir IP/port.</li>
+        <li><strong>Aynı ağ mı? LAN'ı deneyin.</strong> Saniyeler içinde bağlanır; bağlanmıyorsa, ağ UDP yayınını engelliyor veya istemcileri izole ediyor olabilir.</li>
+        <li><strong>Ayrı mısınız? Tor'a zaman tanıyın.</strong> Yeni bir eşe ilk bağlantı, Tor önyükleme yaparken ve tanımlayıcı yayılırken saniyelerden birkaç dakikaya kadar sürebilir.</li>
+        <li><strong>Eski adresler.</strong> Bir kişinin duyurduğu adres eskiyse ve hiç bağlanmadıysanız, güncel adreslerin yayılması için davetleri yeniden değiştirin.</li>
+      </ol>
+
+      <h2 id="ts-add-nothing">Bir kişi eklemek "hiçbir şey yapmıyor"</h2>
+      <p>Bir davet <strong>yerel olarak</strong> ayrıştırılır ve doğrulanır, ancak kişi yalnızca <strong>canlı bir el sıkışma tamamlandıktan sonra kaydedilir</strong>. Bu yüzden diğer taraf henüz ulaşılabilir değilse, hiçbir şey olmamış gibi görünebilir. Her iki alanın da (davet kodu <em>ve</em> bir kişi adı) doldurulduğundan, diğer eşin çevrimiçi olduğundan emin olun ve tanılamaları izleyin &mdash; <code>TRYING &rarr; CONNECT_OK &rarr; HANDSHAKE_OK</code> görmelisiniz. Yalnızca <code>TRYING</code> veya <code>CONNECT_FAIL</code> görüyorsanız, bu bir anahtar sorunu değil, bir ulaşılabilirlik sorunudur.</p>
+
+      <h2 id="ts-socks">Tor SOCKS hatalarını okuma</h2>
+      <table class="spec-table">
+        <tr><th>Mesaj</th><th>Olası neden</th></tr>
+        <tr><td class="val">SOCKS5 unavailable</td><td>Tor henüz çalışmıyor veya harici bir Tor/Orbot ayakta değil.</td></tr>
+        <tr><td class="val">host unreachable (onion descriptor)</td><td>Eşin onion tanımlayıcısı henüz yayılmadı &mdash; bekleyin.</td></tr>
+        <tr><td class="val">connection refused</td><td>Eşe ulaşılabilir ama onion portunu dinlemiyor.</td></tr>
+        <tr><td class="val">network unreachable</td><td>Yerel ağ Tor'a hiç ulaşamıyor.</td></tr>
+      </table>
+      <p>Çoğu onion tanımlayıcı ve "host unreachable" durumu, Tor gizli hizmet tanımlayıcısını yayınlamayı bitirdiğinde kendiliğinden çözülür.</p>
+
+      <h2 id="ts-bootstrap">Tor "önyükleme yaparken" takılı görünüyor</h2>
+      <p>Durum, <code>Tor boot %45 &middot; &hellip;</code> gibi bir ilerleme gösterir; yavaş veya kısıtlı bir ağda ilk önyükleme biraz sürebilir. Süreç çökerse, Stade'in sağlık monitörü onu (oran sınırlı olarak) yeniden başlatır &mdash; kısa süreliğine "Tor process exited — restarting…" görebilirsiniz. Birkaç ağ Tor'u tamamen engeller; farklı bir ağ deneyin veya kişinizle aynı ağdaysanız LAN'ı deneyin.</p>
+
+      <h2 id="ts-lan-discovery">LAN otomatik keşfi eş bulamıyor</h2>
+      <p>Her iki cihaz da <strong>aynı alt ağda</strong> olmalı ve ağ, <strong>UDP yayınına</strong> ve <strong>istemciden istemciye</strong> trafiğe izin vermelidir. Genel Wi-Fi ve birçok kurumsal ağ, eşler arası bağlantıları ve keşfi engelleyen "AP/istemci izolasyonu"nu etkinleştirir. Misafir ağları ve VPN'ler de istemcileri ayırabilir &mdash; doğrulamak için bir telefon hotspot'u veya ev ağı deneyin.</p>
+
+      <h2 id="ts-port">Port zaten kullanımda (LAN)</h2>
+      <p>LAN taşıması TCP portu <strong>5901</strong>'i tercih eder ama <strong>5901&ndash;5910</strong> aralığında geri döner ve bağladığı portu bildirir. Bir "all ports in use" mesajı, aralığı boşaltmanız veya diğer örnekleri kapatmanız gerektiği anlamına gelir.</p>
+
+      <h2 id="ts-desktop">Masaüstü uygulaması açılmıyor</h2>
+      <p>Bir <strong>JDK 17</strong> çalışma zamanı çalıştırdığınızdan emin olun. Bir IDE çalıştırma yapılandırmasından başlatıyorsanız, yapılandırılmış ana sınıfın güncel olduğundan emin olun (<code>dev.stade.MainKt</code>) &mdash; daha eski bir derlemeden kalan bir ana sınıf anında çıkışa neden olur.</p>
+
+      <h2 id="ts-password">Parolamı unuttum</h2>
+      <p><strong>Kurtarma yoktur.</strong> Veritabanı, parolanızdan türetilen bir anahtarla şifrelenir ve bu anahtar hiçbir zaman saklanmaz. Bkz. <a class="inline" data-go="locking-the-app">Uygulamayı Kilitleme</a>.</p></template>
     </article>
 
-    <article class="doc-article" id="cryptographic-primitives" data-group="Reference" data-title="Cryptographic Primitives" hidden>
+    <article class="doc-article" id="cryptographic-primitives" data-group="Reference" data-title="Cryptographic Primitives" data-group-tr="Referans" data-title-tr="Kriptografik Temel Bileşenler" hidden>
       <h1>Cryptographic Primitives</h1>
       <p class="doc-lead">A reference for the exact algorithms, parameters and constructions Stade uses. Cryptography is provided by <strong>BouncyCastle</strong> on the JVM (shared by Android and desktop) behind two interfaces: <code>CryptoApi</code> (classical) and <code>PqCrypto</code> (post-quantum).</p>
 
@@ -1027,9 +1554,63 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
       <h2 id="cp-framing">Wire framing &amp; at-rest vault</h2>
       <pre><code>[ 1 byte record type ][ 4 byte big-endian length ][ payload ]   max 4 MiB</code></pre>
       <p>Record types include HELLO, AUTH, KEM_OFFER, MESSAGE, ACK, PING and BYE. The at-rest vault uses PBKDF2-HMAC-SHA256 (210,000 iterations, 16-byte salt), a random 256-bit DEK encrypted with AES-256-GCM, a verifier to detect wrong passwords, secure zero-overwrite deletion, and an escalating lockout (threshold 5; delays from seconds to up to 24 hours). Version-tagged labels (<code>-v2</code>) and explicit record-type codes mean the app's package name can change without breaking on-the-wire compatibility.</p>
+      <template class="i18n-tr"><h1>Kriptografik Temel Bileşenler</h1>
+      <p class="doc-lead">Stade'in kullandığı tam algoritmalar, parametreler ve yapılar için bir referans. Kriptografi, iki arayüzün arkasında JVM üzerinde (Android ve masaüstü tarafından paylaşılır) <strong>BouncyCastle</strong> tarafından sağlanır: <code>CryptoApi</code> (klasik) ve <code>PqCrypto</code> (kuantum sonrası).</p>
+
+      <h2 id="cp-summary">Algoritma özeti</h2>
+      <table class="spec-table">
+        <tr><th>Rol</th><th>Algoritma</th><th>Notlar</th></tr>
+        <tr><td>Özet (hash)</td><td class="val">BLAKE2b-256</td><td>IDs, safety numbers, KDF base</td></tr>
+        <tr><td>Klasik imzalar</td><td class="val">Ed25519</td><td>32-byte key, 64-byte signature</td></tr>
+        <tr><td>Klasik anahtar anlaşması</td><td class="val">X25519 (ECDH)</td><td>32-byte keys</td></tr>
+        <tr><td>AEAD (mesajlar)</td><td class="val">ChaCha20-Poly1305</td><td>128-bit tag, 96-bit nonce</td></tr>
+        <tr><td>Anahtar türetimi</td><td class="val">HKDF / BLAKE2b-256</td><td>Domain-separated by info labels</td></tr>
+        <tr><td>Kuantum sonrası KEM</td><td class="val">ML-KEM-768</td><td>Public key 1184 B, ciphertext 1088 B</td></tr>
+        <tr><td>Kuantum sonrası imzalar</td><td class="val">ML-DSA-65</td><td>Public key 1952 B, signature 3309 B</td></tr>
+        <tr><td>Bekleme durumu parola KDF</td><td class="val">PBKDF2-HMAC-SHA256</td><td>210,000 iterations, 256-bit output</td></tr>
+        <tr><td>Bekleme durumu şifreleme</td><td class="val">AES-256-GCM</td><td>128-bit tag, 96-bit nonce</td></tr>
+      </table>
+
+      <h2 id="cp-classical">Klasik &amp; kuantum sonrası temel bileşenler</h2>
+      <p>Klasik <code>CryptoApi</code>, BLAKE2b özetleme, Ed25519 imzalama, X25519 anlaşması (ham 32 baytlık paylaşılan sır), alan-ayrımlı etiketlerle (örn. <code>stade-dr-chain</code>, <code>stade-dr-key</code>, <code>stade-dr-nonce</code>) BLAKE2b-256 üzerinden <code>hkdf(secret, salt, info, length)</code>, ChaCha20-Poly1305 AEAD (<code>aeadOpen</code>, herhangi bir kimlik doğrulama hatasında hata fırlatmak yerine <code>null</code> döndürür) ve <code>SecureRandom</code> sağlar. Kuantum sonrası <code>PqCrypto</code>, <strong>ML-KEM-768</strong> (FIPS 203: encapsulate/decapsulate) ve <strong>ML-DSA-65</strong> (FIPS 204: sign/verify, hatada <code>false</code> döndürür) sağlar.</p>
+
+      <h2 id="cp-id">Kimlik türetimi</h2>
+      <pre><code>material = "stade-id-v1\0" || ed25519_pub || mldsa_pub
+digest   = BLAKE2b-256(material)
+id60     = first 60 bits of digest
+crc4     = 4-bit checksum from the digest
+value    = (id60 &lt;&lt; 4) | crc4
+StadeID  = "STADE-" + CrockfordBase32(value)   // 12 chars, grouped 4-4-4</code></pre>
+      <p>Crockford Base32 alfabesi <code>0123456789ABCDEFGHJKMNPQRSTVWXYZ</code>'dir (I, L, O, U yok); girdi normalleştirmesi <code>O&rarr;0</code>, <code>I&rarr;1</code>, <code>L&rarr;1</code> eşlemesi yapar.</p>
+
+      <h2 id="cp-handshake">El sıkışma (PQXDH tarzı) anahtar zamanlaması</h2>
+      <pre><code>dh        = X25519(own_handshake_priv, peer_handshake_pub)
+kem_ss    = ML-KEM shared secret (initiator encapsulates to responder)
+transcript = "stade-pqxdh-v2" || lo_id || hi_id
+                              || lo_sign_pub || hi_sign_pub
+                              || lo_handshake_pub || hi_handshake_pub
+                              || lo_mlkem_pub || hi_mlkem_pub
+                              || kem_ciphertext
+salt      = BLAKE2b-256(transcript)
+rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len = 32)</code></pre>
+      <p><code>lo</code>/<code>hi</code>, iki tarafın değerlerini kanonik (sıralanmış) sırada belirtir, böylece her ikisi de aynı transkripti türetir. Kimlik doğrulama, <code>"stade-auth-v2" || peer_nonce || own_commitment || peer_commitment</code>'ı hem Ed25519 hem de ML-DSA ile imzalar; bir düşürme/kurcalamayı tespit etmek için bir transkript taahhüdü <code>BLAKE2b-256("stade-tc-v2" || version || sign_pub || handshake_pub || mlkem_pub || mldsa_pub)</code> değiştirilir ve kontrol edilir.</p>
+
+      <h2 id="cp-ratchet">Double Ratchet yapısı</h2>
+      <ul>
+        <li><strong>Zincir adımı:</strong> <code>HKDF(chainKey, info="stade-dr-chain", len=64)</code> &rarr; sonraki zincir anahtarı (32 B) + mesaj anahtarı (32 B).</li>
+        <li><strong>Mesaj anahtarı &rarr; AEAD girdileri:</strong> <code>HKDF(messageKey, "stade-dr-key", 32)</code> ve <code>HKDF(messageKey, "stade-dr-nonce", 12)</code>.</li>
+        <li><strong>DH ratchet adımı:</strong> <code>HKDF(dh || kem_ss, salt=rootKey, info="stade-pqdr-step-v2", 64)</code> aracılığıyla köke katlanan yeni bir X25519 sırrı + yeni bir ML-KEM anahtar çifti.</li>
+        <li><strong>KEM karıştırma:</strong> gelen bir ML-KEM şifreli metni <code>HKDF(kem_ss, salt=rootKey, info="stade-pqdr-mix-v2", 32)</code> aracılığıyla karışır.</li>
+        <li><strong>AEAD:</strong> ilişkili veri olarak doğrulanan ratchet başlığıyla ChaCha20-Poly1305.</li>
+        <li><strong>Atlanan anahtarlar</strong> 128'lik bir pencereyle sınırlıdır; <strong>şifre çözme işlemseldir</strong>, kimlik doğrulama hatasında geri alınır.</li>
+      </ul>
+
+      <h2 id="cp-framing">Aktarım çerçeveleme &amp; bekleme durumu kasası</h2>
+      <pre><code>[ 1 byte record type ][ 4 byte big-endian length ][ payload ]   max 4 MiB</code></pre>
+      <p>Kayıt türleri arasında HELLO, AUTH, KEM_OFFER, MESSAGE, ACK, PING ve BYE bulunur. Bekleme durumu kasası, PBKDF2-HMAC-SHA256 (210.000 yineleme, 16 baytlık tuz), AES-256-GCM ile şifrelenmiş rastgele 256 bitlik bir DEK, yanlış parolaları tespit eden bir doğrulayıcı, güvenli sıfır-üzerine-yazma silme ve artan bir kilitlenme (eşik 5; saniyelerden 24 saate kadar gecikmeler) kullanır. Sürüm etiketli etiketler (<code>-v2</code>) ve açık kayıt türü kodları, uygulamanın paket adının, iletişim uyumluluğunu bozmadan değişebileceği anlamına gelir.</p></template>
     </article>
 
-    <article class="doc-article" id="glossary" data-group="Reference" data-title="Glossary" hidden>
+    <article class="doc-article" id="glossary" data-group="Reference" data-title="Glossary" data-group-tr="Referans" data-title-tr="Sözlük" hidden>
       <h1>Glossary</h1>
       <p class="doc-lead">Terms used throughout the Stade documentation.</p>
       <table class="spec-table">
@@ -1064,9 +1645,43 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
         <tr><td><strong>Vault</strong></td><td>The at-rest encryption layer: password-encrypts the database and handles unlock, lock, lockout and secure deletion.</td></tr>
         <tr><td><strong>X25519</strong></td><td>The classical Diffie&ndash;Hellman algorithm for the classical half of key exchange and the ratcheting key.</td></tr>
       </table>
+      <template class="i18n-tr"><h1>Sözlük</h1>
+      <p class="doc-lead">Stade dokümantasyonu boyunca kullanılan terimler.</p>
+      <table class="spec-table">
+        <tr><th>Terim</th><th>Anlamı</th></tr>
+        <tr><td><strong>AEAD</strong></td><td>İlişkili Veriyle Kimlik Doğrulamalı Şifreleme &mdash; kurcalamayı da tespit eden şifreleme. Stade, mesajlar için ChaCha20-Poly1305, bekleme durumunda ise AES-256-GCM kullanır.</td></tr>
+        <tr><td><strong>AppContainer</strong></td><td>Stade'in hizmetlerini inşa eden ve birbirine bağlayan merkezi nesne: kripto, veritabanı, yöneticiler, taşımalar ve senkronizasyon motoru.</td></tr>
+        <tr><td><strong>Geri çekilme (Backoff)</strong></td><td>Ulaşılamayan bir eşe yapılan tekrarlanan bağlantı denemeleri arasındaki artan bekleme.</td></tr>
+        <tr><td><strong>BLAKE2b-256</strong></td><td>Stade ID'leri, güvenlik numaraları için ve HKDF'nin temeli olarak kullanılan özet (hash) fonksiyonu.</td></tr>
+        <tr><td><strong>ConnectionManager</strong></td><td>Bağlı olmayan kişileri ve yeni eklenen davet adreslerini, geri çekilme ve tanılamayla sürekli arar.</td></tr>
+        <tr><td><strong>Crockford Base32</strong></td><td>I, L, O, U'yu hariç tutan bir Base32 kodlaması; Stade ID'yi biçimlendirmek için kullanılır.</td></tr>
+        <tr><td><strong>DEK</strong></td><td>Veri Şifreleme Anahtarı &mdash; veritabanınızı şifreleyen rastgele anahtar; kendisi parola türevli bir anahtarla şifrelenir.</td></tr>
+        <tr><td><strong>Double Ratchet</strong></td><td>Mesaj başına yeni bir anahtarla devam eden bir konuşmayı koruyan protokol; Stade'in varyantı her adımda kuantum sonrası ML-KEM ekler.</td></tr>
+        <tr><td><strong>Ed25519</strong></td><td>Kimlikleri ve el sıkışmaları doğrulayan klasik imza algoritması.</td></tr>
+        <tr><td><strong>İleri gizlilik (Forward secrecy)</strong></td><td>Mevcut bir anahtarı tehlikeye atmak geçmiş mesajları açığa çıkarmaz.</td></tr>
+        <tr><td><strong>El sıkışma (Handshake)</strong></td><td>Eşlerin mesajlaşmadan önce çalıştırdığı karşılıklı, kimlik doğrulamalı anahtar alışverişi (HELLO &rarr; AUTH &rarr; KEM_OFFER &rarr; kök anahtar).</td></tr>
+        <tr><td><strong>HKDF</strong></td><td>Paylaşılan sırları ve zincir anahtarlarını, bir bilgi etiketiyle alan-ayrımlı olarak anahtarlara/nonce'lara dönüştüren bir anahtar türetme fonksiyonu.</td></tr>
+        <tr><td><strong>Gizli / onion hizmeti</strong></td><td>Bir cihazın IP'sini ifşa etmeden bağlantı kabul etmesini sağlayan bir Tor özelliği. Her Stade eşi bir tane çalıştırır.</td></tr>
+        <tr><td><strong>Hibrit kriptografi</strong></td><td>Bir aileyi kırmanın yetersiz olması için klasik ve kuantum sonrası bir algoritmanın birleştirilmesi.</td></tr>
+        <tr><td><strong>Davet (Invite)</strong></td><td>Takma adınızı, genel anahtarlarınızı ve adreslerinizi taşıyan imzalı, Base32 kodlu bir paket (<code>STADE2-&hellip;</code>). Ayrıca bir QR kodu veya <code>.stadeid</code> dosyası.</td></tr>
+        <tr><td><strong>KEK</strong></td><td>Anahtar Şifreleme Anahtarı &mdash; PBKDF2 aracılığıyla parolanızdan türetilir, DEK'i şifreler.</td></tr>
+        <tr><td><strong>ML-DSA-65</strong></td><td>Ed25519'un yanında kullanılan NIST kuantum sonrası imza algoritması (FIPS 204).</td></tr>
+        <tr><td><strong>ML-KEM-768</strong></td><td>X25519'un yanında kullanılan NIST kuantum sonrası anahtar kapsülleme mekanizması (FIPS 203).</td></tr>
+        <tr><td><strong>Giden Kutusu (Outbox)</strong></td><td>Onaylanmamış mesajların yerel kuyruğu; teslimat onaylanana kadar yeniden gönderilir.</td></tr>
+        <tr><td><strong>PBKDF2</strong></td><td>Parolanızı KEK'e dönüştüren parola tabanlı KDF (HMAC-SHA256, 210.000 yineleme).</td></tr>
+        <tr><td><strong>Eş (Peer)</strong></td><td>Stade çalıştıran herhangi bir cihaz. Tüm eşler eşittir; sunucu yoktur.</td></tr>
+        <tr><td><strong>PQXDH</strong></td><td>Kuantum Sonrası Genişletilmiş Diffie&ndash;Hellman &mdash; hibrit bir X25519 + ML-KEM alışverişinden bir kök anahtar türeten el sıkışma tarzı.</td></tr>
+        <tr><td><strong>Güvenlik numarası (Safety number)</strong></td><td>Her iki kişinin de imzalama anahtarlarından türetilen 60 haneli bir değer; kanal dışında karşılaştırmak, arada bir ortadaki adam olmadığını doğrular.</td></tr>
+        <tr><td><strong>Stade ID</strong></td><td>Genel adresiniz, <code>STADE-XXXX-XXXX-XXXX</code>, imzalama anahtarlarınızın sağlama toplamlı bir parmak izi.</td></tr>
+        <tr><td><strong>SOCKS5</strong></td><td>Stade'in giden onion bağlantıları için yerel Tor sürecine konuştuğu proxy protokolü.</td></tr>
+        <tr><td><strong>Senkronizasyon motoru (Sync engine)</strong></td><td>Her yeni bağlantıda el sıkışmayı çalıştırır, ardından kişi başına mesaj oturumunu yönetir.</td></tr>
+        <tr><td><strong>Transkript taahhüdü</strong></td><td>Bir eşin protokol sürümünü ve genel anahtarlarını bağlayan, kurcalamayı tespit etmek için el sıkışma sırasında kontrol edilen bir özet.</td></tr>
+        <tr><td><strong>Kasa (Vault)</strong></td><td>Bekleme durumu şifreleme katmanı: veritabanını parolayla şifreler ve kilit açma, kilitleme, kilitlenme ve güvenli silmeyi yönetir.</td></tr>
+        <tr><td><strong>X25519</strong></td><td>Anahtar değişiminin klasik yarısı ve ratchet anahtarı için klasik Diffie&ndash;Hellman algoritması.</td></tr>
+      </table></template>
     </article>
 
-    <article class="doc-article" id="faq" data-group="Reference" data-title="FAQ" hidden>
+    <article class="doc-article" id="faq" data-group="Reference" data-title="FAQ" data-group-tr="Referans" data-title-tr="SSS" hidden>
       <h1>Frequently Asked Questions</h1>
       <p class="doc-lead">Quick answers to common questions about how Stade works.</p>
 
@@ -1102,6 +1717,41 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
 
       <h2 id="faq-who">Who can see who I'm talking to?</h2>
       <p>On <strong>LAN</strong>, peers on your local network can see your device's local IP (but not your messages). Over <strong>Tor</strong>, the endpoints' locations and the existence of the conversation are hidden. In neither case can anyone read message contents &mdash; and because there's no server, no third party (including Stade's developers) has any contact graph or logs.</p>
+      <template class="i18n-tr"><h1>Sık Sorulan Sorular</h1>
+      <p class="doc-lead">Stade'in nasıl çalıştığına dair yaygın soruların hızlı yanıtları.</p>
+
+      <h2 id="faq-serverless">Stade gerçekten sunucusuz mu?</h2>
+      <p>Evet. Bir Stade sunucusu, rölesi veya hesap hizmeti yoktur. İki cihaz doğrudan yerel ağ üzerinden veya Tor üzerinden bağlanır &mdash; uygulama ağın tamamı<em>dır</em>. Konuşmalarınızla ilgili hiçbir şey, içindeki iki cihaz dışında hiçbir yerde saklanmaz.</p>
+
+      <h2 id="faq-account">Bir hesaba, telefon numarasına veya e-postaya ihtiyacım var mı?</h2>
+      <p>Hayır. Bir takma ad seçerek yerel olarak bir kimlik oluşturursunuz; Stade anahtarlarınızı cihazda üretir ve bunlardan <strong>Stade ID</strong>'nizi türetir. Hiçbir şey kayıtlı değildir.</p>
+
+      <h2 id="faq-add">Birini nasıl eklerim ve neden hemen olmuyor?</h2>
+      <p><strong>Davetleri</strong> değiştirin (bir <code>STADE2-&hellip;</code> kodu, QR veya <code>.stadeid</code> dosyası). Davet yerel olarak doğrulanır, ancak kişi yalnızca <strong>canlı bir el sıkışma</strong> tamamlandığında kaydedilir &mdash; her iki eşin de çevrimiçi ve ulaşılabilir olması gerekir.</p>
+
+      <h2 id="faq-tor-slow">İlk Tor bağlantısı neden yavaş ve Orbot'a ihtiyacım var mı?</h2>
+      <p>Tor'un önyükleme yapması ve eşin onion tanımlayıcısının yayılması gerekir, bu yüzden ilk bağlantı saniyelerden birkaç dakikaya kadar sürebilir &mdash; her iki uygulamayı da açık bırakın. Orbot'a <strong>ihtiyacınız yoktur</strong>: Stade kendi Tor çalışma zamanını paketler (tercih ederseniz harici bir tane de kullanabilir).</p>
+
+      <h2 id="faq-pq">Burada "kuantum sonrası" ne anlama geliyor?</h2>
+      <p>Stade, klasik kriptografiyi (X25519, Ed25519) NIST kuantum sonrası algoritmalarıyla (<strong>ML-KEM-768</strong>, <strong>ML-DSA-65</strong>) <strong>hibrit</strong> bir şemada birleştirir. Bir saldırganın bir konuşmayı tehlikeye atmak için <em>ikisini de</em> kırması gerekir &mdash; böylece "şimdi topla, sonra çöz" saldırıları da dahil olmak üzere gelecekteki bir kuantum bilgisayara karşı bile güvenli kalır.</p>
+
+      <h2 id="faq-mitm">Biri bir kişiyi taklit edebilir mi?</h2>
+      <p>El sıkışma her iki tarafı da iki bağımsız imza şemasıyla doğrular, bu yüzden bir ağ saldırganı kendini araya enjekte edemez. Kalan tek risk, <em>ilk</em> davet alışverişiniz sırasındaki anahtar değişimidir &mdash; ki bunu yakalayan şey tam olarak <strong>güvenlik numarası doğrulamasıdır</strong>.</p>
+
+      <h2 id="faq-offline">Çevrimdışıysam mesajlarıma ne olur?</h2>
+      <p>Giden mesajlar bir <strong>Giden Kutusu</strong>'nda bekler ve onaylanana kadar yeniden gönderilir. Mesajları tutacak bir sunucu olmadığı için teslimat, yine de her iki eşin de bir noktada çakışan bir zamanda çevrimiçi olmasını gerektirir.</p>
+
+      <h2 id="faq-rest">Mesajlarım diskte şifreli mi ve kayıp bir parolayı kurtarabilir miyim?</h2>
+      <p>Yerel olarak bir SQLite veritabanındadırlar; bir parola ayarlandığında, PBKDF2 türevli bir anahtar (210k yineleme) altında AES-256-GCM ile bekleme durumunda şifrelenir. <strong>Kurtarma yoktur</strong> &mdash; anahtar parolanızdan türetilir ve hiçbir zaman saklanmaz, bu yüzden unutulan bir parola verilerin kimse tarafından çözülemeyeceği anlamına gelir.</p>
+
+      <h2 id="faq-platforms">Hangi platformlar ve grup sohbetleri destekleniyor mu?</h2>
+      <p>Android 8.0+ ve masaüstü (Windows, Linux, macOS), hepsi tek bir paylaşılan kod tabanından. Birebir konuşmalara ek olarak <strong>grup mesajlaşması desteklenir</strong>.</p>
+
+      <h2 id="faq-broadcast">Belirli kişiler yerine herkese açık bir kitleye yayın yapabilir miyim?</h2>
+      <p>Evet &mdash; bir <a class="inline" data-go="stadium">Stadium</a>'un amacı tam olarak budur: bir yöneticinin paylaşım yaptığı ve bağlantıya sahip herkesin katılıp okuyabildiği herkese açık bir kanal. <a class="inline" data-go="stadium">Stadium</a> kılavuzuna bakın.</p>
+
+      <h2 id="faq-who">Kiminle konuştuğumu kim görebilir?</h2>
+      <p><strong>LAN</strong>'da, yerel ağınızdaki eşler cihazınızın yerel IP'sini görebilir (ama mesajlarınızı göremez). <strong>Tor</strong> üzerinden, uç noktaların konumları ve konuşmanın varlığı gizlidir. Her iki durumda da hiç kimse mesaj içeriklerini okuyamaz &mdash; ve sunucu olmadığı için hiçbir üçüncü taraf (Stade'in geliştiricileri dahil) herhangi bir kişi grafiğine veya günlüğe sahip değildir.</p></template>
     </article>
 
     <nav class="doc-footer-nav" id="docFooterNav" aria-label="Article navigation"></nav>
@@ -1118,7 +1768,7 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
   <div class="search-modal">
     <div class="search-field">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off" spellcheck="false" />
+      <input type="text" id="searchInput" placeholder="Search documentation..." data-tr-placeholder="Dokümanlarda ara..." autocomplete="off" spellcheck="false" />
       <span class="esc">Esc</span>
     </div>
     <div class="search-results" id="searchResults"></div>
@@ -1144,6 +1794,20 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
   const footerNav = document.getElementById('docFooterNav');
   const main = document.querySelector('.doc-main');
 
+  const articleI18n = new Map();
+  articles.forEach(a => {
+    const tpl = a.querySelector('template.i18n-tr');
+    const trHTML = tpl ? tpl.innerHTML : null;
+    if (tpl) tpl.remove();
+    articleI18n.set(a.id, { en: a.innerHTML, tr: trHTML });
+  });
+
+  const UI_STRINGS = {
+    en: { home: 'Docs', noResults: 'No results found', prev: '&larr; Previous', next: 'Next &rarr;' },
+    tr: { home: 'Dokümanlar', noResults: 'Sonuç bulunamadı', prev: '&larr; Önceki', next: 'Sonraki &rarr;' }
+  };
+  let currentLang = 'en';
+
   let spy = null;
 
   function buildToc(article) {
@@ -1164,11 +1828,18 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
     headings.forEach(h => spy.observe(h));
   }
 
+  function groupOf(article) {
+    return currentLang === 'tr' ? (article.dataset.groupTr || article.dataset.group) : article.dataset.group;
+  }
+  function titleOf(article) {
+    return currentLang === 'tr' ? (article.dataset.titleTr || article.dataset.title) : article.dataset.title;
+  }
+
   function buildBreadcrumb(article) {
     breadcrumb.innerHTML =
-      '<a data-home>Docs</a><span class="sep">/</span>' +
-      '<span>' + article.dataset.group + '</span><span class="sep">/</span>' +
-      '<span class="current">' + article.dataset.title + '</span>';
+      '<a data-home>' + UI_STRINGS[currentLang].home + '</a><span class="sep">/</span>' +
+      '<span>' + groupOf(article) + '</span><span class="sep">/</span>' +
+      '<span class="current">' + titleOf(article) + '</span>';
     breadcrumb.querySelector('[data-home]').addEventListener('click', () => navigate(order[0]));
   }
 
@@ -1176,11 +1847,12 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
     const i = order.indexOf(id);
     const prev = i > 0 ? articles.find(a => a.id === order[i - 1]) : null;
     const next = i < order.length - 1 ? articles.find(a => a.id === order[i + 1]) : null;
+    const t = UI_STRINGS[currentLang];
     const prevHtml = prev
-      ? '<a class="prev" data-go="' + prev.id + '"><span class="dir">&larr; Previous</span><span class="ttl">' + prev.dataset.title + '</span></a>'
+      ? '<a class="prev" data-go="' + prev.id + '"><span class="dir">' + t.prev + '</span><span class="ttl">' + titleOf(prev) + '</span></a>'
       : '<a class="prev empty"></a>';
     const nextHtml = next
-      ? '<a class="next" data-go="' + next.id + '"><span class="dir">Next &rarr;</span><span class="ttl">' + next.dataset.title + '</span></a>'
+      ? '<a class="next" data-go="' + next.id + '"><span class="dir">' + t.next + '</span><span class="ttl">' + titleOf(next) + '</span></a>'
       : '<a class="next empty"></a>';
     footerNav.innerHTML = prevHtml + nextHtml;
     footerNav.querySelectorAll('[data-go]').forEach(a =>
@@ -1222,10 +1894,14 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
     if (order.includes(id) && articles.find(a => a.id === id).hidden) navigate(id);
   });
 
-  const searchIndex = sidebarLinks.map(a => {
-    const group = a.closest('.nav-group').querySelector('.nav-group-title').textContent.trim();
-    return { id: a.getAttribute('data-id'), title: a.textContent.trim(), group };
-  });
+  let searchIndex = [];
+  function buildSearchIndex() {
+    searchIndex = sidebarLinks.map(a => {
+      const group = a.closest('.nav-group').querySelector('.nav-group-title').textContent.trim();
+      return { id: a.getAttribute('data-id'), title: a.textContent.trim(), group };
+    });
+  }
+  buildSearchIndex();
 
   const overlay = document.getElementById('searchOverlay');
   const input = document.getElementById('searchInput');
@@ -1240,7 +1916,7 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
       : searchIndex;
     activeIndex = 0;
     if (!matches.length) {
-      results.innerHTML = '<div class="search-empty">No results found</div>';
+      results.innerHTML = '<div class="search-empty">' + UI_STRINGS[currentLang].noResults + '</div>';
       return;
     }
     results.innerHTML = matches.map((item, i) =>
@@ -1292,6 +1968,66 @@ rootKey   = HKDF(secret = dh || kem_ss, salt, info = "stade-pqxdh-root-v2", len 
       closeSearch();
     }
   });
+
+  // --- Language toggle (EN default, TR optional) ---
+  (function () {
+    var LANG_KEY = 'stade-lang';
+
+    document.querySelectorAll('[data-tr]').forEach(function (el) {
+      if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    });
+    document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+      if (el.dataset.enAria === undefined) el.dataset.enAria = el.getAttribute('aria-label') || '';
+    });
+    document.querySelectorAll('[data-tr-placeholder]').forEach(function (el) {
+      if (el.dataset.enPlaceholder === undefined) el.dataset.enPlaceholder = el.getAttribute('placeholder') || '';
+    });
+
+    function currentArticleId() {
+      const visible = articles.find(a => !a.hidden);
+      return visible ? visible.id : order[0];
+    }
+
+    function applyLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-tr]').forEach(function (el) {
+        el.textContent = lang === 'tr' ? el.getAttribute('data-tr') : el.dataset.en;
+      });
+      document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
+      });
+      document.querySelectorAll('[data-tr-placeholder]').forEach(function (el) {
+        el.setAttribute('placeholder', lang === 'tr' ? el.getAttribute('data-tr-placeholder') : el.dataset.enPlaceholder);
+      });
+
+      articles.forEach(function (a) {
+        const stored = articleI18n.get(a.id);
+        if (stored) a.innerHTML = (lang === 'tr' && stored.tr) ? stored.tr : stored.en;
+      });
+
+      buildSearchIndex();
+
+      const id = currentArticleId();
+      const article = articles.find(a => a.id === id);
+      buildBreadcrumb(article);
+      buildToc(article);
+      buildFooterNav(id);
+      if (overlay.classList.contains('open')) renderResults(input.value);
+
+      var toggleBtn = document.getElementById('langToggle');
+      if (toggleBtn) toggleBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
+      localStorage.setItem(LANG_KEY, lang);
+    }
+
+    var stored = localStorage.getItem(LANG_KEY);
+    applyLang(stored === 'tr' ? 'tr' : 'en');
+
+    var langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', function () {
+      applyLang(currentLang === 'tr' ? 'en' : 'tr');
+    });
+  })();
 </script>
 </body>
 </html>

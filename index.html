@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Stade — Serverless, end-to-end encrypted, open-source messaging app. Peer-to-peer communication over LAN and Tor without any central server." />
-<meta name="theme-color" content="#080910" />
+<meta name="theme-color" content="#0a0a0a" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <title>Stade — Serverless. Untracked. Yours.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,23 +14,23 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #080910;
-  --bg-elev: #0c0e1a;
-  --bg-card: rgba(16, 19, 38, 0.6);
-  --bg-card-hover: rgba(22, 26, 52, 0.82);
-  --border: rgba(100, 115, 200, 0.1);
-  --border-strong: rgba(130, 145, 220, 0.2);
-  --border-accent: rgba(124, 92, 255, 0.32);
-  --text: #eceef8;
-  --text-muted: #838aa6;
-  --text-dim: #4b526e;
-  --accent: #7c5cff;
-  --accent-light: #9d82ff;
-  --accent-2: #3d9eff;
-  --accent-3: #00d4aa;
-  --accent-warm: #ff6b6b;
-  --accent-glow: rgba(124, 92, 255, 0.38);
-  --gradient: linear-gradient(135deg, #7c5cff 0%, #3d9eff 100%);
+  --bg: #0a0a0a;
+  --bg-elev: #101010;
+  --bg-card: rgba(26,26,26,0.6);
+  --bg-card-hover: rgba(34,34,34,0.82);
+  --border: rgba(140,140,140,0.1);
+  --border-strong: rgba(170,170,170,0.2);
+  --border-accent: rgba(224,224,224,0.32);
+  --text: #f0f0f0;
+  --text-muted: #8a8a8a;
+  --text-dim: #545454;
+  --accent: #e0e0e0;
+  --accent-light: #ffffff;
+  --accent-2: #b0b0b0;
+  --accent-3: #cacaca;
+  --accent-warm: #7a7a7a;
+  --accent-glow: rgba(224,224,224,0.38);
+  --gradient: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
   --radius: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
@@ -50,8 +50,8 @@ body::after {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(100,115,200,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100,115,200,0.028) 1px, transparent 1px);
+    linear-gradient(rgba(140,140,140,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140,140,140,0.028) 1px, transparent 1px);
   background-size: 64px 64px;
   pointer-events: none; z-index: 0;
 }
@@ -60,10 +60,10 @@ body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse 85% 55% at 12% -8%, rgba(124,92,255,0.22), transparent 55%),
-    radial-gradient(ellipse 55% 40% at 92% 6%,  rgba(61,158,255,0.15),  transparent 55%),
-    radial-gradient(ellipse 50% 35% at 80% 85%, rgba(0,212,170,0.08),   transparent 60%),
-    radial-gradient(ellipse 65% 50% at 50% 108%, rgba(124,92,255,0.11), transparent 65%);
+    radial-gradient(ellipse 85% 55% at 12% -8%, rgba(224,224,224,0.22), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 92% 6%,  rgba(176,176,176,0.15),  transparent 55%),
+    radial-gradient(ellipse 50% 35% at 80% 85%, rgba(202,202,202,0.08),   transparent 60%),
+    radial-gradient(ellipse 65% 50% at 50% 108%, rgba(224,224,224,0.11), transparent 65%);
   pointer-events: none; z-index: 0;
 }
 
@@ -73,7 +73,7 @@ nav {
   position: sticky; top: 0; z-index: 100;
   backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
-  background: rgba(8, 9, 16, 0.78);
+  background: rgba(10,10,10,0.78);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
@@ -105,6 +105,14 @@ nav {
   transition: all 0.2s; white-space: nowrap;
 }
 .nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 38px; padding: 0 12px;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   width: 36px; height: 36px; background: none;
@@ -120,7 +128,7 @@ nav {
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 .mobile-menu {
   display: none; flex-direction: column; gap: 4px;
-  padding: 12px 20px 16px; background: rgba(8,9,16,0.97);
+  padding: 12px 20px 16px; background: rgba(10,10,10,0.97);
   border-bottom: 1px solid var(--border);
 }
 .mobile-menu.open { display: flex; }
@@ -170,12 +178,12 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .btn-primary {
-  background: var(--gradient); color: white;
-  box-shadow: 0 8px 30px -6px rgba(124,92,255,0.52), 0 0 0 1px rgba(255,255,255,0.06) inset;
+  background: var(--gradient); color: #0a0a0a;
+  box-shadow: 0 8px 30px -6px rgba(224,224,224,0.52), 0 0 0 1px rgba(255,255,255,0.06) inset;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px -6px rgba(124,92,255,0.62), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  box-shadow: 0 16px 40px -6px rgba(224,224,224,0.62), 0 0 0 1px rgba(255,255,255,0.1) inset;
 }
 .btn-primary:active { transform: translateY(0); }
 .btn-secondary {
@@ -185,17 +193,17 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .btn-ghost {
   background: transparent; color: var(--accent-light); border-color: var(--border-accent);
 }
-.btn-ghost:hover { background: rgba(124,92,255,0.09); border-color: rgba(124,92,255,0.5); }
+.btn-ghost:hover { background: rgba(224,224,224,0.09); border-color: rgba(224,224,224,0.5); }
 
 .hero { padding: 96px 0 72px; text-align: center; position: relative; z-index: 1; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 5px 14px 5px 8px; border-radius: 100px;
-  background: rgba(124,92,255,0.08); border: 1px solid rgba(124,92,255,0.3);
+  background: rgba(224,224,224,0.08); border: 1px solid rgba(224,224,224,0.3);
   color: var(--accent-light); font-size: 13px; font-weight: 500; margin-bottom: 32px;
 }
 .hero-badge .pulse-dot {
-  width: 22px; height: 22px; background: rgba(124,92,255,0.14);
+  width: 22px; height: 22px; background: rgba(224,224,224,0.14);
   border-radius: 50%; display: grid; place-items: center; flex-shrink: 0;
 }
 .hero-badge .pulse-dot::after {
@@ -211,7 +219,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .hero h1 .line1 {
   display: block;
-  background: linear-gradient(180deg, #fff 15%, #c2c8e8 100%);
+  background: linear-gradient(180deg, #fff 15%, #c8c8c8 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero h1 .line2 {
@@ -226,7 +234,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 
 .hero-diagram { max-width: 860px; margin: 0 auto; }
 .diagram-frame {
-  background: linear-gradient(180deg, rgba(16,20,44,0.92), rgba(10,12,26,0.7));
+  background: linear-gradient(180deg, rgba(28,28,28,0.92), rgba(14,14,14,0.7));
   border: 1px solid var(--border-strong); border-radius: var(--radius-xl);
   padding: 44px 36px; backdrop-filter: blur(14px);
   box-shadow: 0 40px 110px -30px rgba(0,0,0,0.65), 0 0 90px -35px var(--accent-glow),
@@ -236,7 +244,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .diagram-frame::before {
   content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 70%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(124,92,255,0.55), transparent);
+  background: linear-gradient(90deg, transparent, rgba(224,224,224,0.55), transparent);
 }
 .p2p-diagram {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
@@ -245,7 +253,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .node-device {
   width: 84px; height: 84px; border-radius: 22px;
   border: 1.5px solid var(--border-accent);
-  background: linear-gradient(145deg, rgba(124,92,255,0.1), rgba(61,158,255,0.05));
+  background: linear-gradient(145deg, rgba(224,224,224,0.1), rgba(176,176,176,0.05));
   display: grid; place-items: center;
   box-shadow: 0 0 40px -15px var(--accent-glow);
 }
@@ -261,21 +269,21 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .channel-line { width: 100%; display: flex; align-items: center; }
 .channel-track {
   height: 2px; flex: 1;
-  background: linear-gradient(90deg, var(--border-accent), rgba(61,158,255,0.38), var(--border-accent));
+  background: linear-gradient(90deg, var(--border-accent), rgba(176,176,176,0.38), var(--border-accent));
   position: relative; overflow: hidden;
 }
 .channel-track::after {
   content: ''; position: absolute; top: 0; left: -100%;
   width: 55%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(124,92,255,0.85), transparent);
+  background: linear-gradient(90deg, transparent, rgba(224,224,224,0.85), transparent);
   animation: flow 2.8s linear infinite;
 }
 @keyframes flow { to { left: 200%; } }
 .channel-lock {
   width: 38px; height: 38px; border-radius: 11px;
-  background: linear-gradient(135deg, rgba(124,92,255,0.22), rgba(61,158,255,0.16));
+  background: linear-gradient(135deg, rgba(224,224,224,0.22), rgba(176,176,176,0.16));
   border: 1px solid var(--border-accent); display: grid; place-items: center; flex-shrink: 0;
-  box-shadow: 0 0 24px rgba(124,92,255,0.28);
+  box-shadow: 0 0 24px rgba(224,224,224,0.28);
 }
 .channel-lock svg { width: 18px; height: 18px; color: var(--accent-light); }
 .channel-labels { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
@@ -283,8 +291,8 @@ section { padding: 112px 0; position: relative; z-index: 1; }
   padding: 3px 10px; border-radius: 100px; font-size: 11px;
   font-family: 'JetBrains Mono', monospace; font-weight: 600; border: 1px solid transparent;
 }
-.cb-lan { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.28); color: #00d4aa; }
-.cb-tor { background: rgba(124,92,255,0.1); border-color: rgba(124,92,255,0.32); color: var(--accent-light); }
+.cb-lan { background: rgba(202,202,202,0.08); border-color: rgba(202,202,202,0.28); color: #cacaca; }
+.cb-tor { background: rgba(224,224,224,0.1); border-color: rgba(224,224,224,0.32); color: var(--accent-light); }
 .channel-proto {
   font-size: 11px; font-family: 'JetBrains Mono', monospace;
   color: var(--text-dim); text-align: center;
@@ -294,6 +302,165 @@ section { padding: 112px 0; position: relative; z-index: 1; }
   .channel-line { display: none; }
   .p2p-channel { flex-direction: row; flex-wrap: wrap; justify-content: center; }
   .diagram-frame { padding: 28px 20px; }
+}
+
+/* Demo showcase — 1:1 with Stade's real app UI (pure black & white app shell) */
+.demo-stage {
+  margin-top: 4px;
+  --app-bg: #000000;
+  --app-surface: #121212;
+  --app-list-surface: #1A1A1A;
+  --app-elevated: #2E2E2E;
+  --app-primary: #FFFFFF;
+  --app-on-primary: #000000;
+  --app-text: #F2F2F2;
+  --app-text-muted: #C0C0C0;
+  --app-online: #22C55E;
+  --app-offline: #98A2B3;
+  --app-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+.demo-devices {
+  display: flex; align-items: flex-end; justify-content: center; gap: 40px;
+  padding: 12px 0 4px; flex-wrap: wrap;
+}
+
+.avatar {
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--app-font); font-size: 17.6px; font-weight: 600; color: #fff; letter-spacing: 0;
+}
+.avatar-sm { width: 36px; height: 36px; font-size: 15px; }
+
+.presence-dot {
+  position: absolute; right: -1px; bottom: -1px; width: 11px; height: 11px;
+  border-radius: 50%; border: 2px solid var(--app-bg); box-sizing: content-box;
+}
+.presence-dot.online { background: var(--app-online); }
+.presence-dot.offline { background: var(--app-offline); }
+.contact-row .presence-dot { border-color: var(--app-list-surface); }
+
+.verified-badge {
+  position: absolute; left: -2px; bottom: -2px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--app-primary); color: var(--app-on-primary); display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--app-bg); opacity: 0; transform: scale(0.3);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(.34,1.56,.64,1);
+}
+.verified-badge svg { width: 9px; height: 9px; }
+.verified-badge.show { opacity: 1; transform: scale(1); }
+
+.device { position: relative; font-family: var(--app-font); }
+.device-desktop {
+  width: min(540px, 60vw); min-width: 300px;
+  display: flex; flex-direction: column; height: 516px;
+  background: var(--app-bg);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
+  box-shadow: 0 40px 100px -30px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  overflow: hidden;
+}
+.device-desktop-bar {
+  display: flex; align-items: center; gap: 6px; padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+}
+.dd-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+.dd-title { margin-left: 6px; font-size: 11px; color: var(--app-text-muted); font-family: var(--app-font); }
+
+.device-phone {
+  width: 232px; flex-shrink: 0;
+  background: var(--app-bg);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 34px; padding: 14px 9px;
+  box-shadow: 0 40px 100px -28px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+.device-phone-notch { width: 56px; height: 5px; border-radius: 100px; background: rgba(255,255,255,0.14); margin: 0 auto 10px; }
+.device-screen-wrap { position: relative; height: 516px; border-radius: 22px; overflow: hidden; background: var(--app-bg); }
+
+.phone-view {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  opacity: 0; transition: opacity 0.45s ease; pointer-events: none; background: var(--app-bg);
+}
+.phone-view.active { opacity: 1; pointer-events: auto; }
+
+.chat-header { display: flex; align-items: center; gap: 11px; padding: 13px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; background: var(--app-bg); }
+.chat-header-info { flex: 1; min-width: 0; }
+.chat-header-name { font-size: 17px; font-weight: 600; letter-spacing: 0; color: var(--app-text); font-family: var(--app-font); }
+
+.chat-body { flex: 1; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; transition: opacity 0.3s ease; background: var(--app-bg); }
+.chat-input-row { display: flex; align-items: center; gap: 8px; padding: 11px 14px; border-top: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; background: var(--app-bg); }
+.chat-input-fake { flex: 1; background: var(--app-list-surface); border-radius: 100px; padding: 9px 14px; font-size: 13px; color: var(--app-text-muted); font-family: var(--app-font); }
+.chat-send-btn { width: 30px; height: 30px; border-radius: 50%; background: var(--app-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chat-send-btn svg { width: 13px; height: 13px; color: var(--app-on-primary); }
+
+.typing-row { display: flex; margin-top: 10px; }
+.typing-indicator { display: inline-flex; align-items: center; gap: 4px; padding: 11px 14px; background: var(--app-elevated); border-radius: 18px; }
+.typing-indicator span { width: 5px; height: 5px; border-radius: 50%; background: var(--app-text-muted); animation: typing-bounce 1.1s ease-in-out infinite; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typing-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+.msg {
+  max-width: min(78%, 320px); margin-top: 10px; display: flex;
+  opacity: 0; transform: translateY(6px); animation: msg-in 0.35s ease forwards;
+  font-family: var(--app-font);
+}
+.msg.grp-middle, .msg.grp-last { margin-top: 1px; }
+@keyframes msg-in { to { opacity: 1; transform: translateY(0); } }
+.msg-in { align-self: flex-start; }
+.msg-out { align-self: flex-end; }
+.msg-bubble { position: relative; padding: 9px 14px; font-size: 14px; line-height: 20px; letter-spacing: 0; }
+.msg-in .msg-bubble { background: var(--app-elevated); color: var(--app-text); }
+.msg-out .msg-bubble { background: var(--app-primary); color: var(--app-on-primary); }
+
+/* Asymmetric grouped-bubble corners: far-side corners always 18px, near-side corners
+   tighten to 6px/4px where a bubble connects to a same-sender neighbor above/below. */
+.msg-out .msg-bubble { border-top-left-radius: 18px; border-bottom-left-radius: 18px; }
+.msg-out.grp-single .msg-bubble, .msg-out.grp-first .msg-bubble  { border-top-right-radius: 18px; }
+.msg-out.grp-middle .msg-bubble, .msg-out.grp-last .msg-bubble   { border-top-right-radius: 6px; }
+.msg-out.grp-single .msg-bubble, .msg-out.grp-last .msg-bubble   { border-bottom-right-radius: 18px; }
+.msg-out.grp-first .msg-bubble, .msg-out.grp-middle .msg-bubble  { border-bottom-right-radius: 4px; }
+
+.msg-in .msg-bubble { border-top-right-radius: 18px; border-bottom-right-radius: 18px; }
+.msg-in.grp-single .msg-bubble, .msg-in.grp-first .msg-bubble  { border-top-left-radius: 18px; }
+.msg-in.grp-middle .msg-bubble, .msg-in.grp-last .msg-bubble   { border-top-left-radius: 6px; }
+.msg-in.grp-single .msg-bubble, .msg-in.grp-last .msg-bubble   { border-bottom-left-radius: 18px; }
+.msg-in.grp-first .msg-bubble, .msg-in.grp-middle .msg-bubble  { border-bottom-left-radius: 4px; }
+
+.msg-sticker .msg-bubble { padding: 0; width: 122px; height: 122px; display: flex; align-items: center; justify-content: center; background: var(--app-elevated); }
+.msg-sticker .msg-bubble svg { width: 34px; height: 34px; color: var(--app-text-muted); opacity: 0.9; }
+
+.vanish-badge { position: absolute; top: -7px; right: -7px; width: 18px; height: 18px; border-radius: 50%; background: var(--app-elevated); border: 2px solid var(--app-bg); display: flex; align-items: center; justify-content: center; }
+.vanish-badge svg { width: 10px; height: 10px; color: var(--app-text-muted); }
+.msg.vanishing {
+  opacity: 0; transform: translateY(4px) scale(0.94); max-height: 0; margin-top: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease 0.1s, margin-top 0.5s ease 0.1s;
+}
+
+.msg-reaction {
+  position: absolute; bottom: -9px; background: var(--app-elevated); border: 2px solid var(--app-bg);
+  border-radius: 100px; padding: 2px 6px; font-size: 11px; line-height: 1.4;
+  transform: scale(0); animation: reaction-pop 0.4s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+.msg-in .msg-reaction { left: 8px; }
+.msg-out .msg-reaction { right: 8px; }
+@keyframes reaction-pop { to { transform: scale(1); } }
+
+.contact-list { padding: 16px 10px; display: flex; flex-direction: column; gap: 2px; background: var(--app-list-surface); flex: 1; }
+.contact-list-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--app-text-muted); padding: 2px 10px 12px; font-family: var(--app-font); }
+.contact-row { display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 12px; }
+.contact-row.is-active { background: rgba(255,255,255,0.06); }
+.contact-row-info { flex: 1; min-width: 0; }
+.contact-row-name { font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--app-text); font-family: var(--app-font); }
+.contact-row-preview { font-size: 12.5px; font-weight: 500; color: var(--app-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; font-family: var(--app-font); }
+
+@media (max-width: 900px) {
+  .device-desktop { display: none; }
+  .demo-devices { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .device-phone { width: 100%; max-width: 260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typing-indicator span { animation: none; opacity: 0.8; }
+  .msg { animation: none; opacity: 1; transform: none; }
+  .msg-reaction { animation: none; transform: scale(1); }
 }
 
 .stats-bar { padding: 0 0 80px; position: relative; z-index: 1; }
@@ -348,12 +515,12 @@ section { padding: 112px 0; position: relative; z-index: 1; }
   display: grid; place-items: center; margin-bottom: 20px;
 }
 .feature-icon svg { width: 24px; height: 24px; }
-.fi-purple { background: rgba(124,92,255,0.14); border: 1px solid rgba(124,92,255,0.32); color: var(--accent-light); }
-.fi-blue   { background: rgba(61,158,255,0.11);  border: 1px solid rgba(61,158,255,0.3);  color: var(--accent-2); }
-.fi-teal   { background: rgba(0,212,170,0.09);   border: 1px solid rgba(0,212,170,0.28);  color: var(--accent-3); }
-.fi-red    { background: rgba(255,107,107,0.09); border: 1px solid rgba(255,107,107,0.28);color: var(--accent-warm); }
-.fi-indigo { background: rgba(100,130,255,0.11); border: 1px solid rgba(100,130,255,0.28);color: #8ab0ff; }
-.fi-green  { background: rgba(80,220,120,0.09);  border: 1px solid rgba(80,220,120,0.28); color: #5fd97a; }
+.fi-purple { background: rgba(224,224,224,0.14); border: 1px solid rgba(224,224,224,0.32); color: var(--accent-light); }
+.fi-blue   { background: rgba(176,176,176,0.11);  border: 1px solid rgba(176,176,176,0.3);  color: var(--accent-2); }
+.fi-teal   { background: rgba(202,202,202,0.09);   border: 1px solid rgba(202,202,202,0.28);  color: var(--accent-3); }
+.fi-red    { background: rgba(122,122,122,0.09); border: 1px solid rgba(122,122,122,0.28);color: var(--accent-warm); }
+.fi-indigo { background: rgba(190,190,190,0.11); border: 1px solid rgba(190,190,190,0.28);color: #bebebe; }
+.fi-green  { background: rgba(200,200,200,0.09);  border: 1px solid rgba(200,200,200,0.28); color: #c8c8c8; }
 .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
 .feature-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
 
@@ -365,28 +532,28 @@ section { padding: 112px 0; position: relative; z-index: 1; }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .transport-card:hover { transform: translateY(-3px); }
-.tc-lan { background: linear-gradient(145deg, rgba(0,212,170,0.07), rgba(0,212,170,0.02)); border-color: rgba(0,212,170,0.2); }
-.tc-lan:hover { box-shadow: 0 22px 60px -20px rgba(0,212,170,0.22); }
-.tc-tor { background: linear-gradient(145deg, rgba(124,92,255,0.1), rgba(124,92,255,0.03)); border-color: rgba(124,92,255,0.24); }
-.tc-tor:hover { box-shadow: 0 22px 60px -20px rgba(124,92,255,0.22); }
+.tc-lan { background: linear-gradient(145deg, rgba(202,202,202,0.07), rgba(202,202,202,0.02)); border-color: rgba(202,202,202,0.2); }
+.tc-lan:hover { box-shadow: 0 22px 60px -20px rgba(202,202,202,0.22); }
+.tc-tor { background: linear-gradient(145deg, rgba(224,224,224,0.1), rgba(224,224,224,0.03)); border-color: rgba(224,224,224,0.24); }
+.tc-tor:hover { box-shadow: 0 22px 60px -20px rgba(224,224,224,0.22); }
 .transport-card::before {
   content: ''; position: absolute; top: -50px; right: -50px;
   width: 140px; height: 140px; border-radius: 50%; opacity: 0.05;
 }
-.tc-lan::before { background: #00d4aa; }
-.tc-tor::before { background: #7c5cff; }
+.tc-lan::before { background: #cacaca; }
+.tc-tor::before { background: #e0e0e0; }
 .tc-icon { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 22px; }
 .tc-icon svg { width: 26px; height: 26px; }
-.tc-lan .tc-icon { background: rgba(0,212,170,0.12);  border: 1px solid rgba(0,212,170,0.3);  color: #00d4aa; }
-.tc-tor .tc-icon { background: rgba(124,92,255,0.13); border: 1px solid rgba(124,92,255,0.3); color: var(--accent-light); }
+.tc-lan .tc-icon { background: rgba(202,202,202,0.12);  border: 1px solid rgba(202,202,202,0.3);  color: #cacaca; }
+.tc-tor .tc-icon { background: rgba(224,224,224,0.13); border: 1px solid rgba(224,224,224,0.3); color: var(--accent-light); }
 .transport-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em; }
 .transport-tag {
   display: inline-block; font-size: 10px; font-family: 'JetBrains Mono', monospace;
   font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
   padding: 2px 9px; border-radius: 5px; margin-bottom: 14px;
 }
-.tc-lan .transport-tag { background: rgba(0,212,170,0.1);  color: #00d4aa; }
-.tc-tor .transport-tag { background: rgba(124,92,255,0.1); color: var(--accent-light); }
+.tc-lan .transport-tag { background: rgba(202,202,202,0.1);  color: #cacaca; }
+.tc-tor .transport-tag { background: rgba(224,224,224,0.1); color: var(--accent-light); }
 .transport-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
 .transport-meta { margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
 .t-chip {
@@ -400,7 +567,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .steps-wrapper::after {
   content: ''; position: absolute; top: 52px; left: 12.5%; right: 12.5%; height: 1px;
-  background: linear-gradient(90deg, var(--border-accent), rgba(61,158,255,0.38), var(--border-accent));
+  background: linear-gradient(90deg, var(--border-accent), rgba(176,176,176,0.38), var(--border-accent));
   z-index: 0;
 }
 @media (max-width: 780px) {
@@ -422,7 +589,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .step-num-badge {
   position: absolute; top: -5px; right: -5px;
   width: 19px; height: 19px; border-radius: 50%;
-  background: var(--gradient); font-size: 9px; font-weight: 700; color: white;
+  background: var(--gradient); font-size: 9px; font-weight: 700; color: #0a0a0a;
   display: grid; place-items: center; font-family: 'JetBrains Mono', monospace;
   border: 1.5px solid var(--bg);
 }
@@ -438,9 +605,9 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 }
 .principle-item:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
 .pi-check {
-  width: 38px; height: 38px; background: rgba(80,220,120,0.09);
-  border: 1px solid rgba(80,220,120,0.3); border-radius: 11px;
-  display: grid; place-items: center; flex-shrink: 0; color: #5fd97a;
+  width: 38px; height: 38px; background: rgba(200,200,200,0.09);
+  border: 1px solid rgba(200,200,200,0.3); border-radius: 11px;
+  display: grid; place-items: center; flex-shrink: 0; color: #c8c8c8;
 }
 .pi-check svg { width: 18px; height: 18px; }
 .principle-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 5px; letter-spacing: -0.01em; }
@@ -479,16 +646,16 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .stack-desc { font-size: 12px; color: var(--text-dim); }
 .tech-tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .tech-tag {
-  padding: 6px 14px; background: rgba(124,92,255,0.07);
-  border: 1px solid rgba(124,92,255,0.2); border-radius: 8px;
+  padding: 6px 14px; background: rgba(224,224,224,0.07);
+  border: 1px solid rgba(224,224,224,0.2); border-radius: 8px;
   font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-light); font-weight: 500;
 }
 
 .cta-banner {
   border-radius: var(--radius-xl); padding: 76px 48px; text-align: center;
   background:
-    radial-gradient(ellipse 85% 75% at 50% 50%, rgba(124,92,255,0.16), transparent 68%),
-    linear-gradient(180deg, rgba(18,22,48,0.82), rgba(10,12,26,0.65));
+    radial-gradient(ellipse 85% 75% at 50% 50%, rgba(224,224,224,0.16), transparent 68%),
+    linear-gradient(180deg, rgba(26,26,26,0.82), rgba(14,14,14,0.65));
   border: 1px solid var(--border-accent);
   box-shadow: 0 0 90px -35px var(--accent-glow);
   position: relative; overflow: hidden;
@@ -496,7 +663,7 @@ section { padding: 112px 0; position: relative; z-index: 1; }
 .cta-banner::before {
   content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 65%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(124,92,255,0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(224,224,224,0.6), transparent);
 }
 .cta-banner h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 14px; line-height: 1.12; }
 .cta-banner p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
@@ -511,8 +678,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
 .footer-badge {
   display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 8px;
-  background: rgba(80,220,120,0.06); border: 1px solid rgba(80,220,120,0.2);
-  font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #5fd97a;
+  background: rgba(200,200,200,0.06); border: 1px solid rgba(200,200,200,0.2);
+  font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #c8c8c8;
 }
 .footer-badge svg { width: 12px; height: 12px; }
 .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 16px; }
@@ -546,54 +713,59 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
       Stade
     </a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#transport">Transport</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#tech">Technical</a></li>
-      <li><a href="docs.html">Docs</a></li>
+      <li><a href="#demo" data-tr="Demo">Demo</a></li>
+      <li><a href="#features" data-tr="Özellikler">Features</a></li>
+      <li><a href="#transport" data-tr="Taşıma">Transport</a></li>
+      <li><a href="#how" data-tr="Nasıl Çalışır">How It Works</a></li>
+      <li><a href="#tech" data-tr="Teknik">Technical</a></li>
+      <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+      <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
         GitHub
       </a>
+      <button class="lang-toggle" id="langToggle" type="button" data-tr-aria="Dili değiştir" aria-label="Switch language">TR</button>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#features"  onclick="closeMobileMenu()">Features</a>
-    <a href="#transport" onclick="closeMobileMenu()">Transport</a>
-    <a href="#how"       onclick="closeMobileMenu()">How It Works</a>
-    <a href="#tech"      onclick="closeMobileMenu()">Technical</a>
-    <a href="docs.html">Docs</a>
+    <a href="#demo" onclick="closeMobileMenu()" data-tr="Demo">Demo</a>
+    <a href="#features"  onclick="closeMobileMenu()" data-tr="Özellikler">Features</a>
+    <a href="#transport" onclick="closeMobileMenu()" data-tr="Taşıma">Transport</a>
+    <a href="#how"       onclick="closeMobileMenu()" data-tr="Nasıl Çalışır">How It Works</a>
+    <a href="#tech"      onclick="closeMobileMenu()" data-tr="Teknik">Technical</a>
+    <a href="docs.html" data-tr="Dokümanlar">Docs</a>
+    <a href="downloads.html" data-tr="İndirmeler">Downloads</a>
     <a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub &#x2197;</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="container">
-    <div class="hero-badge reveal">
+    <div class="hero-badge reveal" data-tr="Açık kaynak · Sunucusuz · Uçtan Uca Şifreli">
       <span class="pulse-dot"></span>
       Open source &middot; Serverless &middot; E2EE
     </div>
     <h1 class="reveal rd1">
-      <span class="line1">Serverless.</span>
-      <span class="line2">Untracked. Yours.</span>
+      <span class="line1" data-tr="Sunucusuz.">Serverless.</span>
+      <span class="line2" data-tr="İzlenmez. Sana Ait.">Untracked. Yours.</span>
     </h1>
-    <p class="lead reveal rd2">
+    <p class="lead reveal rd2" data-tr="Stade, merkezi bir sunucu gerektirmeyen bir mesajlaşma uygulamasıdır. Her mesaj cihazlar arasında doğrudan iletilir — sunucu yok, kayıt yok, gözetim yok.">
       Stade is a messaging app that requires no central server.
       Every message is delivered directly between devices &mdash; no server, no logs, no surveillance.
     </p>
     <div class="hero-actions reveal rd3">
-      <a href="https://github.com/Stade-App/stade/releases" class="btn btn-primary" target="_blank" rel="noopener">
+      <a href="downloads.html" class="btn btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download App
+        <span data-tr="Uygulamayı İndir">Download App</span>
       </a>
       <a href="https://github.com/Stade-App/stade" class="btn btn-secondary" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
-        Source Code
+        <span data-tr="Kaynak Kod">Source Code</span>
       </a>
     </div>
 
@@ -604,7 +776,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
             <div class="node-device">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
             </div>
-            <div class="node-label">Device A</div>
+            <div class="node-label" data-tr="Cihaz A">Device A</div>
             <div class="node-key">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
               ed25519:a1f3&hellip;
@@ -630,7 +802,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
             <div class="node-device">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
             </div>
-            <div class="node-label">Device B</div>
+            <div class="node-label" data-tr="Cihaz B">Device B</div>
             <div class="node-key">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
               ed25519:c92d&hellip;
@@ -642,24 +814,125 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
   </div>
 </header>
 
+<div class="section-sep"></div>
+
+<section id="demo" class="demo-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" data-tr="Canlı Önizleme">Live Preview</span>
+      <h2><span data-tr="Aynı sohbet,">One conversation,</span><br/><em data-tr="her cihazda">every device</em></h2>
+      <p data-tr="Mobil ve masaüstünde birebir yansıyan, simüle edilmiş, uçtan uca şifreli bir sohbet.">A simulated, end-to-end encrypted conversation, mirrored across mobile and desktop.</p>
+    </div>
+
+    <div class="demo-stage reveal rd1" id="demoStage">
+      <div class="demo-devices">
+
+        <div class="device device-desktop">
+          <div class="device-desktop-bar">
+            <span class="dd-dot"></span><span class="dd-dot"></span><span class="dd-dot"></span>
+            <span class="dd-title">Stade</span>
+          </div>
+          <div class="chat-header">
+            <div class="avatar chat-header-avatar" style="background:linear-gradient(135deg,#1E6091,#61A5C2)">
+              E
+              <span class="presence-dot online"></span>
+              <span class="verified-badge" data-role="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            </div>
+            <div class="chat-header-info">
+              <div class="chat-header-name" data-tr="Eren">Eren</div>
+            </div>
+          </div>
+          <div class="chat-body" data-screen="desktop"></div>
+          <div class="chat-input-row">
+            <div class="chat-input-fake" data-tr="Mesaj">Message</div>
+            <div class="chat-send-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></div>
+          </div>
+        </div>
+
+        <div class="device device-phone">
+          <div class="device-phone-notch"></div>
+          <div class="device-screen-wrap">
+
+            <div class="phone-view phone-view-list active" data-view="list">
+              <div class="contact-list">
+                <div class="contact-list-title" data-tr="Sohbetler">Chats</div>
+                <div class="contact-row is-active">
+                  <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#1E6091,#61A5C2)">
+                    E
+                    <span class="presence-dot online"></span>
+                  </div>
+                  <div class="contact-row-info">
+                    <div class="contact-row-name" data-tr="Eren">Eren</div>
+                    <div class="contact-row-preview" data-tr="Selam, orada mısın?">Hey, you around?</div>
+                  </div>
+                </div>
+                <div class="contact-row">
+                  <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#166B5C,#5BC0AB)">
+                    Y
+                    <span class="presence-dot offline"></span>
+                  </div>
+                  <div class="contact-row-info">
+                    <div class="contact-row-name" data-tr="Yunus">Yunus</div>
+                    <div class="contact-row-preview" data-tr="Yarın görüşürüz">See you tomorrow</div>
+                  </div>
+                </div>
+                <div class="contact-row">
+                  <div class="avatar avatar-sm" style="background:linear-gradient(135deg,#7A3E9D,#B695D8)">
+                    C
+                    <span class="presence-dot online"></span>
+                  </div>
+                  <div class="contact-row-info">
+                    <div class="contact-row-name" data-tr="Ceren">Ceren</div>
+                    <div class="contact-row-preview" data-tr="Fotoğraf">Photo</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="phone-view phone-view-chat" data-view="chat">
+              <div class="chat-header">
+                <div class="avatar chat-header-avatar" style="background:linear-gradient(135deg,#1E6091,#61A5C2)">
+                  E
+                  <span class="presence-dot online"></span>
+                  <span class="verified-badge" data-role="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                </div>
+                <div class="chat-header-info">
+                  <div class="chat-header-name" data-tr="Eren">Eren</div>
+                </div>
+              </div>
+              <div class="chat-body" data-screen="phone"></div>
+              <div class="chat-input-row">
+                <div class="chat-input-fake" data-tr="Mesaj">Message</div>
+                <div class="chat-send-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="stats-bar">
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item reveal">
         <div class="stat-num">0</div>
-        <div class="stat-label">Central Servers</div>
+        <div class="stat-label" data-tr="Merkezi Sunucu">Central Servers</div>
       </div>
       <div class="stat-item reveal rd1">
         <div class="stat-num">2</div>
-        <div class="stat-label">Transport Layers</div>
+        <div class="stat-label" data-tr="Taşıma Katmanı">Transport Layers</div>
       </div>
       <div class="stat-item reveal rd2">
         <div class="stat-num">256<sub>-bit</sub></div>
-        <div class="stat-label">Encryption Strength</div>
+        <div class="stat-label" data-tr="Şifreleme Gücü">Encryption Strength</div>
       </div>
       <div class="stat-item reveal rd3">
         <div class="stat-num">GPL<sub>-3</sub></div>
-        <div class="stat-label">Free License</div>
+        <div class="stat-label" data-tr="Özgür Lisans">Free License</div>
       </div>
     </div>
   </div>
@@ -670,52 +943,52 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 <section id="features">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">Features</span>
-      <h2>Designed for privacy,<br/><em>proven for security</em></h2>
-      <p>Modern cryptography and decentralized architecture working together. Every layer is carefully considered so your messages stay between you and your recipient alone.</p>
+      <span class="section-eyebrow" data-tr="Özellikler">Features</span>
+      <h2><span data-tr="Gizlilik için tasarlandı,">Designed for privacy,</span><br/><em data-tr="güvenlik için kanıtlandı">proven for security</em></h2>
+      <p data-tr="Modern kriptografi ve merkeziyetsiz mimari birlikte çalışır. Mesajlarınızın yalnızca siz ve alıcınız arasında kalması için her katman özenle tasarlandı.">Modern cryptography and decentralized architecture working together. Every layer is carefully considered so your messages stay between you and your recipient alone.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal" data-n="01">
         <div class="feature-icon fi-purple">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <h3>End-to-End Encryption</h3>
-        <p>Messages are decrypted only on the recipient&rsquo;s device. No intermediary, no provider, can ever see the content.</p>
+        <h3 data-tr="Uçtan Uca Şifreleme">End-to-End Encryption</h3>
+        <p data-tr="Mesajlar yalnızca alıcının cihazında çözülür. Hiçbir aracı, hiçbir sağlayıcı içeriği asla göremez.">Messages are decrypted only on the recipient&rsquo;s device. No intermediary, no provider, can ever see the content.</p>
       </div>
       <div class="feature-card reveal rd1" data-n="02">
         <div class="feature-icon fi-blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 4 21 10 15 10"/></svg>
         </div>
-        <h3>Forward Secrecy</h3>
-        <p>Double Ratchet derives an independent session key per message. A compromised key never exposes past conversations.</p>
+        <h3 data-tr="İleriye Dönük Gizlilik">Forward Secrecy</h3>
+        <p data-tr="Double Ratchet, her mesaj için bağımsız bir oturum anahtarı türetir. Ele geçirilen bir anahtar geçmiş görüşmeleri asla açığa çıkarmaz.">Double Ratchet derives an independent session key per message. A compromised key never exposes past conversations.</p>
       </div>
       <div class="feature-card reveal rd2" data-n="03">
         <div class="feature-icon fi-teal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <h3>Multi-Transport</h3>
-        <p>LAN and Tor &mdash; two paths, one app. The best available channel is selected automatically based on network conditions.</p>
+        <h3 data-tr="Çoklu Taşıma">Multi-Transport</h3>
+        <p data-tr="LAN ve Tor — iki yol, tek uygulama. Ağ koşullarına göre en uygun kanal otomatik olarak seçilir.">LAN and Tor &mdash; two paths, one app. The best available channel is selected automatically based on network conditions.</p>
       </div>
       <div class="feature-card reveal" data-n="04">
         <div class="feature-icon fi-indigo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM17 17h4v4h-4z"/></svg>
         </div>
-        <h3>QR Identity Verification</h3>
-        <p>Key exchange is confirmed face-to-face via QR code. The strongest trust model against man-in-the-middle attacks.</p>
+        <h3 data-tr="QR Kimlik Doğrulama">QR Identity Verification</h3>
+        <p data-tr="Anahtar değişimi QR kod ile yüz yüze onaylanır. Ortadaki adam saldırılarına karşı en güçlü güven modeli.">Key exchange is confirmed face-to-face via QR code. The strongest trust model against man-in-the-middle attacks.</p>
       </div>
       <div class="feature-card reveal rd1" data-n="05">
         <div class="feature-icon fi-red">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/></svg>
         </div>
-        <h3>Serverless Architecture</h3>
-        <p>No account creation, no phone number, no metadata. Your data lives only on your device &mdash; nowhere else.</p>
+        <h3 data-tr="Sunucusuz Mimari">Serverless Architecture</h3>
+        <p data-tr="Hesap oluşturma yok, telefon numarası yok, meta veri yok. Verileriniz yalnızca cihazınızda yaşar — başka hiçbir yerde değil.">No account creation, no phone number, no metadata. Your data lives only on your device &mdash; nowhere else.</p>
       </div>
       <div class="feature-card reveal rd2" data-n="06">
         <div class="feature-icon fi-green">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h3>Fully Open Source</h3>
-        <p>Every line of code is open for inspection on GitHub. Security is a verifiable proof, not a claim.</p>
+        <h3 data-tr="Tamamen Açık Kaynak">Fully Open Source</h3>
+        <p data-tr="Kodun her satırı GitHub'da incelemeye açıktır. Güvenlik bir iddia değil, doğrulanabilir bir kanıttır.">Every line of code is open for inspection on GitHub. Security is a verifiable proof, not a claim.</p>
       </div>
     </div>
   </div>
@@ -726,9 +999,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 <section id="transport">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">Transport Layers</span>
-      <h2>Connected in any condition,<br/><em>always encrypted</em></h2>
-      <p>Stade manages two distinct connection channels automatically, switching between them as network conditions change.</p>
+      <span class="section-eyebrow" data-tr="Taşıma Katmanları">Transport Layers</span>
+      <h2><span data-tr="Her koşulda bağlı,">Connected in any condition,</span><br/><em data-tr="her zaman şifreli">always encrypted</em></h2>
+      <p data-tr="Stade, iki farklı bağlantı kanalını otomatik olarak yönetir ve ağ koşulları değiştikçe aralarında geçiş yapar.">Stade manages two distinct connection channels automatically, switching between them as network conditions change.</p>
     </div>
     <div class="transport-grid">
       <div class="transport-card tc-lan reveal">
@@ -736,10 +1009,10 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
         </div>
         <h3>LAN</h3>
-        <div class="transport-tag">Local Network</div>
-        <p>Direct peer-to-peer connection with devices on the same WiFi or local network. Fast, low latency, no internet required.</p>
+        <div class="transport-tag" data-tr="Yerel Ağ">Local Network</div>
+        <p data-tr="Aynı WiFi veya yerel ağdaki cihazlarla doğrudan eşler arası bağlantı. Hızlı, düşük gecikmeli, internet gerektirmez.">Direct peer-to-peer connection with devices on the same WiFi or local network. Fast, low latency, no internet required.</p>
         <div class="transport-meta">
-          <span class="t-chip">mDNS</span><span class="t-chip">TCP/IP</span><span class="t-chip">Local discovery</span>
+          <span class="t-chip">mDNS</span><span class="t-chip">TCP/IP</span><span class="t-chip" data-tr="Yerel keşif">Local discovery</span>
         </div>
       </div>
       <div class="transport-card tc-tor reveal rd1">
@@ -747,10 +1020,10 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
         </div>
         <h3>Tor</h3>
-        <div class="transport-tag">Anonymous Network</div>
-        <p>Routing through the Tor network hides your IP address. No geographic location or identity is ever exposed.</p>
+        <div class="transport-tag" data-tr="Anonim Ağ">Anonymous Network</div>
+        <p data-tr="Tor ağı üzerinden yönlendirme IP adresinizi gizler. Coğrafi konum veya kimlik hiçbir zaman açığa çıkmaz.">Routing through the Tor network hides your IP address. No geographic location or identity is ever exposed.</p>
         <div class="transport-meta">
-          <span class="t-chip">3-hop</span><span class="t-chip">Hidden service</span><span class="t-chip">v3 onion</span>
+          <span class="t-chip" data-tr="3 atlama">3-hop</span><span class="t-chip" data-tr="Gizli servis">Hidden service</span><span class="t-chip">v3 onion</span>
         </div>
       </div>
     </div>
@@ -762,9 +1035,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 <section id="how">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">How It Works</span>
-      <h2>Secure communication<br/><em>in four steps</em></h2>
-      <p>No registration, no phone number, no account. Just you and the other device.</p>
+      <span class="section-eyebrow" data-tr="Nasıl Çalışır">How It Works</span>
+      <h2><span data-tr="Dört adımda">Secure communication</span><br/><em data-tr="güvenli iletişim">in four steps</em></h2>
+      <p data-tr="Kayıt yok, telefon numarası yok, hesap yok. Sadece siz ve diğer cihaz.">No registration, no phone number, no account. Just you and the other device.</p>
     </div>
     <div class="steps-wrapper">
       <div class="step reveal">
@@ -772,32 +1045,32 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <div class="step-num-badge">1</div>
         </div>
-        <h3>Create Identity</h3>
-        <p>An Ed25519 key pair is generated locally on your device. Never sent to any server.</p>
+        <h3 data-tr="Kimlik Oluştur">Create Identity</h3>
+        <p data-tr="Cihazınızda yerel olarak bir Ed25519 anahtar çifti oluşturulur. Hiçbir sunucuya gönderilmez.">An Ed25519 key pair is generated locally on your device. Never sent to any server.</p>
       </div>
       <div class="step reveal rd1">
         <div class="step-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           <div class="step-num-badge">2</div>
         </div>
-        <h3>Pair via ID</h3>
-        <p>Use the other party'&rsquo;s ID. A shared secret is derived using X25519 key exchange.</p>
+        <h3 data-tr="ID ile Eşleş">Pair via ID</h3>
+        <p data-tr="Karşı tarafın ID'sini kullanın. X25519 anahtar değişimi ile ortak bir sır türetilir.">Use the other party'&rsquo;s ID. A shared secret is derived using X25519 key exchange.</p>
       </div>
       <div class="step reveal rd2">
         <div class="step-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           <div class="step-num-badge">3</div>
         </div>
-        <h3>Message</h3>
-        <p>The best transport is selected automatically. Each message is encrypted with a unique session key.</p>
+        <h3 data-tr="Mesajlaş">Message</h3>
+        <p data-tr="En iyi taşıma yöntemi otomatik olarak seçilir. Her mesaj benzersiz bir oturum anahtarıyla şifrelenir.">The best transport is selected automatically. Each message is encrypted with a unique session key.</p>
       </div>
       <div class="step reveal rd3">
         <div class="step-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/><polyline points="9 12 11 14 15 10" stroke-width="2"/></svg>
           <div class="step-num-badge">4</div>
         </div>
-        <h3>Verify</h3>
-        <p>Compare the contact&rsquo;s key fingerprint to confirm their identity. Definitive assurance against impersonation.</p>
+        <h3 data-tr="Doğrula">Verify</h3>
+        <p data-tr="Kimliğini doğrulamak için kişinin anahtar parmak izini karşılaştırın. Kimlik taklidine karşı kesin güvence.">Compare the contact&rsquo;s key fingerprint to confirm their identity. Definitive assurance against impersonation.</p>
       </div>
     </div>
   </div>
@@ -808,34 +1081,34 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 <section id="security">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">Security Principles</span>
-      <h2>Security guarantees<br/><em>built into the design</em></h2>
-      <p>In Stade, privacy is not a feature &mdash; it is the architecture itself. These guarantees arise directly from how the software operates.</p>
+      <span class="section-eyebrow" data-tr="Güvenlik İlkeleri">Security Principles</span>
+      <h2><span data-tr="Tasarıma gömülü">Security guarantees</span><br/><em data-tr="güvenlik garantileri">built into the design</em></h2>
+      <p data-tr="Stade'de gizlilik bir özellik değildir — mimarinin ta kendisidir. Bu garantiler doğrudan yazılımın çalışma biçiminden doğar.">In Stade, privacy is not a feature &mdash; it is the architecture itself. These guarantees arise directly from how the software operates.</p>
     </div>
     <div class="principles-grid">
       <div class="principle-item reveal">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Zero metadata</h4><p>Message timestamps, recipient lists and communication frequency are never stored on any node.</p></div>
+        <div><h4 data-tr="Sıfır meta veri">Zero metadata</h4><p data-tr="Mesaj zaman damgaları, alıcı listeleri ve iletişim sıklığı hiçbir düğümde saklanmaz.">Message timestamps, recipient lists and communication frequency are never stored on any node.</p></div>
       </div>
       <div class="principle-item reveal rd1">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Local data sovereignty</h4><p>All messages and keys are stored only on your device. The app can be locked with a passphrase.</p></div>
+        <div><h4 data-tr="Yerel veri egemenliği">Local data sovereignty</h4><p data-tr="Tüm mesajlar ve anahtarlar yalnızca cihazınızda saklanır. Uygulama bir parola ile kilitlenebilir.">All messages and keys are stored only on your device. The app can be locked with a passphrase.</p></div>
       </div>
       <div class="principle-item reveal rd2">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Future secrecy</h4><p>Future keys cannot be pre-computed. Every session is entirely independent from past ones.</p></div>
+        <div><h4 data-tr="Geleceğe yönelik gizlilik">Future secrecy</h4><p data-tr="Gelecekteki anahtarlar önceden hesaplanamaz. Her oturum geçmiş oturumlardan tamamen bağımsızdır.">Future keys cannot be pre-computed. Every session is entirely independent from past ones.</p></div>
       </div>
       <div class="principle-item reveal rd3">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Auditable codebase</h4><p>No hidden backdoors. Anyone can inspect the code and independently verify every security claim.</p></div>
+        <div><h4 data-tr="Denetlenebilir kod tabanı">Auditable codebase</h4><p data-tr="Gizli arka kapı yoktur. Herkes kodu inceleyebilir ve her güvenlik iddiasını bağımsız olarak doğrulayabilir.">No hidden backdoors. Anyone can inspect the code and independently verify every security claim.</p></div>
       </div>
       <div class="principle-item reveal">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Identity independence</h4><p>No phone number, email or third-party service required. Identity is purely a cryptographic key.</p></div>
+        <div><h4 data-tr="Kimlik bağımsızlığı">Identity independence</h4><p data-tr="Telefon numarası, e-posta veya üçüncü taraf hizmeti gerekmez. Kimlik yalnızca kriptografik bir anahtardır.">No phone number, email or third-party service required. Identity is purely a cryptographic key.</p></div>
       </div>
       <div class="principle-item reveal rd1">
         <div class="pi-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><h4>Censorship resistance</h4><p>Tor support and the absence of a central blocking point make Stade resistant to censorship and takedowns.</p></div>
+        <div><h4 data-tr="Sansüre direnç">Censorship resistance</h4><p data-tr="Tor desteği ve merkezi bir engelleme noktasının bulunmaması, Stade'i sansüre ve kapatmalara karşı dirençli kılar.">Tor support and the absence of a central blocking point make Stade resistant to censorship and takedowns.</p></div>
       </div>
     </div>
   </div>
@@ -846,39 +1119,39 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
 <section id="tech">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow">Technical Stack</span>
-      <h2>Proven algorithms,<br/><em>modern interface</em></h2>
-      <p>Stade uses cryptographic primitives that have become industry standards. It doesn&rsquo;t reinvent the wheel &mdash; it relies on proven foundations.</p>
+      <span class="section-eyebrow" data-tr="Teknik Altyapı">Technical Stack</span>
+      <h2><span data-tr="Kanıtlanmış algoritmalar,">Proven algorithms,</span><br/><em data-tr="modern arayüz">modern interface</em></h2>
+      <p data-tr="Stade, endüstri standardı haline gelmiş kriptografik yapı taşlarını kullanır. Tekerleği yeniden icat etmez — kanıtlanmış temellere dayanır.">Stade uses cryptographic primitives that have become industry standards. It doesn&rsquo;t reinvent the wheel &mdash; it relies on proven foundations.</p>
     </div>
     <div class="tech-grid">
       <div class="tech-block reveal">
         <div class="tech-block-title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z"/></svg>
-          Cryptography
+          <span data-tr="Kriptografi">Cryptography</span>
         </div>
         <div class="tech-list">
-          <div class="tech-item"><span class="lbl">Key exchange</span><span class="val">X25519 (ECDH)</span></div>
-          <div class="tech-item"><span class="lbl">Identity signature</span><span class="val">Ed25519</span></div>
-          <div class="tech-item"><span class="lbl">Hash &amp; KDF</span><span class="val">BLAKE2b</span></div>
-          <div class="tech-item"><span class="lbl">Symmetric encryption</span><span class="val">ChaCha20-Poly1305</span></div>
-          <div class="tech-item"><span class="lbl">Session protocol</span><span class="val">Double Ratchet</span></div>
-          <div class="tech-item"><span class="lbl">Local lock KDF</span><span class="val">Argon2id</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Anahtar değişimi">Key exchange</span><span class="val">X25519 (ECDH)</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Kimlik imzası">Identity signature</span><span class="val">Ed25519</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Özet &amp; KDF">Hash &amp; KDF</span><span class="val">BLAKE2b</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Simetrik şifreleme">Symmetric encryption</span><span class="val">ChaCha20-Poly1305</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Oturum protokolü">Session protocol</span><span class="val">Double Ratchet</span></div>
+          <div class="tech-item"><span class="lbl" data-tr="Yerel kilit KDF">Local lock KDF</span><span class="val">Argon2id</span></div>
         </div>
       </div>
       <div class="tech-block reveal rd1">
         <div class="tech-block-title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          Platform
+          <span data-tr="Platform">Platform</span>
         </div>
         <div class="stack-list">
           <div class="stack-item">
-            <div><div class="stack-name">Kotlin Multiplatform</div><div class="stack-desc">Shared core logic</div></div>
+            <div><div class="stack-name">Kotlin Multiplatform</div><div class="stack-desc" data-tr="Paylaşılan çekirdek mantık">Shared core logic</div></div>
           </div>
           <div class="stack-item">
-            <div><div class="stack-name">Android</div><div class="stack-desc">Background service, notifications</div></div>
+            <div><div class="stack-name">Android</div><div class="stack-desc" data-tr="Arka plan hizmeti, bildirimler">Background service, notifications</div></div>
           </div>
           <div class="stack-item">
-            <div><div class="stack-name">Desktop</div><div class="stack-desc">JVM &middot; Compose Multiplatform</div></div>
+            <div><div class="stack-name" data-tr="Masaüstü">Desktop</div><div class="stack-desc">JVM &middot; Compose Multiplatform</div></div>
           </div>
         </div>
         <div class="tech-tags-row">
@@ -890,16 +1163,16 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
     </div>
 
     <div class="cta-banner reveal" style="margin-top:64px;">
-      <h2>Your messages belong to you alone.</h2>
-      <p>Download Stade, audit the source code, or contribute to the project.</p>
+      <h2 data-tr="Mesajlarınız yalnızca size aittir.">Your messages belong to you alone.</h2>
+      <p data-tr="Stade'i indirin, kaynak kodunu denetleyin veya projeye katkıda bulunun.">Download Stade, audit the source code, or contribute to the project.</p>
       <div class="cta-actions">
-        <a href="https://github.com/Stade-App/stade/releases" class="btn btn-primary" target="_blank" rel="noopener">
+        <a href="downloads.html" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download App
+          <span data-tr="Uygulamayı İndir">Download App</span>
         </a>
         <a href="https://github.com/Stade-App/stade" class="btn btn-ghost" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
-          Source Code
+          <span data-tr="Kaynak Kod">Source Code</span>
         </a>
       </div>
     </div>
@@ -914,40 +1187,41 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
           <img src="logo.png" class="logo-mark" alt="Stade" />
           Stade
         </a>
-        <p>Communicate without a central server, without surveillance, without limits. Android and desktop support via Kotlin Multiplatform.</p>
+        <p data-tr="Merkezi sunucu olmadan, gözetim olmadan, sınır olmadan iletişim kurun. Kotlin Multiplatform ile Android ve masaüstü desteği.">Communicate without a central server, without surveillance, without limits. Android and desktop support via Kotlin Multiplatform.</p>
         <span class="footer-badge">
           <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
-          GPL-3.0 &middot; Open Source
+          <span data-tr="GPL-3.0 · Açık Kaynak">GPL-3.0 &middot; Open Source</span>
         </span>
       </div>
       <div class="footer-col">
-        <h4>Project</h4>
+        <h4 data-tr="Proje">Project</h4>
         <ul>
           <li><a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://github.com/Stade-App/stade/releases" target="_blank" rel="noopener">Releases</a></li>
-          <li><a href="https://github.com/Stade-App/stade/issues" target="_blank" rel="noopener">Report a Bug</a></li>
-          <li><a href="https://github.com/Stade-App/stade/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a></li>
+          <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
+          <li><a href="https://github.com/Stade-App/stade/issues" target="_blank" rel="noopener" data-tr="Hata Bildir">Report a Bug</a></li>
+          <li><a href="https://github.com/Stade-App/stade/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-tr="Katkıda Bulun">Contribute</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Technical</h4>
+        <h4 data-tr="Teknik">Technical</h4>
         <ul>
-          <li><a href="docs.html">Docs</a></li>
-          <li><a href="https://github.com/Stade-App/stade/blob/main/README.md" target="_blank" rel="noopener">Architecture</a></li>
-          <li><a href="https://github.com/Stade-App/stade/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a></li>
-          <li><a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener">License</a></li>
+          <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+          <li><a href="https://github.com/Stade-App/stade/blob/main/README.md" target="_blank" rel="noopener" data-tr="Mimari">Architecture</a></li>
+          <li><a href="https://github.com/Stade-App/stade/blob/main/SECURITY.md" target="_blank" rel="noopener" data-tr="Güvenlik">Security</a></li>
+          <li><a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener" data-tr="Lisans">License</a></li>
+          <li><a href="privacy.html" data-tr="Gizlilik Politikası">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Community</h4>
+        <h4 data-tr="Topluluk">Community</h4>
         <ul>
-          <li><a href="https://github.com/Stade-App/stade/discussions" target="_blank" rel="noopener">Discussions</a></li>
-          <li><a href="https://github.com/Stade-App/stade/stargazers" target="_blank" rel="noopener">Star on GitHub</a></li>
+          <li><a href="https://github.com/Stade-App/stade/discussions" target="_blank" rel="noopener" data-tr="Tartışmalar">Discussions</a></li>
+          <li><a href="https://github.com/Stade-App/stade/stargazers" target="_blank" rel="noopener" data-tr="GitHub'da Yıldızla">Star on GitHub</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <small>&copy; 2026 Stade &middot; Distributed under the GPL-3.0 license</small>
+      <small data-tr="© 2026 Stade · GPL-3.0 lisansı altında dağıtılmaktadır">&copy; 2026 Stade &middot; Distributed under the GPL-3.0 license</small>
       <small style="font-family:'JetBrains Mono',monospace;font-size:12px;">github.com/Stade-App/stade</small>
     </div>
   </div>
@@ -973,6 +1247,231 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 32px; position: re
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   }
+
+  // --- Language toggle (EN default, TR optional) ---
+  (function () {
+    var LANG_KEY = 'stade-lang';
+    var TITLE_EN = document.title;
+    var TITLE_TR = 'Stade — Sunucusuz. İzlenmez. Sana Ait.';
+    var DESC_EN = document.querySelector('meta[name="description"]');
+    var DESC_EN_TEXT = DESC_EN ? DESC_EN.getAttribute('content') : '';
+    var DESC_TR_TEXT = 'Stade — Sunucusuz, uçtan uca şifreli, açık kaynaklı mesajlaşma uygulaması. Merkezi bir sunucu olmadan LAN ve Tor üzerinden eşler arası iletişim.';
+
+    document.querySelectorAll('[data-tr]').forEach(function (el) {
+      if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    });
+    document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+      if (el.dataset.enAria === undefined) el.dataset.enAria = el.getAttribute('aria-label') || '';
+    });
+    document.querySelectorAll('[data-tr-placeholder]').forEach(function (el) {
+      if (el.dataset.enPlaceholder === undefined) el.dataset.enPlaceholder = el.getAttribute('placeholder') || '';
+    });
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-tr]').forEach(function (el) {
+        el.textContent = lang === 'tr' ? el.getAttribute('data-tr') : el.dataset.en;
+      });
+      document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
+      });
+      document.querySelectorAll('[data-tr-placeholder]').forEach(function (el) {
+        el.setAttribute('placeholder', lang === 'tr' ? el.getAttribute('data-tr-placeholder') : el.dataset.enPlaceholder);
+      });
+      var toggle = document.getElementById('langToggle');
+      if (toggle) toggle.textContent = lang === 'tr' ? 'EN' : 'TR';
+      document.title = lang === 'tr' ? TITLE_TR : TITLE_EN;
+      if (DESC_EN) DESC_EN.setAttribute('content', lang === 'tr' ? DESC_TR_TEXT : DESC_EN_TEXT);
+      localStorage.setItem(LANG_KEY, lang);
+    }
+
+    var stored = localStorage.getItem(LANG_KEY);
+    applyLang(stored === 'tr' ? 'tr' : 'en');
+
+    var langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', function () {
+      applyLang(document.documentElement.lang === 'tr' ? 'en' : 'tr');
+    });
+  })();
+</script>
+
+<script>
+  // --- Demo showcase: scripted, looping, mirrored across both device mockups ---
+  (function () {
+    var stage = document.getElementById('demoStage');
+    if (!stage) return;
+
+    var chatBodies = Array.prototype.slice.call(stage.querySelectorAll('.chat-body'));
+    var phoneList = stage.querySelector('.phone-view-list');
+    var phoneChat = stage.querySelector('.phone-view-chat');
+    var verifiedBadges = Array.prototype.slice.call(stage.querySelectorAll('.verified-badge'));
+
+    var MSGS = {
+      m1a: { en: "Hey", tr: "Selam" },
+      m1b: { en: "you around?", tr: "orada mısın?" },
+      m2: { en: "Yep — what's up?", tr: "Hee, naber?" },
+      m4: { en: "This one's on a timer", tr: "Bu mesaj kaybolacak" }
+    };
+    function t(obj) { return document.documentElement.lang === 'tr' ? obj.tr : obj.en; }
+
+    var ICON_IMG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+    var ICON_TIMER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+
+    function clearBodies() { chatBodies.forEach(function (b) { b.innerHTML = ''; }); }
+
+    function addTyping() {
+      return chatBodies.map(function (b) {
+        var row = document.createElement('div');
+        row.className = 'typing-row';
+        row.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+        b.appendChild(row);
+        return row;
+      });
+    }
+    function removeEls(els) { els.forEach(function (e) { e.remove(); }); }
+
+    function addMessage(opts) {
+      var group = opts.group || 'single';
+      return chatBodies.map(function (b) {
+        var wrap = document.createElement('div');
+        wrap.className = 'msg msg-' + opts.dir + ' grp-' + group + (opts.sticker ? ' msg-sticker' : '');
+        var bubble = document.createElement('div');
+        bubble.className = 'msg-bubble';
+        if (opts.sticker) {
+          bubble.innerHTML = ICON_IMG;
+        } else {
+          var span = document.createElement('span');
+          span.textContent = opts.text;
+          bubble.appendChild(span);
+        }
+        if (opts.vanish) {
+          var vb = document.createElement('span');
+          vb.className = 'vanish-badge';
+          vb.innerHTML = ICON_TIMER;
+          bubble.appendChild(vb);
+        }
+        wrap.appendChild(bubble);
+        b.appendChild(wrap);
+        return wrap;
+      });
+    }
+
+    function addReaction(msgEls, emoji) {
+      msgEls.forEach(function (m) {
+        var bubble = m.querySelector('.msg-bubble');
+        var r = document.createElement('span');
+        r.className = 'msg-reaction';
+        r.textContent = emoji;
+        bubble.appendChild(r);
+      });
+    }
+
+    function vanishMessage(msgEls) {
+      msgEls.forEach(function (m) {
+        m.style.animation = 'none';
+        void m.offsetWidth;
+        m.classList.add('vanishing');
+      });
+    }
+
+    function setPhoneView(showChat) {
+      phoneList.classList.toggle('active', !showChat);
+      phoneChat.classList.toggle('active', showChat);
+    }
+    function setVerified(show) {
+      verifiedBadges.forEach(function (b) { b.classList.toggle('show', show); });
+    }
+
+    function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+    var visible = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible = e.isIntersecting; });
+    }, { threshold: 0.1 });
+    io.observe(stage);
+
+    function waitVisible(ms) {
+      return new Promise(function (resolve) {
+        var remaining = ms;
+        (function tick() {
+          var slice = Math.min(220, remaining);
+          setTimeout(function () {
+            if (visible) remaining -= slice;
+            if (remaining <= 0) resolve(); else tick();
+          }, slice);
+        })();
+      });
+    }
+
+    function renderStatic() {
+      clearBodies();
+      setPhoneView(true);
+      setVerified(true);
+      addMessage({ dir: 'in', text: t(MSGS.m1a), group: 'first' });
+      addMessage({ dir: 'in', text: t(MSGS.m1b), group: 'last' });
+      addMessage({ dir: 'out', text: t(MSGS.m2) });
+      var sticker = addMessage({ dir: 'in', sticker: true });
+      addReaction(sticker, '❤️');
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) { renderStatic(); return; }
+
+    async function resetCycle(first) {
+      if (!first) {
+        chatBodies.forEach(function (b) { b.style.opacity = '0'; });
+        await wait(320);
+      }
+      clearBodies();
+      setPhoneView(false);
+      setVerified(false);
+      chatBodies.forEach(function (b) { b.style.opacity = '1'; });
+    }
+
+    async function loop() {
+      var first = true;
+      while (true) {
+        await resetCycle(first);
+        first = false;
+
+        await waitVisible(300);
+        var typing1 = addTyping();
+        await waitVisible(1000);
+        removeEls(typing1);
+        addMessage({ dir: 'in', text: t(MSGS.m1a), group: 'first' });
+
+        await waitVisible(700);
+        addMessage({ dir: 'in', text: t(MSGS.m1b), group: 'last' });
+
+        await waitVisible(400);
+        setPhoneView(true);
+
+        await waitVisible(900);
+        addMessage({ dir: 'out', text: t(MSGS.m2) });
+
+        await waitVisible(1200);
+        var typing2 = addTyping();
+        await waitVisible(1000);
+        removeEls(typing2);
+        var stickerMsg = addMessage({ dir: 'in', sticker: true });
+
+        await waitVisible(1000);
+        addReaction(stickerMsg, '❤️');
+
+        await waitVisible(800);
+        var vanishMsg = addMessage({ dir: 'out', text: t(MSGS.m4), vanish: true });
+
+        await waitVisible(3000);
+        vanishMessage(vanishMsg);
+
+        await waitVisible(900);
+        setVerified(true);
+
+        await waitVisible(6500);
+      }
+    }
+    loop();
+  })();
 </script>
 </body>
 </html>

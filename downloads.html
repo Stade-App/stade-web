@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Download Stade — signed Android APK releases, with version history and release notes." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<title>Downloads — Stade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #101010;
+  --bg-card: rgba(26,26,26,0.6);
+  --bg-card-hover: rgba(34,34,34,0.82);
+  --border: rgba(140,140,140,0.1);
+  --border-strong: rgba(170,170,170,0.2);
+  --border-accent: rgba(224,224,224,0.32);
+  --text: #f0f0f0;
+  --text-muted: #8a8a8a;
+  --text-dim: #545454;
+  --accent: #e0e0e0;
+  --accent-light: #ffffff;
+  --accent-2: #b0b0b0;
+  --accent-3: #cacaca;
+  --accent-glow: rgba(224,224,224,0.38);
+  --gradient: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --sidebar-w: 280px;
+  --nav-h: 65px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(224,224,224,0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(176,176,176,0.1), transparent 55%);
+  pointer-events: none; z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+[hidden] { display: none !important; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-h);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(10,10,10,0.82);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 100%; max-width: 1200px; margin: 0 auto; gap: 20px;
+}
+.nav-left { display: flex; align-items: center; gap: 16px; }
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--text); flex-shrink: 0;
+}
+.logo-mark { width: 32px; height: 32px; border-radius: 9px; display: block; object-fit: cover; flex-shrink: 0; }
+.docs-tag {
+  font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-light); padding: 3px 9px; border-radius: 6px;
+  background: rgba(224,224,224,0.1); border: 1px solid var(--border-accent);
+}
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); font-size: 14px; font-weight: 500;
+  padding: 6px 13px; border-radius: 8px; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-strong);
+  color: var(--text); font-size: 14px; font-weight: 500; transition: all 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 38px; padding: 0 12px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+.sidebar-toggle {
+  display: none; width: 38px; height: 38px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); align-items: center; justify-content: center; padding: 0;
+}
+.sidebar-toggle svg { width: 18px; height: 18px; }
+
+.docs-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+}
+
+.sidebar {
+  position: sticky; top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  border-right: 1px solid var(--border);
+}
+.sidebar-scroll { height: 100%; overflow-y: auto; padding: 28px 18px 48px; }
+.nav-group { margin-bottom: 28px; }
+.nav-group-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-dim); padding: 0 12px; margin-bottom: 10px;
+}
+.nav-group ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+.release-item {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 9px 12px; border-radius: 8px;
+  transition: all 0.18s; cursor: pointer;
+}
+.release-item:hover { background: rgba(255,255,255,0.05); }
+.release-item.active {
+  background: rgba(224,224,224,0.1);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.release-item .rv-tag {
+  font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 14px; color: var(--text-muted);
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.release-item.active .rv-tag { color: var(--accent-light); }
+.release-item .rv-date { font-size: 11.5px; color: var(--text-dim); }
+.rv-latest-badge {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 2px 7px; border-radius: 100px;
+  background: rgba(224,224,224,0.14); border: 1px solid var(--border-accent); color: var(--accent-light);
+}
+
+.doc-main { min-width: 0; padding: 48px 56px 96px; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: 13px; color: var(--text-dim); margin-bottom: 22px;
+}
+.breadcrumb span.sep { opacity: 0.5; }
+.breadcrumb a { cursor: pointer; }
+.breadcrumb a:hover { color: var(--text-muted); }
+.breadcrumb .current { color: var(--text-muted); }
+
+.release-head { margin-bottom: 8px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.release-head h1 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; letter-spacing: -0.01em;
+}
+.release-date { font-size: 13px; color: var(--text-dim); margin-bottom: 36px; }
+
+.download-card {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 22px 24px; margin: 0 0 40px;
+  background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+}
+.download-card .dc-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+  display: grid; place-items: center; color: var(--text-muted);
+}
+.download-card .dc-icon svg { width: 20px; height: 20px; }
+.download-card .dc-info { flex: 1; min-width: 160px; }
+.download-card .dc-name { font-family: 'JetBrains Mono', monospace; font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; word-break: break-all; }
+.download-card .dc-meta { font-size: 12.5px; color: var(--text-dim); }
+.download-card .btn { flex-shrink: 0; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 24px; border-radius: 12px; font-size: 14.5px; font-weight: 600;
+  text-decoration: none; transition: all 0.2s ease;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: inherit;
+}
+.btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.btn-primary {
+  background: var(--gradient); color: #0a0a0a;
+  box-shadow: 0 8px 30px -6px rgba(224,224,224,0.32), 0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -6px rgba(224,224,224,0.42), 0 0 0 1px rgba(255,255,255,0.1) inset;
+}
+.btn-primary:active { transform: translateY(0); }
+
+.doc-article { max-width: 720px; }
+.doc-article p { color: var(--text-muted); font-size: 15.5px; margin-bottom: 18px; }
+.doc-article ul, .doc-article ol { color: var(--text-muted); font-size: 15.5px; margin: 0 0 18px; padding-left: 22px; }
+.doc-article li { margin-bottom: 8px; }
+.doc-article li::marker { color: var(--accent); }
+.doc-article strong { color: var(--text); font-weight: 600; }
+.doc-article a.inline { color: var(--accent-light); cursor: pointer; }
+.doc-article a.inline:hover { text-decoration: underline; }
+.doc-article h3 { font-size: 17px; font-weight: 600; margin: 28px 0 12px; }
+
+code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.88em;
+  background: rgba(0,0,0,0.35); border: 1px solid var(--border);
+  padding: 1px 6px; border-radius: 5px; color: var(--accent-light);
+}
+
+.spec-table { width: 100%; border-collapse: collapse; margin: 0 0 24px; font-size: 14px; }
+.spec-table th, .spec-table td { text-align: left; padding: 11px 16px; border: 1px solid var(--border); vertical-align: top; }
+.spec-table th { background: rgba(255,255,255,0.03); color: var(--text-dim); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+.spec-table td { color: var(--text-muted); }
+
+.sidebar-scrim {
+  display: none; position: fixed; inset: var(--nav-h) 0 0; z-index: 90;
+  background: rgba(6,6,6,0.6); backdrop-filter: blur(2px);
+}
+
+footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: relative; z-index: 1; margin-top: 40px; }
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 340px; margin: 10px 0 16px; }
+.footer-badge {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 8px;
+  background: rgba(200,200,200,0.06); border: 1px solid rgba(200,200,200,0.2);
+  font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #c8c8c8;
+}
+.footer-badge svg { width: 12px; height: 12px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 26px; border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
+.footer-top, .footer-badge { max-width: 1200px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+.footer-bottom small { font-size: 13px; color: var(--text-dim); }
+
+@media (max-width: 860px) {
+  .docs-shell { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .sidebar-toggle { display: inline-flex; }
+  .sidebar {
+    position: fixed; top: var(--nav-h); left: 0; z-index: 95;
+    width: var(--sidebar-w); max-width: 84vw;
+    background: var(--bg-elev);
+    transform: translate3d(-100%,0,0); transition: transform 0.28s ease;
+    will-change: transform; backface-visibility: hidden;
+  }
+  .sidebar.open { transform: translate3d(0,0,0); }
+  .sidebar-scrim.open { display: block; }
+  .doc-main { padding: 36px 24px 80px; }
+}
+@media (max-width: 560px) {
+  .nav-cta span { display: none; }
+  .download-card { padding: 18px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <button class="sidebar-toggle" id="sidebarToggle" data-tr-aria="Kenar çubuğunu aç/kapat" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="index.html" class="logo">
+        <img src="logo.png" class="logo-mark" alt="Stade" />
+        Stade
+      </a>
+      <span class="docs-tag" data-tr="indirmeler">downloads</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html#features" data-tr="Özellikler">Features</a></li>
+      <li><a href="index.html#transport" data-tr="Taşıma">Transport</a></li>
+      <li><a href="index.html#how" data-tr="Nasıl Çalışır">How It Works</a></li>
+      <li><a href="index.html#tech" data-tr="Teknik">Technical</a></li>
+      <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+      <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="lang-toggle" id="langToggle" type="button" data-tr-aria="Dili değiştir" aria-label="Switch language">TR</button>
+    </div>
+  </div>
+</nav>
+
+<div class="docs-shell">
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+   <div class="sidebar-scroll">
+    <div class="nav-group">
+      <div class="nav-group-title" data-tr="Sürümler">Releases</div>
+      <ul id="releaseList">
+        <li>
+          <a class="release-item" data-id="v0.2.0">
+            <span class="rv-tag">v0.2.0</span>
+            <span class="rv-date" data-tr="14 Ağustos 2026">August 14, 2026</span>
+          </a>
+        </li>
+        <li>
+          <a class="release-item" data-id="v0.1.9">
+            <span class="rv-tag">v0.1.9</span>
+            <span class="rv-date" data-tr="10 Ağustos 2026">August 10, 2026</span>
+          </a>
+        </li>
+        <li>
+          <a class="release-item" data-id="v0.1.8">
+            <span class="rv-tag">v0.1.8</span>
+            <span class="rv-date" data-tr="4 Ağustos 2026">August 4, 2026</span>
+          </a>
+        </li>
+        <li>
+          <a class="release-item" data-id="v0.1.7">
+            <span class="rv-tag">v0.1.7</span>
+            <span class="rv-date" data-tr="4 Ağustos 2026">August 4, 2026</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+   </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <section class="release-panel" id="v0.2.0">
+      <div class="release-head">
+        <h1>v0.2.0</h1>
+      </div>
+      <div class="release-date" data-tr="14 Ağustos 2026 tarihinde yayımlandı">Released August 14, 2026</div>
+
+      <div class="download-card">
+        <div class="dc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+        </div>
+        <div class="dc-info">
+          <div class="dc-name">stade-v0.2.0.apk</div>
+          <div class="dc-meta" data-tr="Android 8.0 ve üzeri · APK">Android 8.0+ &middot; APK</div>
+        </div>
+        <a class="btn btn-primary" href="downloads/apk/stade-v0.2.0.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-tr="APK İndir">Download APK</span>
+        </a>
+      </div>
+
+      <div class="release-notes doc-article">
+        <p>Release notes for v0.2.0 will be added here soon &mdash; in the meantime, see the <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">commit history on GitHub</a> for what's changed.</p>
+        <template class="i18n-tr">
+        <p>v0.2.0 için sürüm notları yakında buraya eklenecek &mdash; bu arada, nelerin değiştiğini görmek için <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">GitHub'daki commit geçmişine</a> göz atabilirsiniz.</p>
+        </template>
+      </div>
+    </section>
+
+    <section class="release-panel" id="v0.1.9">
+      <div class="release-head">
+        <h1>v0.1.9</h1>
+      </div>
+      <div class="release-date" data-tr="10 Ağustos 2026 tarihinde yayımlandı">Released August 10, 2026</div>
+
+      <div class="download-card">
+        <div class="dc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+        </div>
+        <div class="dc-info">
+          <div class="dc-name">stade-v0.1.9.apk</div>
+          <div class="dc-meta" data-tr="Android 8.0 ve üzeri · APK">Android 8.0+ &middot; APK</div>
+        </div>
+        <a class="btn btn-primary" href="downloads/apk/stade-v0.1.9.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-tr="APK İndir">Download APK</span>
+        </a>
+      </div>
+
+      <div class="release-notes doc-article">
+        <p>Release notes for v0.1.9 will be added here soon &mdash; in the meantime, see the <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">commit history on GitHub</a> for what's changed.</p>
+        <template class="i18n-tr">
+        <p>v0.1.9 için sürüm notları yakında buraya eklenecek &mdash; bu arada, nelerin değiştiğini görmek için <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">GitHub'daki commit geçmişine</a> göz atabilirsiniz.</p>
+        </template>
+      </div>
+    </section>
+
+    <section class="release-panel" id="v0.1.8">
+      <div class="release-head">
+        <h1>v0.1.8</h1>
+      </div>
+      <div class="release-date" data-tr="4 Ağustos 2026 tarihinde yayımlandı">Released August 4, 2026</div>
+
+      <div class="download-card">
+        <div class="dc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+        </div>
+        <div class="dc-info">
+          <div class="dc-name">stade-v0.1.8.apk</div>
+          <div class="dc-meta" data-tr="Android 8.0 ve üzeri · APK">Android 8.0+ &middot; APK</div>
+        </div>
+        <a class="btn btn-primary" href="downloads/apk/stade-v0.1.8.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-tr="APK İndir">Download APK</span>
+        </a>
+      </div>
+
+      <div class="release-notes doc-article">
+        <p>Release notes for v0.1.8 will be added here soon &mdash; in the meantime, see the <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">commit history on GitHub</a> for what's changed.</p>
+        <template class="i18n-tr">
+        <p>v0.1.8 için sürüm notları yakında buraya eklenecek &mdash; bu arada, nelerin değiştiğini görmek için <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">GitHub'daki commit geçmişine</a> göz atabilirsiniz.</p>
+        </template>
+      </div>
+    </section>
+
+    <section class="release-panel" id="v0.1.7">
+      <div class="release-head">
+        <h1>v0.1.7</h1>
+      </div>
+      <div class="release-date" data-tr="4 Ağustos 2026 tarihinde yayımlandı">Released August 4, 2026</div>
+
+      <div class="download-card">
+        <div class="dc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+        </div>
+        <div class="dc-info">
+          <div class="dc-name">stade-v0.1.7.apk</div>
+          <div class="dc-meta" data-tr="Android 8.0 ve üzeri · APK">Android 8.0+ &middot; APK</div>
+        </div>
+        <a class="btn btn-primary" href="downloads/apk/stade-v0.1.7.apk" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-tr="APK İndir">Download APK</span>
+        </a>
+      </div>
+
+      <div class="release-notes doc-article">
+        <p>This is the first release published through this page. Release notes for v0.1.7 will be added here soon &mdash; in the meantime, see the <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">commit history on GitHub</a> for what's changed.</p>
+        <template class="i18n-tr">
+        <p>Bu, bu sayfa üzerinden yayımlanan ilk sürümdür. v0.1.7 için sürüm notları yakında buraya eklenecek &mdash; bu arada, nelerin değiştiğini görmek için <a class="inline" href="https://github.com/Stade-App/stade/commits/main" target="_blank" rel="noopener">GitHub'daki commit geçmişine</a> göz atabilirsiniz.</p>
+        </template>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="logo.png" class="logo-mark" alt="Stade" />
+          Stade
+        </a>
+        <p data-tr="Merkezi sunucu olmadan, gözetim olmadan, sınır olmadan iletişim kurun. Kotlin Multiplatform ile Android ve masaüstü desteği.">Communicate without a central server, without surveillance, without limits. Android and desktop support via Kotlin Multiplatform.</p>
+        <span class="footer-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <span data-tr="GPL-3.0 &middot; Açık Kaynak">GPL-3.0 &middot; Open Source</span>
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" data-tr="Ana Sayfa">Home</a>
+        <a href="docs.html" data-tr="Dokümanlar">Docs</a>
+        <a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener" data-tr="Lisans">License</a>
+        <a href="privacy.html" data-tr="Gizlilik Politikası">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small data-tr="&copy; 2026 Stade &middot; GPL-3.0 lisansı altında dağıtılmaktadır">&copy; 2026 Stade &middot; Distributed under the GPL-3.0 license</small>
+      <small style="font-family:'JetBrains Mono',monospace;font-size:12px;">github.com/Stade-App/stade</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('sidebarScrim');
+  function setSidebar(open) {
+    sidebar.classList.toggle('open', open);
+    scrim.classList.toggle('open', open);
+  }
+  toggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('open')));
+  scrim.addEventListener('click', () => setSidebar(false));
+
+  const releaseLinks = Array.from(document.querySelectorAll('.release-item[data-id]'));
+  const order = releaseLinks.map(a => a.getAttribute('data-id'));
+  const panels = Array.from(document.querySelectorAll('.release-panel'));
+  const breadcrumb = document.getElementById('breadcrumb');
+  const main = document.querySelector('.doc-main');
+
+  const notesI18n = new Map();
+  panels.forEach(p => {
+    const notes = p.querySelector('.release-notes');
+    const tpl = notes ? notes.querySelector('template.i18n-tr') : null;
+    const trHTML = tpl ? tpl.innerHTML : null;
+    if (tpl) tpl.remove();
+    notesI18n.set(p.id, { en: notes ? notes.innerHTML : '', tr: trHTML });
+  });
+
+  const UI_STRINGS = {
+    en: { home: 'Downloads' },
+    tr: { home: 'İndirmeler' }
+  };
+  const LATEST_LABEL = { en: 'Latest', tr: 'Son Sürüm' };
+  let currentLang = 'en';
+
+  function decorateLatest() {
+    releaseLinks.forEach(a => {
+      let badge = a.querySelector('.rv-latest-badge');
+      if (a.getAttribute('data-id') === order[0]) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'rv-latest-badge';
+          a.querySelector('.rv-tag').appendChild(badge);
+        }
+        badge.textContent = LATEST_LABEL[currentLang];
+      } else if (badge) {
+        badge.remove();
+      }
+    });
+    panels.forEach(p => {
+      const head = p.querySelector('.release-head');
+      let badge = head.querySelector('.rv-latest-badge');
+      if (p.id === order[0]) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'rv-latest-badge';
+          head.appendChild(badge);
+        }
+        badge.textContent = LATEST_LABEL[currentLang];
+      } else if (badge) {
+        badge.remove();
+      }
+    });
+  }
+
+  function buildBreadcrumb(id) {
+    breadcrumb.innerHTML =
+      '<a data-home>' + UI_STRINGS[currentLang].home + '</a><span class="sep">/</span>' +
+      '<span class="current">' + id + '</span>';
+    breadcrumb.querySelector('[data-home]').addEventListener('click', () => navigate(order[0]));
+  }
+
+  function navigate(id, skipScroll) {
+    if (!order.includes(id)) id = order[0];
+    panels.forEach(p => { p.hidden = p.id !== id; });
+    releaseLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-id') === id));
+    buildBreadcrumb(id);
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    else location.hash = id;
+    if (!skipScroll) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      main.scrollIntoView({ block: 'start' });
+    }
+    setSidebar(false);
+  }
+
+  releaseLinks.forEach(a =>
+    a.addEventListener('click', (e) => { e.preventDefault(); navigate(a.getAttribute('data-id')); })
+  );
+
+  decorateLatest();
+  const initial = location.hash ? decodeURIComponent(location.hash.slice(1)) : order[0];
+  navigate(initial, true);
+
+  window.addEventListener('hashchange', () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (order.includes(id)) navigate(id);
+  });
+
+  // --- Language toggle (EN default, TR optional) ---
+  (function () {
+    var LANG_KEY = 'stade-lang';
+    var TITLE_EN = document.title;
+    var TITLE_TR = 'İndirmeler — Stade';
+    var DESC_EL = document.querySelector('meta[name="description"]');
+    var DESC_EN_TEXT = DESC_EL ? DESC_EL.getAttribute('content') : '';
+    var DESC_TR_TEXT = "Stade'i indirin — imzalı Android APK sürümleri, sürüm geçmişi ve sürüm notlarıyla birlikte.";
+
+    document.querySelectorAll('[data-tr]').forEach(function (el) {
+      if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    });
+    document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+      if (el.dataset.enAria === undefined) el.dataset.enAria = el.getAttribute('aria-label') || '';
+    });
+
+    function currentPanelId() {
+      const visible = panels.find(p => !p.hidden);
+      return visible ? visible.id : order[0];
+    }
+
+    function applyLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-tr]').forEach(function (el) {
+        el.textContent = lang === 'tr' ? el.getAttribute('data-tr') : el.dataset.en;
+      });
+      document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
+      });
+
+      panels.forEach(function (p) {
+        var stored = notesI18n.get(p.id);
+        var notesEl = p.querySelector('.release-notes');
+        if (stored && notesEl) notesEl.innerHTML = (lang === 'tr' && stored.tr) ? stored.tr : stored.en;
+      });
+
+      decorateLatest();
+      buildBreadcrumb(currentPanelId());
+
+      var toggleBtn = document.getElementById('langToggle');
+      if (toggleBtn) toggleBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
+      document.title = lang === 'tr' ? TITLE_TR : TITLE_EN;
+      if (DESC_EL) DESC_EL.setAttribute('content', lang === 'tr' ? DESC_TR_TEXT : DESC_EN_TEXT);
+      localStorage.setItem(LANG_KEY, lang);
+    }
+
+    var stored = localStorage.getItem(LANG_KEY);
+    applyLang(stored === 'tr' ? 'tr' : 'en');
+
+    var langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', function () {
+      applyLang(currentLang === 'tr' ? 'en' : 'tr');
+    });
+  })();
+</script>
+</body>
+</html>
