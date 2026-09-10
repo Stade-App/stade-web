@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Stade will no longer be available on Google Play starting September 12, 2026. Here's why, and what Google Play users should do." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<title>Discontinuation of Stade on Google Play — Stade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #101010;
+  --bg-card: rgba(26,26,26,0.6);
+  --bg-card-hover: rgba(34,34,34,0.82);
+  --border: rgba(140,140,140,0.1);
+  --border-strong: rgba(170,170,170,0.2);
+  --border-accent: rgba(224,224,224,0.32);
+  --text: #f0f0f0;
+  --text-muted: #8a8a8a;
+  --text-dim: #545454;
+  --accent: #e0e0e0;
+  --accent-light: #ffffff;
+  --accent-2: #b0b0b0;
+  --accent-3: #cacaca;
+  --accent-glow: rgba(224,224,224,0.38);
+  --gradient: linear-gradient(135deg, #e0e0e0 0%, #b0b0b0 100%);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --nav-h: 65px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Google Sans', 'Product Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 10% -10%, rgba(224,224,224,0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 95% 4%, rgba(176,176,176,0.1), transparent 55%);
+  pointer-events: none; z-index: 0;
+}
+a { color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+nav {
+  position: sticky; top: 0; z-index: 100; height: var(--nav-h);
+  backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(10,10,10,0.82); border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 100%; max-width: 1200px; margin: 0 auto; gap: 20px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; text-decoration: none; color: var(--text); flex-shrink: 0; }
+.logo-mark { width: 32px; height: 32px; border-radius: 9px; display: block; object-fit: cover; flex-shrink: 0; }
+.docs-tag {
+  font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-light); padding: 3px 9px; border-radius: 6px;
+  background: rgba(224,224,224,0.1); border: 1px solid var(--border-accent); margin-left: 4px;
+}
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 13px; border-radius: 8px; transition: all 0.2s; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-strong);
+  color: var(--text); text-decoration: none; font-size: 14px; font-weight: 500;
+  transition: all 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.25); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 38px; padding: 0 12px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border-strong); border-radius: 8px;
+  cursor: pointer; color: var(--text); font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s;
+}
+.lang-toggle:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+@media (max-width: 560px) { .nav-links { display: none; } .nav-cta span { display: none; } }
+
+main { position: relative; z-index: 1; padding: 64px 0 40px; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 14px; color: var(--text-muted); text-decoration: none;
+  margin: 0 auto 28px; max-width: 760px; width: 100%;
+}
+.back-link { display: flex; }
+.back-link:hover { color: var(--text); }
+.back-link svg { width: 15px; height: 15px; }
+
+.article-header { max-width: 760px; margin: 0 auto 40px; }
+.article-header h1 { font-size: clamp(28px, 4.2vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 14px; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 12.5px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+.article-meta .dot { opacity: 0.5; }
+
+.doc-article { max-width: 760px; margin: 0 auto; }
+.doc-article p { color: var(--text-muted); font-size: 15.5px; margin-bottom: 18px; }
+.doc-article strong { color: var(--text); font-weight: 600; }
+.doc-article a.inline { color: var(--accent-light); text-decoration: none; }
+.doc-article a.inline:hover { text-decoration: underline; }
+
+.callout {
+  display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius);
+  background: rgba(224,224,224,0.06); border: 1px solid var(--border-accent);
+  margin: 26px 0;
+}
+.callout svg { width: 20px; height: 20px; color: var(--accent-light); flex-shrink: 0; margin-top: 2px; }
+.callout p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
+.callout.warn { background: rgba(122,122,122,0.06); border-color: rgba(122,122,122,0.3); }
+.callout.warn svg { color: #a0a0a0; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 24px; border-radius: 12px; font-size: 14.5px; font-weight: 600;
+  text-decoration: none; transition: all 0.2s ease;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: inherit; margin-top: 8px;
+}
+.btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.btn-primary {
+  background: var(--gradient); color: #0a0a0a;
+  box-shadow: 0 8px 30px -6px rgba(224,224,224,0.32), 0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -6px rgba(224,224,224,0.42), 0 0 0 1px rgba(255,255,255,0.1) inset;
+}
+
+footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: relative; z-index: 1; margin-top: 40px; }
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.65; max-width: 340px; margin: 10px 0 16px; }
+.footer-badge {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 8px;
+  background: rgba(200,200,200,0.06); border: 1px solid rgba(200,200,200,0.2);
+  font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #c8c8c8;
+}
+.footer-badge svg { width: 12px; height: 12px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 26px; border-top: 1px solid var(--border); }
+.footer-bottom small { font-size: 13px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.png" class="logo-mark" alt="Stade" />
+      Stade
+      <span class="docs-tag" data-tr="makale">article</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
+        <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
+        <li><a href="articles.html" data-tr="Makaleler">Articles</a></li>
+      </ul>
+      <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+        <span>GitHub</span>
+      </a>
+      <button class="lang-toggle" id="langToggle" type="button" data-tr-aria="Dili değiştir" aria-label="Switch language">TR</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <a href="articles.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-tr="Makalelere dön">Back to Articles</span>
+    </a>
+
+    <div class="article-header">
+      <h1 data-tr="Stade'in Google Play'den Kaldırılması">Discontinuation of Stade on Google Play</h1>
+      <div class="article-meta">
+        <span data-tr="10 Eylül 2026 tarihinde yayımlandı">Published September 10, 2026</span>
+      </div>
+    </div>
+
+    <article class="doc-article" id="articleBody">
+      <p>Dear Stade users, this announcement is regarding the removal of Stade from Google Play.</p>
+      <p>Starting September 12, 2026, Stade will no longer be available on Google Play. The primary reason for this is that the Google Play review team cannot keep up with our fast-paced update schedule, which often leaves APK and desktop users far ahead of Google Play users (for instance, the current version is 0.2.4, while Google Play is still stuck on 0.2.2).</p>
+      <p>Google takes an exceptionally long time to review every new update, especially for small-scale projects like ours. Each review takes nearly a week, which significantly disrupts our release cycle.</p>
+      <p>Therefore, as of September 12, 2026, Stade will no longer be listed on the Google Play Store. Updates for both mobile and desktop will continue to be published under the <a class="inline" href="https://github.com/Stade-App/stade/releases" target="_blank" rel="noopener">GitHub Releases</a> section.</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Due to protocol changes introduced in version 0.2.4, we strongly recommend that users who installed the app via Google Play download and install the latest APK from GitHub immediately.</p>
+      </div>
+      <p>This does not mean Stade will never appear on official app stores again. Once our update cycle slows down and Stade reaches a more stable, mature state, we may return to Google Play.</p>
+      <a class="btn btn-primary" href="downloads.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-tr="En Son APK'yı İndir">Download the Latest APK</span>
+      </a>
+
+      <template class="i18n-tr">
+      <p>Sevgili Stade kullanıcıları, bu duyuru Stade'in Google Play'den kaldırılmasıyla ilgilidir.</p>
+      <p>12 Eylül 2026 itibarıyla Stade artık Google Play'de bulunmayacak. Bunun başlıca nedeni, Google Play inceleme ekibinin hızlı güncelleme temposuna yetişememesi; bu da APK ve masaüstü kullanıcılarını Google Play kullanıcılarının çok ilerisinde bırakıyor (örneğin, güncel sürüm 0.2.4 iken Google Play hâlâ 0.2.2'de takılı kalmış durumda).</p>
+      <p>Google, özellikle bizimki gibi küçük ölçekli projeler için her yeni güncellemeyi incelemek üzere olağanüstü uzun bir süre alıyor. Her inceleme yaklaşık bir hafta sürüyor ve bu durum yayın döngümüzü ciddi şekilde aksatıyor.</p>
+      <p>Bu nedenle, 12 Eylül 2026 itibarıyla Stade artık Google Play Store'da listelenmeyecek. Hem mobil hem de masaüstü güncellemeleri <a class="inline" href="https://github.com/Stade-App/stade/releases" target="_blank" rel="noopener">GitHub Releases</a> bölümü altında yayımlanmaya devam edecek.</p>
+      <div class="callout warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>0.2.4 sürümüyle birlikte gelen protokol değişiklikleri nedeniyle, uygulamayı Google Play üzerinden yükleyen kullanıcıların en güncel APK'yı GitHub'dan hemen indirip kurmalarını önemle tavsiye ediyoruz.</p>
+      </div>
+      <p>Bu, Stade'in resmi uygulama mağazalarında bir daha asla görünmeyeceği anlamına gelmiyor. Güncelleme döngümüz yavaşladığında ve Stade daha kararlı, olgun bir duruma ulaştığında Google Play'e geri dönebiliriz.</p>
+      <a class="btn btn-primary" href="downloads.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>En Son APK'yı İndir</span>
+      </a>
+      </template>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="logo.png" class="logo-mark" alt="Stade" />
+          Stade
+        </a>
+        <p data-tr="Merkezi sunucu olmadan, gözetim olmadan, sınır olmadan iletişim kurun. Kotlin Multiplatform ile Android ve masaüstü desteği.">Communicate without a central server, without surveillance, without limits. Android and desktop support via Kotlin Multiplatform.</p>
+        <span class="footer-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <span data-tr="GPL-3.0 &middot; Açık Kaynak">GPL-3.0 &middot; Open Source</span>
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" data-tr="Ana Sayfa">Home</a>
+        <a href="docs.html" data-tr="Dokümanlar">Docs</a>
+        <a href="downloads.html" data-tr="İndirmeler">Downloads</a>
+        <a href="articles.html" data-tr="Makaleler">Articles</a>
+        <a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener" data-tr="Lisans">License</a>
+        <a href="privacy.html" data-tr="Gizlilik Politikası">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small data-tr="&copy; 2026 Stade &middot; GPL-3.0 lisansı altında dağıtılmaktadır">&copy; 2026 Stade &middot; Distributed under the GPL-3.0 license</small>
+      <small style="font-family:'JetBrains Mono',monospace;font-size:12px;">github.com/Stade-App/stade</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var LANG_KEY = 'stade-lang';
+    var TITLE_EN = document.title;
+    var TITLE_TR = "Stade'in Google Play'den Kaldırılması — Stade";
+    var DESC_EL = document.querySelector('meta[name="description"]');
+    var DESC_EN_TEXT = DESC_EL ? DESC_EL.getAttribute('content') : '';
+    var DESC_TR_TEXT = "Stade, 12 Eylül 2026 itibarıyla Google Play'de bulunmayacak. Nedenleri ve Google Play kullanıcılarının yapması gerekenler.";
+
+    var articleEl = document.getElementById('articleBody');
+    var tpl = articleEl.querySelector('template.i18n-tr');
+    var articleI18n = { en: articleEl.innerHTML, tr: tpl ? tpl.innerHTML : null };
+    if (tpl) tpl.remove();
+
+    document.querySelectorAll('[data-tr]').forEach(function (el) {
+      if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    });
+    document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+      if (el.dataset.enAria === undefined) el.dataset.enAria = el.getAttribute('aria-label') || '';
+    });
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-tr]').forEach(function (el) {
+        el.textContent = lang === 'tr' ? el.getAttribute('data-tr') : el.dataset.en;
+      });
+      document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
+      });
+      if (articleI18n.tr) articleEl.innerHTML = lang === 'tr' ? articleI18n.tr : articleI18n.en;
+
+      var toggle = document.getElementById('langToggle');
+      if (toggle) toggle.textContent = lang === 'tr' ? 'EN' : 'TR';
+      document.title = lang === 'tr' ? TITLE_TR : TITLE_EN;
+      if (DESC_EL) DESC_EL.setAttribute('content', lang === 'tr' ? DESC_TR_TEXT : DESC_EN_TEXT);
+      localStorage.setItem(LANG_KEY, lang);
+    }
+
+    var stored = localStorage.getItem(LANG_KEY);
+    applyLang(stored === 'tr' ? 'tr' : 'en');
+
+    var langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', function () {
+      applyLang(document.documentElement.lang === 'tr' ? 'en' : 'tr');
+    });
+  })();
+</script>
+</body>
+</html>
