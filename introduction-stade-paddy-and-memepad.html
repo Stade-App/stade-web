@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Articles from the Stade team — longer-form writing on the app's design, cryptography, and the peer-to-peer protocols it's built on." />
+<meta name="description" content="Version 0.2.6 introduces Paddy and Memepad — simple soundpads for sharing memes and audio clips from the Stade library directly in chats, groups, and Stadiums." />
 <meta name="theme-color" content="#0a0a0a" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-<title>Articles — Stade</title>
+<title>Introduction: Stade Paddy and Memepad — Stade</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -91,30 +91,33 @@ nav {
 
 main { position: relative; z-index: 1; padding: 64px 0 40px; }
 
-.articles-header { max-width: 640px; margin: 0 auto 56px; }
-.articles-header h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px; }
-.articles-header .lead { font-size: 17px; color: var(--text-muted); line-height: 1.65; max-width: 560px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 14px; color: var(--text-muted); text-decoration: none;
+  margin: 0 auto 28px; max-width: 760px; width: 100%;
+}
+.back-link { display: flex; }
+.back-link:hover { color: var(--text); }
+.back-link svg { width: 15px; height: 15px; }
 
-.articles-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-}
-@media (max-width: 960px) { .articles-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .articles-grid { grid-template-columns: 1fr; } }
+.article-header { max-width: 760px; margin: 0 auto 40px; }
+.article-header h1 { font-size: clamp(28px, 4.2vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 14px; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 12.5px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+.article-meta .dot { opacity: 0.5; }
 
-.article-card {
-  display: flex; flex-direction: column; gap: 10px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 28px; text-decoration: none;
-  transition: all 0.3s ease; backdrop-filter: blur(8px);
+.doc-article { max-width: 760px; margin: 0 auto; }
+.doc-article p { color: var(--text-muted); font-size: 15.5px; margin-bottom: 18px; }
+.doc-article strong { color: var(--text); font-weight: 600; }
+.doc-article a.inline { color: var(--accent-light); text-decoration: none; }
+.doc-article a.inline:hover { text-decoration: underline; }
+
+.callout {
+  display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius);
+  background: rgba(224,224,224,0.06); border: 1px solid var(--border-accent);
+  margin: 26px 0;
 }
-.article-card:hover {
-  border-color: var(--border-accent); background: var(--bg-card-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 20px 44px -16px rgba(0,0,0,0.45), 0 0 32px -18px var(--accent-glow);
-}
-.article-card .ac-date { font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-dim); }
-.article-card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
-.article-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+.callout svg { width: 20px; height: 20px; color: var(--accent-light); flex-shrink: 0; margin-top: 2px; }
+.callout p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
 
 footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: relative; z-index: 1; margin-top: 40px; }
 .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; margin-bottom: 40px; }
@@ -140,12 +143,13 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: re
     <a href="index.html" class="logo">
       <img src="logo.png" class="logo-mark" alt="Stade" />
       Stade
-      <span class="docs-tag" data-tr="makaleler">articles</span>
+      <span class="docs-tag" data-tr="makale">article</span>
     </a>
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="docs.html" data-tr="Dokümanlar">Docs</a></li>
         <li><a href="downloads.html" data-tr="İndirmeler">Downloads</a></li>
+        <li><a href="articles.html" data-tr="Makaleler">Articles</a></li>
       </ul>
       <a href="https://github.com/Stade-App/stade" class="nav-cta" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.7.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
@@ -159,23 +163,35 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: re
 <main>
   <div class="container">
 
-    <div class="articles-header">
-      <h1 data-tr="Makaleler">Articles</h1>
-      <p class="lead" data-tr="Stade'in tasarımı, kriptografisi ve üzerine kurulduğu eşler arası protokoller hakkında uzun soluklu yazılar. Bunları inşa eden ekipten.">Longer-form writing on Stade's design, cryptography, and the peer-to-peer protocols it's built on &mdash; from the people building it.</p>
+    <a href="articles.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-tr="Makalelere dön">Back to Articles</span>
+    </a>
+
+    <div class="article-header">
+      <h1 data-tr="Giriş: Stade Paddy ve Memepad">Introduction: Stade Paddy and Memepad</h1>
+      <div class="article-meta">
+        <span data-tr="14 Eylül 2026 tarihinde yayımlandı">Published September 14, 2026</span>
+      </div>
     </div>
 
-    <div class="articles-grid">
-      <a class="article-card" href="introduction-stade-paddy-and-memepad.html">
-        <span class="ac-date" data-tr="14 Eylül 2026">September 14, 2026</span>
-        <h3 data-tr="Giriş: Stade Paddy ve Memepad">Introduction: Stade Paddy and Memepad</h3>
-        <p data-tr="0.2.6 sürümü, Stade kütüphanesinden meme ve ses klipleri paylaşmak için basit ses tabloları olan Paddy ve Memepad'i tanıtıyor.">Version 0.2.6 introduces Paddy and Memepad, simple soundpads for sharing memes and audio clips from the Stade library.</p>
-      </a>
-      <a class="article-card" href="discontinuation-of-stade-on-google-play.html">
-        <span class="ac-date" data-tr="10 Eylül 2026">September 10, 2026</span>
-        <h3 data-tr="Stade'in Google Play'den Kaldırılması">Discontinuation of Stade on Google Play</h3>
-        <p data-tr="12 Eylül 2026 itibarıyla Stade artık Google Play'de bulunmayacak. Nedenleri ve Google Play kullanıcılarının yapması gerekenler.">Starting September 12, 2026, Stade will no longer be available on Google Play. Here's why, and what Google Play users should do.</p>
-      </a>
-    </div>
+    <article class="doc-article" id="articleBody">
+      <p>With version 0.2.6, we're introducing two new features: Paddy and Memepad. In short, they're simple soundpads. You can now share memes and audio clips from the Stade library directly in chats, groups, and Stadiums.</p>
+      <p>To use this feature after updating to the latest version, open any chat and tap the plus icon that replaced the old attachment paperclip (don't worry, media sharing is still there!). Pick either Memepad or Paddy, browse the library, and share away!</p>
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>Note: Your Tor connection must be established to load the library. You can check the current status on the <a class="inline" href="docs.html#transport-layers">Transport Layers page</a>.</p>
+      </div>
+
+      <template class="i18n-tr">
+      <p>0.2.6 sürümüyle birlikte iki yeni özellik tanıtıyoruz: Paddy ve Memepad. Kısacası, bunlar basit ses tablolarıdır. Artık Stade kütüphanesinden meme ve ses kliplerini doğrudan sohbetlerde, gruplarda ve Stadiumlarda paylaşabilirsiniz.</p>
+      <p>Bu özelliği kullanmak için en son sürüme güncelledikten sonra herhangi bir sohbeti açın ve eski ataç simgesinin yerini alan artı simgesine dokunun (merak etmeyin, medya paylaşımı hâlâ orada!). Memepad veya Paddy'den birini seçin, kütüphaneye göz atın ve paylaşın!</p>
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>Not: Kütüphaneyi yüklemek için Tor bağlantınızın kurulmuş olması gerekir. Güncel durumu <a class="inline" href="docs.html#transport-layers">Taşıma Katmanları sayfasından</a> kontrol edebilirsiniz.</p>
+      </div>
+      </template>
+    </article>
 
   </div>
 </main>
@@ -198,6 +214,7 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: re
         <a href="index.html" data-tr="Ana Sayfa">Home</a>
         <a href="docs.html" data-tr="Dokümanlar">Docs</a>
         <a href="downloads.html" data-tr="İndirmeler">Downloads</a>
+        <a href="articles.html" data-tr="Makaleler">Articles</a>
         <a href="https://github.com/Stade-App/stade" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/Stade-App/stade/blob/main/LICENSE" target="_blank" rel="noopener" data-tr="Lisans">License</a>
         <a href="privacy.html" data-tr="Gizlilik Politikası">Privacy Policy</a>
@@ -214,10 +231,15 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: re
   (function () {
     var LANG_KEY = 'stade-lang';
     var TITLE_EN = document.title;
-    var TITLE_TR = 'Makaleler — Stade';
+    var TITLE_TR = 'Giriş: Stade Paddy ve Memepad — Stade';
     var DESC_EL = document.querySelector('meta[name="description"]');
     var DESC_EN_TEXT = DESC_EL ? DESC_EL.getAttribute('content') : '';
-    var DESC_TR_TEXT = "Stade ekibinden makaleler — uygulamanın tasarımı, kriptografisi ve üzerine kurulduğu eşler arası protokoller hakkında uzun soluklu yazılar.";
+    var DESC_TR_TEXT = "0.2.6 sürümü, Stade kütüphanesinden meme ve ses klipleri paylaşmak için sohbetlerde, gruplarda ve Stadiumlarda kullanabileceğiniz basit ses tabloları olan Paddy ve Memepad'i tanıtıyor.";
+
+    var articleEl = document.getElementById('articleBody');
+    var tpl = articleEl.querySelector('template.i18n-tr');
+    var articleI18n = { en: articleEl.innerHTML, tr: tpl ? tpl.innerHTML : null };
+    if (tpl) tpl.remove();
 
     document.querySelectorAll('[data-tr]').forEach(function (el) {
       if (el.dataset.en === undefined) el.dataset.en = el.textContent;
@@ -234,6 +256,7 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 32px; position: re
       document.querySelectorAll('[data-tr-aria]').forEach(function (el) {
         el.setAttribute('aria-label', lang === 'tr' ? el.getAttribute('data-tr-aria') : el.dataset.enAria);
       });
+      if (articleI18n.tr) articleEl.innerHTML = lang === 'tr' ? articleI18n.tr : articleI18n.en;
 
       var toggle = document.getElementById('langToggle');
       if (toggle) toggle.textContent = lang === 'tr' ? 'EN' : 'TR';
